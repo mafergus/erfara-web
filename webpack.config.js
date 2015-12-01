@@ -39,7 +39,7 @@ var common = {
   ]
 };
 
-if(TARGET === 'start' || !TARGET) {
+if(TARGET === 'devStart' || !TARGET) {
   module.exports = merge(common, {
     devtool: 'eval-source-map',
     devServer: {
