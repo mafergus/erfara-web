@@ -1,3 +1,23 @@
 body {
-  background: cornsilk;
+  background: #660066;
+  font-family: sans-serif;
+  color: white;
+}
+
+.app {
+
+}
+
+.notes {
+  margin: 0.5em;
+  padding-left: 0;
+
+
+  max-width: 50em;
+  list-style: none;
+
+}
+
+.add-note-form {
+
 }
