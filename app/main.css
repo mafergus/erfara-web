@@ -2,22 +2,43 @@ body {
   background: #660066;
   font-family: sans-serif;
   color: white;
+
 }
 
 .app {
 
 }
 
+.add-note-form {
+  padding: 0.5em;
+  width: 25em;
+}
+
+#add-note-form-text {
+  width: 24.5em;
+}
+
 .notes {
   margin: 0.5em;
   padding-left: 0;
-
-
-  max-width: 50em;
   list-style: none;
 
 }
 
-.add-note-form {
+.note {
+  color: #660066;
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+  width: 25em;
 
+  background-color: #fdfdfd;
+  box-shadow: 0 0 0.3em 0.03em rgba(0, 0, 0, 0.3);
+}
+
+.note .button-edit {
+  float: right;
+}
+
+.note .button-remove {
+  float: right;
 }
