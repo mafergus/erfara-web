@@ -3,6 +3,17 @@ import React from 'react';
 
 export default class Menu extends React.Component {
 
+  componentDidMount(){
+    /* Listen for a transition! */
+    var transitionEvent = this.whichTransitionEvent();
+    transitionEvent && window.addEventListener(transitionEvent, function() {
+      console.log('Transitions complete!');
+      document.getElementById('block1').id="blockTemp";
+      document.getElementById('block3').id="block1";
+      document.getElementById('blockTemp').id="block3";
+    });
+  }
+
 
   render() {
 
@@ -34,7 +45,24 @@ export default class Menu extends React.Component {
         block.style.marginLeft = "120%";
       }
     }
+  }
 
+  // Check for transition events
+  whichTransitionEvent(){
+      var t;
+      var el = document.createElement('fakeelement');
+      var transitions = {
+        'transition':'transitionend',
+        'OTransition':'oTransitionEnd',
+        'MozTransition':'transitionend',
+        'WebkitTransition':'webkitTransitionEnd'
+      }
+
+      for(t in transitions){
+          if( el.style[t] !== undefined ){
+              return transitions[t];
+          }
+      }
   }
 
 }
