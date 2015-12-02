@@ -22,11 +22,11 @@ export default class Menu extends React.Component {
             <div className="block">
                 <i className="hovicon effect-1 sub-a" onClick={this.toggleAnimation.bind(this)} >Erfara</i>
                 <div id="block-div">
-                  <div id="block1" style={{marginLeft: "120%"}}>
+                  <div id="block1" style={{marginLeft: "120%"}} onClick={this.toggleAnimation.bind(this)} >
                   </div>
-                  <div id="block2" style={{marginLeft: "120%"}}>
+                  <div id="block2" style={{marginLeft: "120%"}} onClick={this.toggleAnimation.bind(this)} >
                   </div>
-                  <div id="block3" style={{marginLeft: "120%"}}>
+                  <div id="block3" style={{marginLeft: "120%"}} onClick={this.toggleAnimation.bind(this)}>
                   </div>
                 </div>
             </div>
@@ -36,8 +36,7 @@ export default class Menu extends React.Component {
   }
 
   toggleAnimation() {
-    //find elements and toggle classNames between onScreen/Offscreen
-
+    //find elements and amend margins to trigger transition
     for(var i = 1; i<=3; i++){
       var block = document.getElementById("block"+i);
       // check margin-left of block and toggle them
