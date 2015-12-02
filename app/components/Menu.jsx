@@ -21,11 +21,13 @@ export default class Menu extends React.Component {
           <div className="row">
             <div className="block">
                 <i className="hovicon effect-1 sub-a" onClick={this.toggleAnimation.bind(this)} >Erfara</i>
-                <div id="block1" style={{marginLeft: "120%"}}>
-                </div>
-                <div id="block2" style={{marginLeft: "120%"}}>
-                </div>
-                <div id="block3" style={{marginLeft: "120%"}}>
+                <div id="block-div">
+                  <div id="block1" style={{marginLeft: "120%"}}>
+                  </div>
+                  <div id="block2" style={{marginLeft: "120%"}}>
+                  </div>
+                  <div id="block3" style={{marginLeft: "120%"}}>
+                  </div>
                 </div>
             </div>
           </div>

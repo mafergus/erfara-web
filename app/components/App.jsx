@@ -19,16 +19,7 @@ export default class App extends ParseComponent {
       <div className="app">
 
         <Menu />
-{/** 
-        <form className="add-note-form" 
-                onSubmit={this.addNote.bind(this)}>
-          <input type="text" id="add-note-form-text" />
-          <button>Add note</button>
-        </form>
-        <Notes items={this.data.items} 
-                 onEdit={this.editTask}
-                   removeNote={this.removeNote}/>
-*/}
+        
       </div>
     );
   }
