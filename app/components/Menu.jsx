@@ -19,8 +19,8 @@ export default class Menu extends React.Component {
 
     return (
           <div className="row">
-            <div className="block">
-                <i className="hovicon effect-1 sub-a" onClick={this.toggleAnimation.bind(this)} >Erfara</i>
+            <div className=" block">
+                <div className="hovicon effect-1 sub-a" onClick={this.toggleAnimation.bind(this)} ></div>
                 <div id="block-div">
                   <div id="block1" style={{marginLeft: "120%"}} onClick={this.toggleAnimation.bind(this)} >
                   </div>
@@ -41,7 +41,7 @@ export default class Menu extends React.Component {
       var block = document.getElementById("block"+i);
       // check margin-left of block and toggle them
       if(block.style.marginLeft === "120%"){
-        block.style.marginLeft = "40%";
+        block.style.marginLeft = "60%";
       } else {
         block.style.marginLeft = "120%";
       }
