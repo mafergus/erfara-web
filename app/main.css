@@ -101,9 +101,9 @@ body {
 
 
 #block1 {
-  height: 30px;
-  width: 30px;
-  margin: 20px 20px 20px 120%;
+  height: 60px;
+  width: 60px;
+  margin: 30px 20px 20px 120%;
   background-color: white;
   transition-property: margin-left;
   transition-duration: 0.2s;
@@ -128,9 +128,9 @@ body {
 }
 
 #block2 {
-  height: 30px;
-  width: 30px;
-  margin: 20px 20px 20px 120%;
+  height: 60px;
+  width: 60px;
+  margin: 30px 20px 20px 120%;
   background-color: white;
   transition-property: margin-left;
   transition-duration: 0.2s;
@@ -156,9 +156,9 @@ body {
 }
 
 #block3 {
-  height: 30px;
-  width: 30px;
-  margin: 20px 20px 20px 120%;
+  height: 60px;
+  width: 60px;
+  margin: 30px 20px 20px 120%;
   background-color: white;
   transition-property: margin-left;
   transition-duration: 0.2s;

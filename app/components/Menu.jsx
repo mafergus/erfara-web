@@ -41,7 +41,7 @@ export default class Menu extends React.Component {
       var block = document.getElementById("block"+i);
       // check margin-left of block and toggle them
       if(block.style.marginLeft === "120%"){
-        block.style.marginLeft = "60%";
+        block.style.marginLeft = "53%";
       } else {
         block.style.marginLeft = "120%";
       }
