@@ -3,9 +3,7 @@ html {
   width: 100%;
 }
 body {
-  background-image: url('/build/public/background.jpg');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  background-color: #B45F04;
   font-family: sans-serif;
   color: white;
 
@@ -164,7 +162,7 @@ body {
   margin: 20px 20px 20px 120%;
   background-color: white;
   transition-property: margin-left;
-  transition-duration: 0.2  s;
+  transition-duration: 0.2s;
   transition-delay: 0.3s;
   transition-timing-function: cubic-bezier(0.935, 0.770, 0.475, 1.235)
 }
