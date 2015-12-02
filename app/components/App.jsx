@@ -3,6 +3,7 @@ import Parse from 'parse';
 import ParseReact from 'parse-react';
 var ParseComponent = ParseReact.Component(React);
 import Notes from './Notes';
+import Menu from './Menu';
   
 
 export default class App extends ParseComponent {
@@ -16,6 +17,9 @@ export default class App extends ParseComponent {
   render() {
     return (
       <div className="app">
+
+        <Menu />
+
         <form className="add-note-form" 
                 onSubmit={this.addNote.bind(this)}>
           <input type="text" id="add-note-form-text" />
@@ -51,5 +55,6 @@ export default class App extends ParseComponent {
     console.log("App.js destroying todoitem: " + todoId);
     ParseReact.Mutation.Destroy(todoId).dispatch();
   }
+
 
 };
