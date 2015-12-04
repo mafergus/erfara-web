@@ -76,7 +76,7 @@ if(TARGET === 'build') {
     },
     devtool: 'source-map',
     plugins: [
-      new Clean(['build']),
+      // new Clean(['build']), (this line cleans everything that isn't webpack generated)
       new webpack.DefinePlugin({
         // This tells React to build in production mode which is smaller
         'process.env.NODE_ENV': JSON.stringify('production'),
