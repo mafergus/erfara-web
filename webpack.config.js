@@ -58,11 +58,13 @@ if(TARGET === 'devStart' || !TARGET) {
     },
     plugins: [
       new webpack.DefinePlugin({
-        // This tells React to build in developemnt mode
-        'process.env.NODE_ENV': JSON.stringify('development')
+        // This tells React to build in development mode
+        'process.env.NODE_ENV': JSON.stringify('development'),
+        // This is for the facebook SDK; otherwise it tries to resolve xmlhttprequest to a node_module
+        IN_BROWSER: true,
       }),
       new webpack.HotModuleReplacementPlugin()
-    ]
+    ],
   });
 }
 
@@ -77,7 +79,9 @@ if(TARGET === 'build') {
       new Clean(['build']),
       new webpack.DefinePlugin({
         // This tells React to build in production mode which is smaller
-        'process.env.NODE_ENV': JSON.stringify('production')
+        'process.env.NODE_ENV': JSON.stringify('production'),
+        // This is for the facebook SDK; otherwise it tries to resolve xmlhttprequest to a node_module
+        IN_BROWSER: true,
       }),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
