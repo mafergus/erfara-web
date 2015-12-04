@@ -1,6 +1,7 @@
 import React from 'react';
+import Parse from 'parse';
 import Menu from './Menu';
-import Login from './Login';
+import Authentication from './Authentication';
   
 
 export default class App extends React.Component {
@@ -12,8 +13,9 @@ export default class App extends React.Component {
         <div>
           <Menu />
         </div>
+
         <div>
-          <Login />
+          <Authentication />
         </div>
       </div>
     );

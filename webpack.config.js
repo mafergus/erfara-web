@@ -29,6 +29,13 @@ var common = {
         test: /\.jsx?$/,
         loaders: ['babel'],
         include: PATHS.app
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loaders: [
+        'url?limit=8192',
+        'img'
+        ]
       }
     ]
   },
