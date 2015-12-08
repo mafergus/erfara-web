@@ -1,3 +1,32 @@
+/**
+
+Add IN_BROWSER flag to webpack.DefinePlugin 
+
+Add this to your jsx files to asynchronously download the FB sdk to their browser
+
+  // This is called once the facebook SDK is loaded
+  window.fbAsyncInit = function() {                       
+    Parse.FacebookUtils.init({                            
+      appId      : '406833206191137',                                                     
+      cookie     : true,                                  
+      xfbml      : true,                                  
+      version    : 'v2.5'                                 
+    });                                                   
+    console.log('fbAsyncInit complete')                   
+  };                                                      
+                                                                                        
+  (function(d, s, id){                                   
+     var js, fjs = d.getElementsByTagName(s)[0];          
+     if (d.getElementById(id)) {return;}                  
+     js = d.createElement(s); js.id = id;                 
+     js.src = '//connect.facebook.net/en_US/sdk.js';      
+     fjs.parentNode.insertBefore(js, fjs);                
+   }(document, 'script', 'facebook-jssdk')); 
+
+
+
+*/
+
 import React from 'react';
 import Parse from 'parse';
 
@@ -6,26 +35,26 @@ export default class Authentication extends React.Component {
 
   render () {
     return(
-      <div>
-      <div>
-        {this.welcomeMessage()}
-      </div>
-      <div id="loginform">
-        <div id="facebook" onClick={this.loginFacebook.bind(this)}>
-          <div id="facebook-icon"></div>
-          <div id="connect">Connect with Facebook</div>
+      <div id="authentication-div">
+        <div>
+          {this.welcomeMessage()}
         </div>
-        <div id="mainlogin">
-          <div id="or">or</div>
-            <h1 id="auth-h1">Login or Create Account</h1>
-          <form onSubmit={this.authenticate.bind(this)} >
-              <input type="text" placeholder="username or email" required id='username' />
-              <input type="password" placeholder="password" required id='password' />
-              <button type="submit" onClick={this.authenticate.bind(this)} id="login-button"><div id="button-arrow-right"></div></button>
-          </form>
-          <div id="note"><a href="#">Forgot your password?</a></div>
+        <div id="loginform">
+          <div id="facebook" onClick={this.loginFacebook.bind(this)}>
+            <div id="facebook-icon"></div>
+            <div id="connect">Connect with Facebook</div>
+          </div>
+          <div id="mainlogin">
+            <div id="or">or</div>
+              <h1 id="auth-h1">Login or Create Account</h1>
+            <form onSubmit={this.authenticate.bind(this)} >
+                <input type="text" placeholder="username or email" required id='username' />
+                <input type="password" placeholder="password" required id='password' />
+                <button type="submit" onClick={this.authenticate.bind(this)} id="login-button"><div id="button-arrow-right"></div></button>
+            </form>
+            <div id="note"><a href="#">Forgot your password?</a></div>
+          </div>
         </div>
-      </div>
         <button onClick={this.logout.bind(this)}>Log out</button>
       </div>
     );
