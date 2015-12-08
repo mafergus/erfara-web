@@ -3,7 +3,16 @@
 Note: The underlying Parse query for the cards should be located in the container
       which the cards will be generated in iteratively:
 
-      this.state.cardQueryResults.map((user) => {  <Card user={user} photo={user.../> })
+       renderProfileCards(){
+        return(
+            this.data.profileCards.map((user) => {
+              return <Card_Profile  key={user.id} user={user} />;
+            })
+        );
+       }
+
+Note: The underlying container should be an ES6 Parse-React component to ensure data is loaded
+      before any cards are attempted to be rendered.
 
 */
 

@@ -42,7 +42,6 @@ export default class App extends ParseComponent {
   }
 
  renderProfileCards(){
-
   return(
       this.data.profileCards.map((user) => {
         return <Card_Profile  key={user.id} user={user} />;
