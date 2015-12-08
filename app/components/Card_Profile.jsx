@@ -31,8 +31,8 @@ export default class CardProfile extends React.Component {
         <div className="card-profile-stripe">
         </div>
         <div className="card-profile-info">
-        <h1> test </h1>
-          <p className="card-profile-info-text">{this.props.user.username}</p>
+        <h1> {this.props.user.first_name} </h1>
+          <p className="card-profile-info-text">{this.props.user.bio}</p>
         </div>
       </div>
     );
