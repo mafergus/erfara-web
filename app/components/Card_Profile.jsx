@@ -28,9 +28,11 @@ export default class CardProfile extends React.Component {
         <div className="card-profile-photo">
           <img src={this.props.user.photo._url} alt="Photo" height="100%" width="100%" />
         </div>
+        <div className="card-profile-stripe">
+        </div>
         <div className="card-profile-info">
-          <p>{this.props.user.username}</p>
-          {console.log(this.props.user)}
+        <h1> test </h1>
+          <p className="card-profile-info-text">{this.props.user.username}</p>
         </div>
       </div>
     );
