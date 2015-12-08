@@ -3,11 +3,11 @@ import Parse from 'parse';
 var ParseReact = require('parse-react');
 var ParseComponent = ParseReact.Component(React);
 
-
 import Menu from './Menu';
 import Authentication from './Authentication';
 import Card_Profile from './Card_Profile';
 import Card_Event from './Card_Event';
+
   
 
 export default class App extends ParseComponent {
@@ -36,7 +36,6 @@ export default class App extends ParseComponent {
         <div className="menu-div">
           <Menu />
         </div>
-        <button onClick={this.loginParse.bind(this)}>Login as Rob</button>
 
         <div className="card-event-div">
           <h1>Barbecue Activity near you</h1>
@@ -69,7 +68,11 @@ export default class App extends ParseComponent {
     );
   }
 
+/*
   loginParse(event){
+
+    // <button onClick={this.loginParse.bind(this)}>Login as Rob</button>
+
     event.preventDefault();
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
@@ -84,5 +87,6 @@ export default class App extends ParseComponent {
       }
     });
   }
+  */
 
 };
