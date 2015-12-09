@@ -6,7 +6,11 @@ var ParseComponent = ParseReact.Component(React);
 
 export default class EventComment extends ParseComponent {
 
-  observe() {
+  constructor() {
+    super();
+  }
+
+  observe(props, state) {
     var commentAuthorId = this.props.comment.author.objectId;
     return {
       owner: (new Parse.Query(Parse.User)).equalTo("objectId", commentAuthorId).limit(1)
