@@ -18,8 +18,9 @@ export default class Menu extends React.Component {
   render() {
 
     return (
-          <div className="row">
-            <div className=" block">
+        <div>
+          <div className="menu-button-div">
+            <div className="menu-button">
                 <div className="hovicon effect-1 sub-a" onClick={this.toggleAnimation.bind(this)} ></div>
                 <div id="block-div">
                   <div id="block1" style={{marginLeft: "120%"}} onClick={this.toggleAnimation.bind(this)} >
@@ -31,6 +32,8 @@ export default class Menu extends React.Component {
                 </div>
             </div>
           </div>
+          <div style={{clear: 'left'}}></div>
+        </div>
     );
 
   }

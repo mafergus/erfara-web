@@ -37,15 +37,22 @@ export default class App extends ParseComponent {
         <div className="menu-div">
           <Menu />
         </div>
-        <button onClick={this.loginParse.bind(this)}>Quick Login Button</button>
-        <div className="card-event-div">
-          <h1>Barbecue Activity near you</h1>
-          {this.renderActivityCards()}
+
+        <div id="auth-div">
+          <Authentication />
         </div>
 
-        <div className="card-profile-div">
-          <h1> Users sharing skills in barbecue </h1>
-          {this.renderProfileCards()}
+        <div id="main-div">
+          <div className="card-event-div">
+            <h1>Barbecue Activity near you</h1>
+            {this.renderActivityCards()}
+            {console.log(this.data.eventCards)}
+          </div>
+
+          <div className="card-profile-div">
+            <h1> Users sharing skills in barbecue </h1>
+            {this.renderProfileCards()}
+          </div>
         </div>
 
       </div>
