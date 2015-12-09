@@ -92,7 +92,7 @@
     })
   }
 
-  loginParse(that){
+  export function loginParse(that){
     var _this = that;
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
