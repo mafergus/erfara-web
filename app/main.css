@@ -19,6 +19,41 @@ p, h1 {
 
 }
 /* ######################################################################## */
+/* UserBubble.jsx */
+/* ######################################################################## */
+.user-bubble-div{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  float: left;
+}
+
+.user-bubble-photo{
+  height: 100%;
+  width: 100%
+}
+/* ######################################################################## */
+/* ######################################################################## */
+
+
+/* ######################################################################## */
+/* EventComment.jsx */
+/* ######################################################################## */
+.event-comment-div{
+  float: left;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.event-comment-text{
+
+}
+/* ######################################################################## */
+/* ######################################################################## */
+
+
+/* ######################################################################## */
 /* Card_Activity.jsx */
 /* ######################################################################## */
 .card-event-div h1{
@@ -31,28 +66,33 @@ font-size:40px;
   height: 400px;
   width: 300px;
   margin: 5px;
-  border-radius: 5px 5px 5px 5px;
-  overflow:hidden;
   box-shadow: 5px 5px 5px #595959;
 }
 
-.card-event-photo{
-  height: 50%;
+.card-event-photo-div{
+  height: 49%;
   width: 100%;
   background: white;
 }
 
+.card-event-photo{
+  height: 100%;
+  width: 100%;
+  border-radius: 5px 5px 0px 0px;
+}
+
 .card-event-stripe {
-  height: 1.5%;
+  height: 2%;
   width: 100%;
   background-color: red;
 }
 
 .card-event-info{
-  height: 50%;
+  height: 49%;
   width: 100%;
   background: white;
-  padding: 5px;
+  border-radius: 0px 0px 5px 5px;
+  overflow: auto;
 }
 
 .card-event-info h1{
