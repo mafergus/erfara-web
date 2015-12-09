@@ -18,8 +18,21 @@ Note: The underlying container should be an ES6 Parse-React component to ensure 
 
 
 import React from 'react';
+var ParseReact = require('parse-react');
+var ParseComponent = ParseReact.Component(React);
 
-export default class CardProfile extends React.Component {
+export default class CardProfile extends ParseComponent {
+
+  observe(){
+
+    // query for comments related to this event
+
+    return {
+      // event comments
+      // event owner
+      // event participants
+    }
+  }
 
   render() {
 
@@ -32,10 +45,21 @@ export default class CardProfile extends React.Component {
         </div>
         <div className="card-event-info">
         <h1> {this.props.event.title} </h1>
-          <div className="card-event-info-text">{this.props.event.description}</div>
+          <div className="card-event-info-text">
+            {this.props.event.description}
+          </div>
+          <div className="card-event-comment-div">
+            <h1> Comments </h1>
+            <button onClick={this.addComment.bind(this)}> Add Comment.. </button>
+          </div>
         </div>
+
       </div>
     );
+  }
+
+  // method here to render those comments in eventComment components
+  addComment(){
 
   }
 

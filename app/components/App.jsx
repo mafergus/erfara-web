@@ -1,6 +1,6 @@
 import React from 'react';
 import Parse from 'parse';
-var ParseReact = require('parse-react');
+import ParseReact from 'parse-react';
 var ParseComponent = ParseReact.Component(React);
 
 import Menu from './Menu';
@@ -21,10 +21,11 @@ export default class App extends ParseComponent {
   observe(props, state) {
 
     var event = Parse.Object.extend('Event');
-
+    var bbq = "imjf2tIP5v"
+ 
     return {
-      profileCards: (new Parse.Query(Parse.User)).equalTo("exp_sharing", "imjf2tIP5v"),
-      eventCards: (new Parse.Query(event))
+      profileCards: (new Parse.Query(Parse.User)).equalTo("exp_sharing", bbq),
+      eventCards: (new Parse.Query(event)).equalTo("experience_id", bbq)
     }
 
   }
@@ -36,11 +37,10 @@ export default class App extends ParseComponent {
         <div className="menu-div">
           <Menu />
         </div>
-
+        <button onClick={this.loginParse.bind(this)}>Quick Login Button</button>
         <div className="card-event-div">
           <h1>Barbecue Activity near you</h1>
           {this.renderActivityCards()}
-          {console.log(this.data.eventCards)}
         </div>
 
         <div className="card-profile-div">
@@ -68,18 +68,12 @@ export default class App extends ParseComponent {
     );
   }
 
-/*
+
   loginParse(event){
-
-    // <button onClick={this.loginParse.bind(this)}>Login as Rob</button>
-
     event.preventDefault();
-    var username = document.getElementById('username').value;
-    var password = document.getElementById('password').value;
-    Parse.User.logIn("rob@example.com", "foobar", {
+    Parse.User.logIn(prompt("username"), prompt("password"), {
       success: function(user) {
         console.log("Successfully logged in");
-
       },
       error: function(user, error) {
         console.log("User login failed with error: " + error.message);
@@ -87,6 +81,5 @@ export default class App extends ParseComponent {
       }
     });
   }
-  */
 
 };

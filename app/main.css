@@ -28,8 +28,8 @@ font-size:40px;
 
 .card-event {
   display: inline-block;
-  height: 300px;
-  width: 200px;
+  height: 400px;
+  width: 300px;
   margin: 5px;
   border-radius: 5px 5px 5px 5px;
   overflow:hidden;
@@ -61,6 +61,10 @@ font-size:40px;
 
 .card-event-info-text{
   font-size: 15px !important;
+  color: black;
+}
+
+.card-event-comment-div {
   color: black;
 }
 
