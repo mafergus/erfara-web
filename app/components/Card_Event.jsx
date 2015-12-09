@@ -18,6 +18,7 @@ Note: The underlying container should be an ES6 Parse-React component to ensure 
 
 
 import React from 'react';
+import Parse from 'parse';
 var ParseReact = require('parse-react');
 var ParseComponent = ParseReact.Component(React);
 
@@ -60,6 +61,26 @@ export default class CardProfile extends ParseComponent {
 
   // method here to render those comments in eventComment components
   addComment(){
+    console.log(this.props.event);
+    var currentUser = Parse.User.current();
+    var parseEvent = Parse.Object.extend('Event');
+    var currentEventSkeletonObjectId = new parseEvent({id: this.props.event.objectId});
+    if(!currentUser){ 
+      alert("Login First"); 
+      return;
+    } else {
+
+      var EventComment = Parse.Object.extend('EventComment');
+      var comment = new EventComment();
+      comment.set("author", currentUser);
+      comment.set("event_id", currentEventSkeletonObjectId);
+      comment.set("text", prompt("Enter Comment"));
+      comment.save(null, {
+        success: function(comment){ console.log("Comment saved");     }, 
+        error: function(comment, error){ console.log(error.message);  }
+      })
+    }
+
 
   }
 
