@@ -35,8 +35,25 @@ export default class Authentication extends React.Component {
 
   render () {
     return(
-      <div id="authentication-div">
-        <div>
+      <div id="authentication-div" style={{width: '100%'}}>
+
+        <div className="login-box">
+          <div className="login-box-signup">
+            <h1>Login or Signup</h1>
+          </div>
+          <div className="fb-button"><p>Login with Facebook</p></div>
+          <div className="login-box-or">
+            <hr></hr>
+            <div className="circle"><p>or</p></div>
+          </div>
+          <div>
+            <input type="text" className="login-box-username" placeholder="username"></input>
+            <input type="text" className="login-box-username" placeholder="password"></input>
+            <button type="button">Continue</button>
+          </div>
+        </div>
+
+        {/*<div>
           {this.welcomeMessage()}
         </div>
         <div id="loginform">
@@ -55,7 +72,7 @@ export default class Authentication extends React.Component {
             <div id="note"><a href="#">Forgot your password?</a></div>
           </div>
         </div>
-        <button onClick={this.logout.bind(this)}>Log out</button>
+        <button onClick={this.logout.bind(this)}>Log out</button>*/}
       </div>
     );
   }

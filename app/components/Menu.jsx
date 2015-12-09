@@ -18,6 +18,7 @@ export default class Menu extends React.Component {
   render() {
 
     return (
+        <div>
           <div className="row">
             <div className=" block">
                 <div className="hovicon effect-1 sub-a" onClick={this.toggleAnimation.bind(this)} ></div>
@@ -31,6 +32,8 @@ export default class Menu extends React.Component {
                 </div>
             </div>
           </div>
+          <div style={{clear: 'left'}}></div>
+        </div>
     );
 
   }
