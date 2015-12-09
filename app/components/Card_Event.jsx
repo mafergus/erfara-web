@@ -19,17 +19,20 @@ Note: The underlying container should be an ES6 Parse-React component to ensure 
 
 import React from 'react';
 import Parse from 'parse';
-var ParseReact = require('parse-react');
+import ParseReact from 'parse-react';
 var ParseComponent = ParseReact.Component(React);
+import EventComment from './EventComment';
 
 export default class CardProfile extends ParseComponent {
 
   observe(){
 
-    // query for comments related to this event
+    var parseEventComment = Parse.Object.extend('EventComment');
+    var parseEvent = Parse.Object.extend('Event');
+    var currentEventSkeletonObjectId = new parseEvent({id: this.props.event.objectId});
 
     return {
-      // event comments
+      comments: (new Parse.Query(parseEventComment)).equalTo("event_id", currentEventSkeletonObjectId)
       // event owner
       // event participants
     }
@@ -52,6 +55,9 @@ export default class CardProfile extends ParseComponent {
           <div className="card-event-comment-div">
             <h1> Comments </h1>
             <button onClick={this.addComment.bind(this)}> Add Comment.. </button>
+            <div>
+              {this.renderComments()}
+            </div>
           </div>
         </div>
 
@@ -60,8 +66,15 @@ export default class CardProfile extends ParseComponent {
   }
 
   // method here to render those comments in eventComment components
+  renderComments(){
+    return (
+      this.data.comments.map((comment) => {
+        return <EventComment key={comment.objectId} comment={comment} />;
+      })
+    );
+  }
+
   addComment(){
-    console.log(this.props.event);
     var currentUser = Parse.User.current();
     var parseEvent = Parse.Object.extend('Event');
     var currentEventSkeletonObjectId = new parseEvent({id: this.props.event.objectId});
@@ -69,16 +82,22 @@ export default class CardProfile extends ParseComponent {
       alert("Login First"); 
       return;
     } else {
+      console.log(currentUser);
+      var commentText = prompt("Enter Comment");
+      if (commentText){
+        var EventComment = Parse.Object.extend('EventComment');
+        var comment = new EventComment();
+        comment.set("author", currentUser);
+        comment.set("event_id", currentEventSkeletonObjectId);
+        comment.set("text", commentText);
+        comment.save(null, {
+          success: function(comment){ console.log("Comment saved");     }, 
+          error: function(comment, error){ console.log(error.message);  }
+        })
+      } else {
+        alert("Empty comments not allowed");
+      }
 
-      var EventComment = Parse.Object.extend('EventComment');
-      var comment = new EventComment();
-      comment.set("author", currentUser);
-      comment.set("event_id", currentEventSkeletonObjectId);
-      comment.set("text", prompt("Enter Comment"));
-      comment.save(null, {
-        success: function(comment){ console.log("Comment saved");     }, 
-        error: function(comment, error){ console.log(error.message);  }
-      })
     }
 
 
