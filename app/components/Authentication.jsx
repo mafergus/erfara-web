@@ -3,29 +3,7 @@
 Add IN_BROWSER flag to webpack.DefinePlugin 
 
 Add this to your jsx files to asynchronously download the FB sdk to their browser
-
-  // This is called once the facebook SDK is loaded
-  window.fbAsyncInit = function() {                       
-    Parse.FacebookUtils.init({                            
-      appId      : '406833206191137',                                                     
-      cookie     : true,                                  
-      xfbml      : true,                                  
-      version    : 'v2.5'                                 
-    });                                                   
-    console.log('fbAsyncInit complete')                   
-  };                                                      
-                                                                                        
-  (function(d, s, id){                                   
-     var js, fjs = d.getElementsByTagName(s)[0];          
-     if (d.getElementById(id)) {return;}                  
-     js = d.createElement(s); js.id = id;                 
-     js.src = '//connect.facebook.net/en_US/sdk.js';      
-     fjs.parentNode.insertBefore(js, fjs);                
-   }(document, 'script', 'facebook-jssdk')); 
-
-
-
-*/
+**/
 
 import React from 'react';
 import Parse from 'parse';
@@ -33,23 +11,63 @@ import Parse from 'parse';
 
 export default class Authentication extends React.Component {
 
+  componentWillMount() {
+  // This is called once the facebook SDK is loaded
+    window.fbAsyncInit = function() {                       
+      Parse.FacebookUtils.init({                            
+        appId      : '406833206191137',
+        cookie     : true,                                  
+        xfbml      : true,                                  
+        version    : 'v2.5'                                 
+      });                                                   
+      console.log('fbAsyncInit complete')                   
+    };                                                      
+                                                                                          
+    (function(d, s, id){                                   
+       var js, fjs = d.getElementsByTagName(s)[0];          
+       if (d.getElementById(id)) {return;}                  
+       js = d.createElement(s); js.id = id;                 
+       js.src = '//connect.facebook.net/en_US/sdk.js';      
+       fjs.parentNode.insertBefore(js, fjs);                
+     }(document, 'script', 'facebook-jssdk')); 
+  }
+
   render () {
     return(
-      <div id="authentication-div" style={{width: '100%'}}>
+      <div id="authentication-div" className="aligner">
 
         <div className="login-box">
-          <div className="login-box-signup">
+          <div className="login-box-signup aligner">
             <h1>Login or Signup</h1>
           </div>
-          <div className="fb-button"><p>Login with Facebook</p></div>
+          /* FB Button */
+          <div className="fb-button-container aligner">
+            <div className="fb-button aligner" onClick={this.loginFacebook.bind(this)}>
+              <img id="facebook-icon"></img>
+              <p>Login with Facebook</p>
+            </div>
+          </div>
+          /* OR box */
           <div className="login-box-or">
             <hr></hr>
             <div className="circle"><p>or</p></div>
           </div>
-          <div>
-            <input type="text" className="login-box-username" placeholder="username"></input>
-            <input type="text" className="login-box-username" placeholder="password"></input>
-            <button type="button">Continue</button>
+          /* Email login */
+          <div className="login-box-bottom-container">
+            <div className="button-container aligner">
+              <input type="text" className="login-box-username" placeholder="Username"></input>
+            </div>
+            <div className="button-container aligner">
+              <input type="text" className="login-box-username" placeholder="Password"></input>
+            </div>
+            <div className="button-container aligner">
+              <div className="continue-button aligner">
+                <p>Continue</p>
+              </div>
+            </div>
+            <div className="forgot-password-container aligner">
+              <p>Oops! I forgot my password</p>
+            </div>
           </div>
         </div>
 
@@ -143,14 +161,15 @@ export default class Authentication extends React.Component {
     var _this = this;
     Parse.FacebookUtils.logIn(null, {
       success: function(user) {
-      if (!user.existed()) {
-        console.log("User signed up and logged in through Facebook!");
-        _this.updateParseFields(_this);
-      } else {
-        console.log("User logged in through Facebook!");
-        _this.updateParseFields(_this);
-      }
-    },
+        if (!user.existed()) {
+          console.log("User signed up and logged in through Facebook!");
+          _this.updateParseFields(_this);
+        } else {
+          console.log("User logged in through Facebook!");
+          _this.updateParseFields(_this);
+        }
+        _this.loginDone();
+      },
       error: function(user, error) {
         console.log("User cancelled the Facebook login or did not fully authorize.");
         _this.forceUpdate();
@@ -158,24 +177,29 @@ export default class Authentication extends React.Component {
     });
   }
 
-updateParseFields(that){
-  var _this = that;
-  FB.api('/me', function(response) {
-    console.log(JSON.stringify(response));
-    Parse.User.current().save(
-    {
-      username: response.name
-    },
-    { 
-      success: function(object) {
-            // update ui
-          }, error: function(object, error) {
-            // update ui
-          }
-        });
-  });
-  _this.forceUpdate();
-}
+  loginDone() {
+    var authDiv = document.getElementById('auth-div');
+    authDiv.style.display = 'none';
+  }
+
+  updateParseFields(that){
+    var _this = that;
+    FB.api('/me', function(response) {
+      console.log(JSON.stringify(response));
+      Parse.User.current().save(
+      {
+        username: response.name
+      },
+      { 
+        success: function(object) {
+              // update ui
+            }, error: function(object, error) {
+              // update ui
+            }
+          });
+    });
+    _this.forceUpdate();
+  }
 
   logout(event){
     Parse.User.logOut();

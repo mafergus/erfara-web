@@ -19,8 +19,8 @@ export default class Menu extends React.Component {
 
     return (
         <div>
-          <div className="row">
-            <div className=" block">
+          <div className="menu-button-div">
+            <div className="menu-button">
                 <div className="hovicon effect-1 sub-a" onClick={this.toggleAnimation.bind(this)} ></div>
                 <div id="block-div">
                   <div id="block1" style={{marginLeft: "120%"}} onClick={this.toggleAnimation.bind(this)} >
