@@ -18,25 +18,42 @@ default export class Searchbar extends ParseComponent {
   constructor() {
     super();
     //set search state variable to "";
+    this.setState({
+      searchStateVariableText: "",
+      skeleton_experience_object: undefined;
+    })
   }
 
   observe(props, state) {
     // search state variable - text
     // search state variable - skeleton_experience_object
+    var searchText = this.state.searchStateVariableText;
+    var searchObject = this.state.skeleton_experience_object;
 
-    // if search state variable - text.length >=2 && (skeleton_experience_object)
-    return {
-      // one compound query containig:
-      //   event query with experience_id of skeleton_experience_object
-      //   user query with exp_shared containing skeleton_experience_object
-      //   event query with description containing search state variable
+    // if searchText.length >=2 && (searchObject)
+    if (searchText.length >=2 && searchObject){
+      // individual queries:
+        //   event query with experience_id of searchObject
+        var eventObjectIdQuery = new Parse.Query('Event').equalTo("experience_id", searchObject);
+        //   user query with exp_shared containing skeleton_experience_object
+        var userExpSharedQuery = new Parse.Query(Parse.User).containedIn("exp_shared", searchObject);
+        //   event query with description containing search state searchStateVariableText
+        var eventDescriptionQuery = new Parse.Query('Event').containedIn("description", searchText);
+      // compound query:
+        var compoundQuery = Parse.Query.or(eventObjectIdQuery, userExpSharedQuery, eventDescriptionQuery);
+      return {
+        results: compoundQuery
+      }
+    } else {
+      return {
+        // Nothing; don't run unnecessary queries
+        results: undefined
+      }
     }
-    // else
-    //   return nothing
   }
 
   render() {
-
+    //
     return(
     // input bar that calls method which updates search 
     //    state variable: updateSearchQuery()
