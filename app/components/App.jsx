@@ -7,6 +7,7 @@ import Menu from './Menu';
 import Authentication from './Authentication';
 import Card_Profile from './Card_Profile';
 import Card_Event from './Card_Event';
+import SearchBar from './SearchBar';
 
   
 
@@ -59,6 +60,11 @@ export default class App extends ParseComponent {
         </div>
 
         <div id="main-div">
+
+          <div className="searchbar-div">
+            <SearchBar />
+          </div>
+
           <div className="card-event-div">
             <h1>Barbecue Activity near you</h1>
             {this.renderActivityCards()}

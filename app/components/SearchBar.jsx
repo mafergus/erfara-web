@@ -13,15 +13,19 @@ import Parse from 'parse';
 import ParseReact from 'parse-react';
 var ParseComponent = ParseReact.Component(React);
 
-default export class Searchbar extends ParseComponent {
+export default class Searchbar extends ParseComponent {
 
+  // getInitialState is not used in React ES6 components. Hardcode it in the constructor.
   constructor() {
     super();
-    //set search state variable to "";
-    this.setState({
+
+    //create a placeholder skeleton object without a real ID
+    var placeholderSkeletonObject = Parse.Object.extend('Experience');
+
+    this.state = {
       searchStateVariableText: "",
-      skeleton_experience_object: undefined;
-    })
+      skeleton_experience_object: undefined
+    }
   }
 
   observe(props, state) {
@@ -40,14 +44,15 @@ default export class Searchbar extends ParseComponent {
         //   event query with description containing search state searchStateVariableText
         var eventDescriptionQuery = new Parse.Query('Event').containedIn("description", searchText);
       // compound query:
-        var compoundQuery = Parse.Query.or(eventObjectIdQuery, userExpSharedQuery, eventDescriptionQuery);
+        var compoundEventQuery = Parse.Query.or(eventObjectIdQuery, eventDescriptionQuery);
       return {
-        results: compoundQuery
+        eventResults: compoundEventQuery,
+        userResults: userExpSharedQuery
       }
     } else {
+      console.log("SearchBar.jsx - Searchbar empty, no queries processed");
       return {
         // Nothing; don't run unnecessary queries
-        results: undefined
       }
     }
   }
@@ -55,10 +60,13 @@ default export class Searchbar extends ParseComponent {
   render() {
     //
     return(
+      <div>
+
+      </div>
     // input bar that calls method which updates search 
     //    state variable: updateSearchQuery()
     // search results container with cards correctly stacked: renderCards()
-    );
+    )
 
   }
 
