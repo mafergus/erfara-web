@@ -14,6 +14,7 @@ export default class App extends ParseComponent {
 
   constructor() {
     super();
+
   }
 
 
@@ -61,7 +62,6 @@ export default class App extends ParseComponent {
           <div className="card-event-div">
             <h1>Barbecue Activity near you</h1>
             {this.renderActivityCards()}
-            {console.log(this.data.eventCards)}
           </div>
 
           <div className="card-profile-div">
