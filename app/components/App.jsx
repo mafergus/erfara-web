@@ -43,21 +43,21 @@ export default class App extends ParseComponent {
           <Authentication />
         </div>
 
-        <div id="main-div">
-          <div className="erfara-header">
-            <div className="icon-container">
-              <img id="erfara-icon"></img>
-              <p>Erfara</p>
-            </div>
-            <div className="header-links-container">
-              <p onClick={this.alertMe.bind(this, "Home")}>Home</p>
-              <p onClick={this.alertMe.bind(this, "Discover")}>Discover</p>
-              <p onClick={this.alertMe.bind(this, "Messages")}>Messages</p>
-              <p onClick={this.alertMe.bind(this, "Profile")}>Profile</p>
-            </div>
-            <Menu />
+        <div className="erfara-header">
+          <div className="icon-container">
+            <img id="erfara-icon"></img>
+            <p>Erfara</p>
           </div>
+          <div className="header-links-container">
+            <p onClick={this.alertMe.bind(this, "Home")}>Home</p>
+            <p onClick={this.alertMe.bind(this, "Discover")}>Discover</p>
+            <p onClick={this.alertMe.bind(this, "Messages")}>Messages</p>
+            <p onClick={this.alertMe.bind(this, "Profile")}>Profile</p>
+          </div>
+          <Menu />
+        </div>
 
+        <div id="main-div">
           <div className="card-event-div">
             <h1>Barbecue Activity near you</h1>
             {this.renderActivityCards()}
