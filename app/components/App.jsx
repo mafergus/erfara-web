@@ -61,7 +61,7 @@ export default class App extends ParseComponent {
 
         <div id="main-div">
 
-          <div className="searchbar-div">
+          <div className="app-searchbar-div">
             <SearchBar />
           </div>
 

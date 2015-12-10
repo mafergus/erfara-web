@@ -14,6 +14,8 @@ import Parse from 'parse';
 import ParseReact from 'parse-react';
 var ParseComponent = ParseReact.Component(React);
 
+import SearchBarResultsBox from './SearchBar_ResultsBox';
+
 export default class Searchbar extends ParseComponent {
 
   // getInitialState is not used in React ES6 components. Hardcode it in the constructor.
@@ -22,7 +24,8 @@ export default class Searchbar extends ParseComponent {
 
     this.state = {
       searchStateVariableText: "",
-      searchExperienceObject: undefined
+      searchExperienceObject: undefined,
+      searchResultsTab: "events"
     }
   }
 
@@ -37,11 +40,11 @@ export default class Searchbar extends ParseComponent {
       var eventObjectIdQuery = new Parse.Query('Event').equalTo("experience_id", searchObject).ascending("updatedAt");
       //   user query with exp_shared containing searchExperienceObject
       var userExpSharedQuery = new Parse.Query(Parse.User).containedIn("exp_sharing", [searchObject]).ascending("updatedAt");
-      console.log("SearchBar.observe() queries processed with :", nextState);
+      //console.log("SearchBar.observe() queries processed with :", nextState);
       return { eventResults: eventObjectIdQuery,
                userResults: userExpSharedQuery    }
     } else {
-      console.log("SearchBar.observe() - no queries processed, current state: ", nextState);
+      //console.log("SearchBar.observe() - no queries processed, current state: ", nextState);
       return {
         // Nothing; don't run unnecessary queries
       }
@@ -50,19 +53,17 @@ export default class Searchbar extends ParseComponent {
 
   render() {
     return(
-      <div>
-        <div className="searchbar-div">
+      <div className="searchbar-container">
+        <div className="searchbar-input-div">
           <input className="searchbar-input" ref="searchBarInput" type="text" onChange={this.updateSearchQuery.bind(this)} />
           <button onClick={this.logErrors.bind(this)}>State/Errors?</button>
           <button onClick={this.showData.bind(this)}>Current this.data?</button>
           <button onClick={this.pendingQs.bind(this)} >pendingQueries? </button>
         </div>
         <div className="searchbar-results-div">
+          <SearchBarResultsBox users={this.data.userResults} events={this.data.eventResults} />
         </div>
       </div>
-    // input bar that calls method which updates search 
-    //    state variable: updateSearchQuery()
-    // search results container with cards correctly stacked: renderCards()
     )
   }
 
@@ -74,14 +75,14 @@ export default class Searchbar extends ParseComponent {
 
   // only triggers once there are more than 2 characters and sets
   updateParseQueries(searchText, searchLength){
-    console.log(searchLength);
+    //console.log(searchLength);
     var _this = this;
     var experienceQuery = new Parse.Query('Experience');
 
     if(searchLength <3){
       this.clearDataStates();
     } else if (searchLength >= 3){
-        console.log("searchlength >=3 triggered");
+        //console.log("searchlength >=3 triggered");
         // figure out which type of experience objectID based on text and setstate
         experienceQuery.matches("name", searchText, "i");
         experienceQuery.find({
