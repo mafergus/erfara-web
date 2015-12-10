@@ -34,9 +34,9 @@ export default class Searchbar extends ParseComponent {
 
     if (searchText.length > 2 && searchObject){
       //   event query with experience_id of searchObject
-      var eventObjectIdQuery = new Parse.Query('Event').equalTo("experience_id", searchObject);
+      var eventObjectIdQuery = new Parse.Query('Event').equalTo("experience_id", searchObject).ascending("updatedAt");
       //   user query with exp_shared containing searchExperienceObject
-      var userExpSharedQuery = new Parse.Query(Parse.User).containedIn("exp_sharing", [searchObject]);
+      var userExpSharedQuery = new Parse.Query(Parse.User).containedIn("exp_sharing", [searchObject]).ascending("updatedAt");
       console.log("SearchBar.observe() queries processed with :", nextState);
       return { eventResults: eventObjectIdQuery,
                userResults: userExpSharedQuery    }
@@ -64,19 +64,6 @@ export default class Searchbar extends ParseComponent {
     //    state variable: updateSearchQuery()
     // search results container with cards correctly stacked: renderCards()
     )
-  }
-
-  logErrors() {
-    console.log("Errors :", this.queryErrors());
-    console.log("state currently : ", this.state);
-  }
-
-  pendingQs(){
-    console.log(this.pendingQueries());
-  }
-
-  showData(){
-    console.log(this.data.eventResults, this.data.userResults);
   }
 
   updateSearchQuery() {
@@ -121,6 +108,20 @@ export default class Searchbar extends ParseComponent {
     // })
   }
 
-}
+//########### Temporary debugging remove once component finished ########
+//#######################################################################
+  logErrors() {                                                        //
+    console.log("Errors :", this.queryErrors());                       //
+    console.log("state currently : ", this.state);                     //
+  }                                                                    //
+                                                                       //
+  pendingQs(){                                                         //
+    console.log(this.pendingQueries());                                //
+  }                                                                    //
+                                                                       //
+  showData(){                                                          //
+    console.log(this.data.eventResults, this.data.userResults);        //
+  }                                                                    //
+//#######################################################################
 
-//barb
+}
