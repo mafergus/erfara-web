@@ -38,15 +38,11 @@ export default class Searchbar extends ParseComponent {
         var eventObjectIdQuery = new Parse.Query('Event').equalTo("experience_id", searchObject);
         //   user query with exp_shared containing skeleton_experience_object
         var userExpSharedQuery = new Parse.Query(Parse.User).equalTo("exp_sharing", searchObject);
-        //   event query with description containing search state searchStateVariableText
-        var eventDescriptionQuery = new Parse.Query('Event').contains("description", searchText);
-      // compound query:
-        var compoundEventQuery = Parse.Query.or(eventObjectIdQuery, eventDescriptionQuery);
         console.log("SearchBar.observe() queries processed with :");
         console.log(this.state.searchStateVariableText);
         console.log(this.state.skeleton_experience_object);
       return {
-        eventResults: compoundEventQuery,
+        eventResults: eventObjectIdQuery,
         userResults: userExpSharedQuery
       }
     } else {
@@ -58,7 +54,6 @@ export default class Searchbar extends ParseComponent {
   }
 
   render() {
-    //
     return(
       <div>
         <div className="searchbar-div">
@@ -95,24 +90,32 @@ export default class Searchbar extends ParseComponent {
 
     // only triggers once there are more than 2 characters and sets
     if(searchQuery.length >= 2){
-      // search state variable - text
-      this.setState({
-        searchStateVariableText: searchQuery
-      });
       // figure out which type of experience objectID based on text and setstate
-      experienceQuery.contains("name", this.state.searchStateVariableText);
+      experienceQuery.matches("name", searchQuery, "i");
       experienceQuery.find({
         success: function(experience){
+          // If result array is empty, clear out existing data
+          if(experience.length < 1 && _this.data.eventResults && _this.data.userResults){
+            _this.data.eventResults = undefined;
+            _this.data.userResults = undefined;
+          }
+
+          var skeletonExperience = experience[0];
           _this.setState({
-            skeleton_experience_object: experience[0]
+            searchStateVariableText: searchQuery ,
+            skeleton_experience_object: skeletonExperience
           });
+          _this.refreshQueries();
         }, 
         error: function(error){
           console.log("SearchBar.updateSearchQuery.experienceQuery failed with: " + error.message);
         }
       });
+    } else {
+      // clear data if searchQuery<3
+        _this.data.eventResults = undefined;
+        _this.data.userResults = undefined;
     }
-
   }
 
   renderCards() {
