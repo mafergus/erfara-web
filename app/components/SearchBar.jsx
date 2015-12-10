@@ -9,6 +9,7 @@ to ensure the searchbar is doing it's job
 
 */
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Parse from 'parse';
 import ParseReact from 'parse-react';
 var ParseComponent = ParseReact.Component(React);
@@ -21,32 +22,26 @@ export default class Searchbar extends ParseComponent {
 
     this.state = {
       searchStateVariableText: "",
-      skeleton_experience_object: undefined
+      searchExperienceObject: undefined
     }
   }
 
-  observe(props, state) {
+  observe(nextProps, nextState) {
     // search state variable - text
-    // search state variable - skeleton_experience_object
-    var searchText = this.state.searchStateVariableText;
-    var searchObject = this.state.skeleton_experience_object;
+    // search state variable - searchExperienceObject
+    var searchText = nextState.searchStateVariableText;
+    var searchObject = nextState.searchExperienceObject;
 
-    // if searchText.length >=2 && (searchObject)
-    if (searchText && searchObject){
-      // individual queries:
-        //   event query with experience_id of searchObject
-        var eventObjectIdQuery = new Parse.Query('Event').equalTo("experience_id", searchObject);
-        //   user query with exp_shared containing skeleton_experience_object
-        var userExpSharedQuery = new Parse.Query(Parse.User).equalTo("exp_sharing", searchObject);
-        console.log("SearchBar.observe() queries processed with :");
-        console.log(this.state.searchStateVariableText);
-        console.log(this.state.skeleton_experience_object);
-      return {
-        eventResults: eventObjectIdQuery,
-        userResults: userExpSharedQuery
-      }
+    if (searchText.length > 2 && searchObject){
+      //   event query with experience_id of searchObject
+      var eventObjectIdQuery = new Parse.Query('Event').equalTo("experience_id", searchObject);
+      //   user query with exp_shared containing searchExperienceObject
+      var userExpSharedQuery = new Parse.Query(Parse.User).containedIn("exp_sharing", [searchObject]);
+      console.log("SearchBar.observe() queries processed with :", nextState);
+      return { eventResults: eventObjectIdQuery,
+               userResults: userExpSharedQuery    }
     } else {
-      console.log("SearchBar.observe() - no queries processed");
+      console.log("SearchBar.observe() - no queries processed, current state: ", nextState);
       return {
         // Nothing; don't run unnecessary queries
       }
@@ -57,9 +52,10 @@ export default class Searchbar extends ParseComponent {
     return(
       <div>
         <div className="searchbar-div">
-          <input className="searchbar-input" id="searchbar-input" type="text" onChange={this.updateSearchQuery.bind(this)} />
-          <button onClick={this.logErrors.bind(this)}>Errors?</button>
-          <button onClick={this.showData.bind(this)}>Data?</button>
+          <input className="searchbar-input" ref="searchBarInput" type="text" onChange={this.updateSearchQuery.bind(this)} />
+          <button onClick={this.logErrors.bind(this)}>State/Errors?</button>
+          <button onClick={this.showData.bind(this)}>Current this.data?</button>
+          <button onClick={this.pendingQs.bind(this)} >pendingQueries? </button>
         </div>
         <div className="searchbar-results-div">
         </div>
@@ -71,51 +67,51 @@ export default class Searchbar extends ParseComponent {
   }
 
   logErrors() {
-    console.log(this.queryErrors());
-    console.log("state currently : ");
-    console.log(this.state);
+    console.log("Errors :", this.queryErrors());
+    console.log("state currently : ", this.state);
+  }
+
+  pendingQs(){
+    console.log(this.pendingQueries());
   }
 
   showData(){
-    console.log(this.data.eventResults);
-    console.log(this.data.userResults);
+    console.log(this.data.eventResults, this.data.userResults);
   }
 
   updateSearchQuery() {
-    // Lexically scoped helper-variables for subsequent nested functions
+    var searchQuery = ReactDOM.findDOMNode(this.refs.searchBarInput).value;
+    this.setState({searchStateVariableText: searchQuery});
+    this.updateParseQueries(searchQuery, searchQuery.length);
+  }
+
+  // only triggers once there are more than 2 characters and sets
+  updateParseQueries(searchText, searchLength){
+    console.log(searchLength);
     var _this = this;
-    var searchQuery = document.getElementById("searchbar-input").value;
-    //  var experienceObject = Parse.Object.extend('Experience');
     var experienceQuery = new Parse.Query('Experience');
 
-    // only triggers once there are more than 2 characters and sets
-    if(searchQuery.length >= 2){
-      // figure out which type of experience objectID based on text and setstate
-      experienceQuery.matches("name", searchQuery, "i");
-      experienceQuery.find({
-        success: function(experience){
-          // If result array is empty, clear out existing data
-          if(experience.length < 1 && _this.data.eventResults && _this.data.userResults){
-            _this.data.eventResults = undefined;
-            _this.data.userResults = undefined;
-          }
+    if(searchLength <3){
+      this.clearDataStates();
+    } else if (searchLength >= 3){
+        console.log("searchlength >=3 triggered");
+        // figure out which type of experience objectID based on text and setstate
+        experienceQuery.matches("name", searchText, "i");
+        experienceQuery.find({
+          success: function(experience){
+            // If result array is empty, clear out existing data
+            if(experience.length < 1 && _this.data.eventResults 
+                                     && _this.data.userResults) _this.clearDataStates();
+            _this.setState({searchExperienceObject: experience[0]});
+          }, 
+          error: function(error) { console.log("SearchBar.updateSearchQuery.experienceQuery failed with: " + error.message); }
+        });
+      }
+  }
 
-          var skeletonExperience = experience[0];
-          _this.setState({
-            searchStateVariableText: searchQuery ,
-            skeleton_experience_object: skeletonExperience
-          });
-          _this.refreshQueries();
-        }, 
-        error: function(error){
-          console.log("SearchBar.updateSearchQuery.experienceQuery failed with: " + error.message);
-        }
-      });
-    } else {
-      // clear data if searchQuery<3
-        _this.data.eventResults = undefined;
-        _this.data.userResults = undefined;
-    }
+  clearDataStates() {
+    this.data.eventResults = undefined;
+    this.data.userResults  = undefined;
   }
 
   renderCards() {
