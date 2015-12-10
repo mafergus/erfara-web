@@ -19,9 +19,6 @@ export default class Searchbar extends ParseComponent {
   constructor() {
     super();
 
-    //create a placeholder skeleton object without a real ID
-    var placeholderSkeletonObject = Parse.Object.extend('Experience');
-
     this.state = {
       searchStateVariableText: "",
       skeleton_experience_object: undefined
@@ -35,16 +32,19 @@ export default class Searchbar extends ParseComponent {
     var searchObject = this.state.skeleton_experience_object;
 
     // if searchText.length >=2 && (searchObject)
-    if (searchText.length >=2 && searchObject){
+    if (searchText && searchObject){
       // individual queries:
         //   event query with experience_id of searchObject
         var eventObjectIdQuery = new Parse.Query('Event').equalTo("experience_id", searchObject);
         //   user query with exp_shared containing skeleton_experience_object
-        var userExpSharedQuery = new Parse.Query(Parse.User).containedIn("exp_shared", searchObject);
+        var userExpSharedQuery = new Parse.Query(Parse.User).equalTo("exp_sharing", searchObject);
         //   event query with description containing search state searchStateVariableText
-        var eventDescriptionQuery = new Parse.Query('Event').containedIn("description", searchText);
+        var eventDescriptionQuery = new Parse.Query('Event').contains("description", searchText);
       // compound query:
         var compoundEventQuery = Parse.Query.or(eventObjectIdQuery, eventDescriptionQuery);
+        console.log("SearchBar.observe() queries processed with :");
+        console.log(this.state.searchStateVariableText);
+        console.log(this.state.skeleton_experience_object);
       return {
         eventResults: compoundEventQuery,
         userResults: userExpSharedQuery
@@ -63,6 +63,8 @@ export default class Searchbar extends ParseComponent {
       <div>
         <div className="searchbar-div">
           <input className="searchbar-input" id="searchbar-input" type="text" onChange={this.updateSearchQuery.bind(this)} />
+          <button onClick={this.logErrors.bind(this)}>Errors?</button>
+          <button onClick={this.showData.bind(this)}>Data?</button>
         </div>
         <div className="searchbar-results-div">
         </div>
@@ -71,26 +73,46 @@ export default class Searchbar extends ParseComponent {
     //    state variable: updateSearchQuery()
     // search results container with cards correctly stacked: renderCards()
     )
+  }
 
+  logErrors() {
+    console.log(this.queryErrors());
+    console.log("state currently : ");
+    console.log(this.state);
+  }
+
+  showData(){
+    console.log(this.data.eventResults);
+    console.log(this.data.userResults);
   }
 
   updateSearchQuery() {
+    // Lexically scoped helper-variables for subsequent nested functions
+    var _this = this;
+    var searchQuery = document.getElementById("searchbar-input").value;
+    //  var experienceObject = Parse.Object.extend('Experience');
+    var experienceQuery = new Parse.Query('Experience');
 
     // only triggers once there are more than 2 characters and sets
-    // search state variable - text
-    var searchQuery = document.getElementById("searchbar-input").value;
-
     if(searchQuery.length >= 2){
-      console.log("Searchbar.updateSearchQuery() - Current search length >=2 and is: " + searchQuery.length);
+      // search state variable - text
       this.setState({
         searchStateVariableText: searchQuery
       });
-      console.log("Searchbar.updateSearchQuery() - this.state.searchStateVariableText: " + this.state.searchStateVariableText);
+      // figure out which type of experience objectID based on text and setstate
+      experienceQuery.contains("name", this.state.searchStateVariableText);
+      experienceQuery.find({
+        success: function(experience){
+          _this.setState({
+            skeleton_experience_object: experience[0]
+          });
+        }, 
+        error: function(error){
+          console.log("SearchBar.updateSearchQuery.experienceQuery failed with: " + error.message);
+        }
+      });
     }
-    // if search state variable !== ""
-    // figure out which type of experience objectID based on text
-    //    query.containedIn("title", "search state variable")?
-    // create skeleton_experience_object and setstate
+
   }
 
   renderCards() {
@@ -101,3 +123,5 @@ export default class Searchbar extends ParseComponent {
   }
 
 }
+
+//barb
