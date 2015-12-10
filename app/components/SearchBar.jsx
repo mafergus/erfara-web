@@ -50,7 +50,7 @@ export default class Searchbar extends ParseComponent {
         userResults: userExpSharedQuery
       }
     } else {
-      console.log("SearchBar.jsx - Searchbar empty, no queries processed");
+      console.log("SearchBar.observe() - no queries processed");
       return {
         // Nothing; don't run unnecessary queries
       }
@@ -61,7 +61,11 @@ export default class Searchbar extends ParseComponent {
     //
     return(
       <div>
-
+        <div className="searchbar-div">
+          <input className="searchbar-input" id="searchbar-input" type="text" onChange={this.updateSearchQuery.bind(this)} />
+        </div>
+        <div className="searchbar-results-div">
+        </div>
       </div>
     // input bar that calls method which updates search 
     //    state variable: updateSearchQuery()
@@ -71,9 +75,18 @@ export default class Searchbar extends ParseComponent {
   }
 
   updateSearchQuery() {
+
     // only triggers once there are more than 2 characters and sets
     // search state variable - text
+    var searchQuery = document.getElementById("searchbar-input").value;
 
+    if(searchQuery.length >= 2){
+      console.log("Searchbar.updateSearchQuery() - Current search length >=2 and is: " + searchQuery.length);
+      this.setState({
+        searchStateVariableText: searchQuery
+      });
+      console.log("Searchbar.updateSearchQuery() - this.state.searchStateVariableText: " + this.state.searchStateVariableText);
+    }
     // if search state variable !== ""
     // figure out which type of experience objectID based on text
     //    query.containedIn("title", "search state variable")?
