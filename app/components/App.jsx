@@ -1,19 +1,10 @@
-import React from 'react'
-import { render, findDOMNode } from 'react-dom'
-import { createHistory, useBasename } from 'history'
-import { Router, History, Route, IndexRoute, Link } from 'react-router'
-import Authentication from './Authentication';
-import Menu from './Menu';
-import Card_Profile from './Card_Profile';
-import Card_Event from './Card_Event';
-import Home from './Home';
-import SearchBar from './SearchBar';
-import Messages from './Messages';
-import Profile from './Profile';
+import '../main.css';
 
-const history = useBasename(createHistory)({
-  basename: '/'
-})
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Authentication from './Authentication';
+import { Link } from 'react-router';
+import Menu from './Menu';
 
 const App = React.createClass({
 
@@ -74,21 +65,4 @@ const App = React.createClass({
   }
 })
 
-const NotFound = React.createClass({
-  render() {
-    return <h2>Not found</h2>
-  }
-})
-
-render((
-  <Router history={history}>
-    <Route path="/" component={App}>
-      <IndexRoute component={SearchBar} />
-      <Route path="home" component={Home} />
-      <Route path="discover" component={SearchBar} />
-      <Route path="messages" component={Messages} />
-      <Route path="profile" component={Profile} />
-      <Route path="*" component={NotFound} />
-    </Route>
-  </Router>
-), document.body)
+module.exports = App;

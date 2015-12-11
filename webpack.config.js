@@ -8,7 +8,7 @@ const TARGET = process.env.npm_lifecycle_event;
 
 const PATHS = {
   app: path.join(__dirname, 'app'),
-  build: path.join(__dirname, 'build')
+  build: path.join(__dirname, 'build'),
 };
 
 process.env.BABEL_ENV = TARGET;
@@ -31,8 +31,8 @@ var common = {
         include: PATHS.app
       },
       { 
-	test: /\.(png|jpe?g|gif|woff|woff2|eot|ttf|svg)$/, 
-	loader: 'url-loader?limit=8192' 
+      	test: /\.(png|jpe?g|gif|woff|woff2|eot|ttf|svg)$/, 
+      	loader: 'url-loader?limit=8192' 
       },
     ]
   },
