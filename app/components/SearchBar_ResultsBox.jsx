@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 
 import Card_Profile from './Card_Profile';
 import Card_Event from './Card_Event';
+import Card_Profile_Horizontal from './Card_Profile_Horizontal';
+import Card_Event_Horizontal from './Card_Event_Horizontal';
 
 export default class SearchBarResultsBox extends React.Component {
 
@@ -13,7 +15,7 @@ export default class SearchBarResultsBox extends React.Component {
 constructor(){
   super();
   this.state = {
-    currentTab: 1
+    currentTab: undefined
   }
 }
 
@@ -21,9 +23,9 @@ constructor(){
     return(
       <div className="search-results-container">
           <div className="search-results-menu">
-            <button onClick={this.setTab.bind(this, 1)} >users</button>
-            <button onClick={this.setTab.bind(this, 2)}>events</button>
-            <button onClick={this.setTab.bind(this, 3)}>???</button>
+            <button onClick={this.setTab.bind(this, 1)}>Experiences</button>
+            <button onClick={this.setTab.bind(this, 2)}>Events</button>
+            <button onClick={this.setTab.bind(this, 3)}>Users</button>
           </div>
           <div className="search-results-render-area">
             {this.renderCards()}
@@ -40,17 +42,11 @@ constructor(){
   }
 
   renderCards(){
-    if(this.state.currentTab === 1){
-      return(
-        this.renderProfileCards()
-      );
-    } else if (this.state.currentTab === 2){
-      return(
-        this.renderActivityCards()
-      );
-    } else {
-      // default failsafe option
-      return <p>Nothing here mang</p>
+    switch(this.state.currentTab){
+      case 1: return <p>Todo: EventCards</p>; break;
+      case 2: return this.renderActivityCards(); break;
+      case 3: return this.renderProfileCards(); break;
+      default: return this.renderActivityCards(); break;
     }
   }
 
@@ -71,7 +67,7 @@ constructor(){
     if(this.props.events){
       return(
           this.props.events.map((event) => {
-            return <Card_Event  key={event.id} event={event} />;
+            return <Card_Event_Horizontal key={event.id} event={event} />;
           })
       );
     }

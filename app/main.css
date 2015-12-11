@@ -188,15 +188,18 @@ p, h1 {
 /* ######################################################################## */
 .user-bubble-div{
   height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  overflow: hidden;
-  float: left;
+  width: 120px;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .user-bubble-photo{
-  height: 100%;
-  width: 100%
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
 }
 /* ######################################################################## */
 /* ######################################################################## */
@@ -219,7 +222,7 @@ p, h1 {
 
 
 /* ######################################################################## */
-/* Card_Activity.jsx */
+/* Card_Event.jsx */
 /* ######################################################################## */
 .card-event-div h1{
   text-align: left;
@@ -270,6 +273,70 @@ p, h1 {
 }
 
 .card-event-comment-div {
+  color: black;
+}
+
+/* ######################################################################## */
+/* ######################################################################## */
+
+
+/* ######################################################################## */
+/* Card_Event.jsx */
+/* ######################################################################## */
+.card-event-horizontal-div h1{
+  text-align: left;
+  font-size:40px;
+}
+
+.card-event-horizontal {
+  display: inline-block;
+  height: 180px;
+  width: 96%;
+  margin: 2% 2% 2% 2%;
+  box-shadow: 5px 5px 5px #595959;
+  color: black;
+}
+
+.card-event-horizontal-photo-div{
+  height: 100%;
+  width: 35%;
+  display: inline-block;
+  background: white;
+  border-radius: 5px 0px 0px 5px;
+  overflow: hidden;
+}
+
+.card-event-horizontal-photo{
+  height: 100%;
+  width: 100%;
+}
+
+.card-event-horizontal-stripe {
+  height: 100%;
+  width: 1%;
+  display: inline-block;
+  background-color: red;
+}
+
+.card-event-horizontal-info{
+  height: 100%;
+  width: 64%;
+  display: inline-block;
+  background: white;
+  border-radius: 0px 5px 5px 0px;
+  overflow: auto;
+}
+
+.card-event-horizontal-info h1{
+  font-size: 20px;
+}
+
+.card-event-horizontal-info-text{
+  font-size: 15px !important;
+  color: black;
+}
+
+.card-event-horizontal-comment-div {
   color: black;
 }
 
@@ -968,14 +1035,6 @@ font-size: 13px;
 /* Search Results + Search Results Box w/Tabs */
 /* ######################################################################## */
 
-.app-searchbar-div {
-  height: 70%;
-  width: 100%;
-  margin-top: 5%;
-  text-align: center;
-}
-
-
 .searchbar-container{
   height: 100%;
   width: 100%;
@@ -984,9 +1043,14 @@ font-size: 13px;
 .searchbar-input-div{
   height: 10%;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: red;
 }
+.searchbar-input{
 
+}
 .searchbar-results-div{
   height: 90%;
   width: 100%;
@@ -1001,6 +1065,10 @@ font-size: 13px;
 .search-results-menu{
   background-color: yellow;
   height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .search-results-render-area{

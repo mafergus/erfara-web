@@ -56,10 +56,12 @@ export default class Searchbar extends ParseComponent {
       <div className="searchbar-container">
         <div className="searchbar-input-div">
           <input className="searchbar-input" ref="searchBarInput" type="text" onChange={this.updateSearchQuery.bind(this)} />
+          {/* 
           <button onClick={this.logErrors.bind(this)}>State/Errors?</button>
           <button onClick={this.showData.bind(this)}>Current this.data?</button>
           <button onClick={this.pendingQs.bind(this)} >pendingQueries? </button>
-        </div>
+          {*/}
+       </div>
         <div className="searchbar-results-div">
           <SearchBarResultsBox users={this.data.userResults} events={this.data.eventResults} />
         </div>
