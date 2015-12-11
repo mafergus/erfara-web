@@ -286,15 +286,23 @@ p, h1 {
 .card-event-horizontal-div h1{
   text-align: left;
   font-size:40px;
+  font-family: Roboto-Regular;
 }
 
 .card-event-horizontal {
   display: inline-block;
+  position: relative;
   height: 180px;
   width: 96%;
   margin: 2% 2% 2% 2%;
   box-shadow: 5px 5px 5px #595959;
-  color: black;
+  color: #7D7D7D;
+  font-family: Roboto-Regular;
+}
+
+.card-event-horizontal .user-bubble-div {
+  color: #7D7D7D;
+  font-family: Roboto-Regular;
 }
 
 .card-event-horizontal-photo-div{
@@ -313,32 +321,51 @@ p, h1 {
 
 .card-event-horizontal-stripe {
   height: 100%;
-  width: 1%;
+  width: 0.5%;
   display: inline-block;
-  background-color: red;
+  background-color: #CF000F;
 }
 
 .card-event-horizontal-info{
   height: 100%;
-  width: 64%;
+  width: 64.5%;
   display: inline-block;
   background: white;
   border-radius: 0px 5px 5px 0px;
   overflow: auto;
+  position: relative;
 }
 
-.card-event-horizontal-info h1{
-  font-size: 20px;
+.card-event-horizontal-info-title{
+  position: absolute;
+  top: 5%;
+  left: 2%;
 }
 
-.card-event-horizontal-info-text{
-  font-size: 15px !important;
-  color: black;
+.card-event-horizontal-info-time{
+  position: absolute;
+  top: 5%;
+  right: 2%;
 }
 
-.card-event-horizontal-comment-div {
-  color: black;
+.card-event-horizontal-info-userbubble{
+  position: absolute;
+  top: 28%;
+  left: 0%;
 }
+
+.card-event-horizontal-info-location{
+  position: absolute;
+  bottom: 5%;
+  left: 2%;
+}
+
+.card-event-horizontal-info-availability{
+  position: absolute;
+  bottom: 5%;
+  right: 2%; 
+}
+
 
 /* ######################################################################## */
 /* ######################################################################## */
@@ -1046,7 +1073,7 @@ font-size: 13px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: red;
+  background-color: #f1efea;
 }
 .searchbar-input{
 
@@ -1054,7 +1081,7 @@ font-size: 13px;
 .searchbar-results-div{
   height: 90%;
   width: 100%;
-  background-color: green;
+  background-color: #f1efea;
 }
 
 .search-results-container{
@@ -1063,7 +1090,7 @@ font-size: 13px;
 }
 
 .search-results-menu{
-  background-color: yellow;
+  background-color: #f1efea;
   height: 10%;
   width: 100%;
   display: flex;
@@ -1072,7 +1099,7 @@ font-size: 13px;
 }
 
 .search-results-render-area{
-  background-color: orange;
+  background-color: #f1efea;
   height: 90%;
   width: 100%;
 }

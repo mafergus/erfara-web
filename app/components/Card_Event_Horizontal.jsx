@@ -50,15 +50,20 @@ export default class CardProfile extends ParseComponent {
         <div className="card-event-horizontal-stripe">
         </div>
         <div className="card-event-horizontal-info">
-          <h1> {this.props.event.title} </h1>
-          <div className="card-event-horizontal-info-description">
-            {this.props.event.description}
+          <div className="card-event-horizontal-info-title">
+            <h1> {this.props.event.title} </h1>
           </div>
           <div className="card-event-horizontal-info-time">
             {this.getTime()}
           </div>
           <div className="card-event-horizontal-info-userbubble">
               <UserBubble owner={this.data.owner[0]} text="yes" />
+          </div>
+          <div className="card-event-horizontal-info-location">
+            todo:GeoLocations
+          </div>
+          <div className="card-event-horizontal-info-availability">
+            todo:Availability
           </div>
         </div>
       </div>
