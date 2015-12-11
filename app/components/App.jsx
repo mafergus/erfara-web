@@ -6,7 +6,10 @@ import Authentication from './Authentication';
 import Menu from './Menu';
 import Card_Profile from './Card_Profile';
 import Card_Event from './Card_Event';
+import Home from './Home';
 import SearchBar from './SearchBar';
+import Messages from './Messages';
+import Profile from './Profile';
 
 const history = useBasename(createHistory)({
   basename: '/'
@@ -40,12 +43,8 @@ const App = React.createClass({
           <Menu />
         </div>
 
-        <div style={{position: 'absolute', top: '60px'}}>
-          <div>
-            <Link to="home">New Contact</Link>
-            <Link to="profile">THIS IS A TEST ONLY A</Link>
-          </div>
-          <div className="Content">
+        <div style={{position: 'absolute', top: '60px', width: '100%', height: '100%'}}>
+          <div className="Content" style={{height: '100%', width: '100%'}}>
             {this.props.children}
           </div>
         </div>
@@ -75,52 +74,6 @@ const App = React.createClass({
   }
 })
 
-const Index = React.createClass({
-  render() {
-    return <h1>Address Book</h1>
-  }
-})
-
-const Contact = React.createClass({
-  mixins: [ History ],
-
-  render() {
-
-    return (
-      <div>
-        <h3>THIS IS A NAME</h3>
-      </div>
-    )
-  }
-})
-
-const TestComp = React.createClass({
-  mixins: [ History ],
-
-  render() {
-
-    return (
-      <div>
-        <h3>Testing testing 1 2 3</h3>
-      </div>
-    )
-  }
-})
-
-const TestComp2 = React.createClass({
-  mixins: [ History ],
-
-  render() {
-
-    return (
-      <div>
-        <h3>Testing testing 1 2 2</h3>
-      </div>
-    )
-  }
-})
-
-
 const NotFound = React.createClass({
   render() {
     return <h2>Not found</h2>
@@ -130,12 +83,11 @@ const NotFound = React.createClass({
 render((
   <Router history={history}>
     <Route path="/" component={App}>
-      <IndexRoute component={Index} />
-      <Route path="contact/:id" component={Contact} />
-      <Route path="home" component={TestComp} />
-      <Route path="discover" component={TestComp2} />
-      <Route path="messages" component={TestComp} />
-      <Route path="profile" component={TestComp2} />
+      <IndexRoute component={SearchBar} />
+      <Route path="home" component={Home} />
+      <Route path="discover" component={SearchBar} />
+      <Route path="messages" component={Messages} />
+      <Route path="profile" component={Profile} />
       <Route path="*" component={NotFound} />
     </Route>
   </Router>

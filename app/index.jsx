@@ -3,7 +3,6 @@ import './main.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App.jsx';
-import MainApp from './components/MainApp.jsx';
 import Parse from 'parse';
 
 Parse.initialize("2ORhMZvPcIVIQXCKRevAcDKKB3qTKdISH1s7kunP", "EVbY8lGJqEfzDkSceJ8qZDRbeSrpfGMy2hbRkZOH");
