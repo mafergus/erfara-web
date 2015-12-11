@@ -24,9 +24,9 @@ constructor(){
       <div className="search-results-container">
           <div className="search-results-menu">
             <div className="search-results-menu-buttons">
-              <button onClick={this.setTab.bind(this, 1)}><span>Experiences</span></button>
-              <button onClick={this.setTab.bind(this, 2)}><span>Events</span></button>
-              <button onClick={this.setTab.bind(this, 3)}><span>Users</span></button>
+              <button onClick={this.setTab.bind(this, 1)} className="buttonExp"><span>Experiences</span></button>
+              <button onClick={this.setTab.bind(this, 2)} className="buttonEvt"><span>Events</span></button>
+              <button onClick={this.setTab.bind(this, 3)} className="buttonUsr"><span>Users</span></button>
               </div>
           </div>
           <div className="search-results-render-area">

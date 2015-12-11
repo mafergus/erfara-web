@@ -1101,7 +1101,7 @@ font-size: 13px;
 .search-results-menu{
   position: relative;
   background-color: #ffffff;
-  height: 10%;
+  height: 15%;
   width: 98%;
   display: flex;
   box-shadow: 1px 1px 1px #595959 !important;
@@ -1109,11 +1109,11 @@ font-size: 13px;
 
 .search-results-menu-buttons{
   position: absolute;
-  bottom: 0;
+  bottom: 4px;
   left: 50%;
   transform: translate(-50%, 0);
   width: 70%;
-  height: 50%;
+  height: 40%;
 }
 
 .search-results-menu-buttons button {
@@ -1122,11 +1122,25 @@ font-size: 13px;
   border: none;
   font-family: Roboto-Regular;
   color: #7D7D7D;
-  font-size: 12px;
+  font-size: 14px;
   width: 33%;
   height: 100%;
 }
-
+.search-results-menu-buttons .buttonExp:focus{
+  color: black;
+  outline: 0;
+  border-bottom: 4px solid green;
+}
+.search-results-menu-buttons .buttonEvt:focus{
+  color: black;
+  outline: 0;
+  border-bottom: 4px solid red;
+}
+.search-results-menu-buttons .buttonUsr:focus{
+  color: black;
+  outline: 0;
+  border-bottom: 4px solid yellow;
+}
 .search-results-menu-buttons button span {
   position: absolute;
   top: 0;
