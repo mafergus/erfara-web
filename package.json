@@ -1,8 +1,7 @@
 {
-  "name": "kanban-app",
+  "name": "Erfara",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "node server.js",
     "devStart": "webpack-dev-server",

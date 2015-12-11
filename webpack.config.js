@@ -38,7 +38,7 @@ var common = {
   },
   plugins: [
     new HtmlwebpackPlugin({
-      title: 'Kanban app'
+      title: 'Erfara'
     })
   ]
 };
