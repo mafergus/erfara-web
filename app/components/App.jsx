@@ -6,11 +6,11 @@ import Authentication from './Authentication';
 import { Link } from 'react-router';
 import Menu from './Menu';
 
-const App = React.createClass({
+export default class App extends React.Component {
 
   alertMe(id) {
     alert(id);
-  },
+  }
 
   render() {
 
@@ -43,26 +43,8 @@ const App = React.createClass({
         <div className="our-content" style={{width: '100%', height: '100%', marginTop: '200px', backgroundColor: 'red'}}>
         </div>
 
-        {/*<div id="main-div">
-
-          <div className="app-searchbar-div">
-            <SearchBar />
-          </div>
-
-          <div className="card-event-div">
-            <h1>Barbecue Activity near you</h1>
-            {this.renderActivityCards()}
-          </div>
-
-          <div className="card-profile-div">
-            <h1> Users sharing skills in barbecue </h1>
-            {this.renderProfileCards()}
-          </div>
-        </div> */}
-
       </div>
     )
   }
-})
+}
 
-module.exports = App;

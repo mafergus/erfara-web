@@ -32,7 +32,7 @@ var common = {
       },
       { 
       	test: /\.(png|jpe?g|gif|woff|woff2|eot|ttf|svg)$/, 
-      	loader: 'url-loader?limit=8192' 
+      	loader: 'url-loader?limit=8192'
       },
     ]
   },
