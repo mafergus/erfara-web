@@ -4,6 +4,9 @@ import { createHistory, useBasename } from 'history'
 import { Router, History, Route, IndexRoute, Link } from 'react-router'
 import Authentication from './Authentication';
 import Menu from './Menu';
+import Card_Profile from './Card_Profile';
+import Card_Event from './Card_Event';
+import SearchBar from './SearchBar';
 
 const history = useBasename(createHistory)({
   basename: '/'
@@ -26,7 +29,7 @@ const App = React.createClass({
         <div className="erfara-header">
           <div className="icon-container">
             <img id="erfara-icon" src={ require("../img/erfara_icon.png") }></img>
-            <p onClick={this.alertMe.bind(this, "testing")}>Erfara</p>
+            <p onClick={this.alertMe.bind(this, "thisesting")}>Erfara</p>
           </div>
           <div className="header-links-container">
             <Link to="home">Home</Link>
@@ -51,10 +54,14 @@ const App = React.createClass({
         </div>
 
         {/*<div id="main-div">
+
+          <div className="app-searchbar-div">
+            <SearchBar />
+          </div>
+
           <div className="card-event-div">
             <h1>Barbecue Activity near you</h1>
             {this.renderActivityCards()}
-            {console.log(this.data.eventCards)}
           </div>
 
           <div className="card-profile-div">

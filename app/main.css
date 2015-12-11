@@ -230,7 +230,7 @@ p, h1 {
   display: inline-block;
   height: 400px;
   width: 300px;
-  margin: 5px;
+  margin: 10px;
   box-shadow: 5px 5px 5px #595959;
 }
 
@@ -294,7 +294,7 @@ font-size:40px;
   display: inline-block;
   height: 300px;
   width: 200px;
-  margin: 5px;
+  margin: 10px;
   border-radius: 5px 5px 5px 5px;
   overflow:hidden;
   box-shadow: 5px 5px 5px #595959;
@@ -959,5 +959,55 @@ line-height:38px;
 font-size: 13px;
 }
 **/
+/* ######################################################################## */
+/* ######################################################################## */
+
+
+
+/* ######################################################################## */
+/* Search Results + Search Results Box w/Tabs */
+/* ######################################################################## */
+
+.app-searchbar-div {
+  height: 70%;
+  width: 100%;
+  margin-top: 5%;
+  text-align: center;
+}
+
+
+.searchbar-container{
+  height: 100%;
+  width: 100%;
+}
+
+.searchbar-input-div{
+  height: 10%;
+  width: 100%;
+  background-color: red;
+}
+
+.searchbar-results-div{
+  height: 90%;
+  width: 100%;
+  background-color: green;
+}
+
+.search-results-container{
+  height: 100%;
+  width: 100%;
+}
+
+.search-results-menu{
+  background-color: yellow;
+  height: 10%;
+}
+
+.search-results-render-area{
+  background-color: orange;
+  height: 90%;
+  width: 100%;
+}
+
 /* ######################################################################## */
 /* ######################################################################## */
