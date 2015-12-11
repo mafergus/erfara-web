@@ -23,9 +23,11 @@ constructor(){
     return(
       <div className="search-results-container">
           <div className="search-results-menu">
-            <button onClick={this.setTab.bind(this, 1)}>Experiences</button>
-            <button onClick={this.setTab.bind(this, 2)}>Events</button>
-            <button onClick={this.setTab.bind(this, 3)}>Users</button>
+            <div className="search-results-menu-buttons">
+              <button onClick={this.setTab.bind(this, 1)}><span>Experiences</span></button>
+              <button onClick={this.setTab.bind(this, 2)}><span>Events</span></button>
+              <button onClick={this.setTab.bind(this, 3)}><span>Users</span></button>
+              </div>
           </div>
           <div className="search-results-render-area">
             {this.renderCards()}
