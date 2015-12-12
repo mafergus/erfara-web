@@ -65,7 +65,7 @@ componentDidMount(){
     if(this.props.users){
       return(
           this.props.users.map((user) => {
-            return <Card_Profile  key={user.id} user={user} />;
+            return <Card_Profile_Horizontal  key={user.id} user={user} />;
           })
       );
     }

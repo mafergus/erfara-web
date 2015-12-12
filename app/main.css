@@ -281,7 +281,7 @@ p, h1 {
 
 
 /* ######################################################################## */
-/* Card_Event.jsx */
+/* Card_Event_Horizontal.jsx */
 /* ######################################################################## */
 .card-event-horizontal-div h1{
   text-align: left;
@@ -296,11 +296,6 @@ p, h1 {
   width: 98%;
   margin: 2% 0% 2% 0%;
   box-shadow: 1px 1px 1px #595959;
-  color: #7D7D7D;
-  font-family: Roboto-Regular;
-}
-
-.card-event-horizontal .user-bubble-div {
   color: #7D7D7D;
   font-family: Roboto-Regular;
 }
@@ -366,6 +361,114 @@ p, h1 {
   right: 2%; 
 }
 
+
+/* ######################################################################## */
+/* ######################################################################## */
+
+
+/* ######################################################################## */
+/* Card_profile_Horizontal.jsx */
+/* ######################################################################## */
+
+
+.card-profile-horizontal {
+  display: inline-block;
+  position: relative;
+  height: 150px;
+  width: 98%;
+  margin: 0.5% 0% 0% 0%;
+  box-shadow: 1px 1px 1px #595959;
+  color: #7D7D7D;
+  font-family: Roboto-Regular;
+}
+
+.card-profile-horizontal h1{
+  text-align: left;
+  font-size:40px;
+  font-family: Roboto-Regular;
+}
+
+.card-profile-horizontal .photo-div{
+  height: 100%;
+  width: 20%;
+  display: inline-block;
+  background: white;
+  border-radius: 2px 0px 0px 2px;
+  overflow: hidden;
+}
+
+.card-profile-horizontal .photo-div .photo {
+  height: 100%;
+  width: 100%;
+}
+
+.card-profile-horizontal .photo-div .photo img{
+  height: 100%;
+  width: 100%;
+}
+
+.card-profile-horizontal .stripe {
+  height: 100%;
+  width: 0.5%;
+  display: inline-block;
+  background-color: #CF000F;
+}
+
+.card-profile-horizontal .info{
+  height: 100%;
+  width: 79.5%;
+  display: inline-block;
+  background: white;
+  border-radius: 0px 2px 2px 0px;
+  overflow: auto;
+  position: relative;
+}
+
+.card-profile-horizontal .info .top-left-cluster{
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  display: block;
+}
+
+.card-profile-horizontal .info .name{
+  float: left;
+}
+
+.card-profile-horizontal .info .badges{
+  float: left;
+}
+
+.card-profile-horizontal .info .location {
+  clear: both;
+}
+
+.card-profile-horizontal .info .expertise {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+}
+
+.card-profile-horizontal .info .endorsements {
+  position: absolute;
+  bottom: 2%;
+  left: 2%;
+}
+
+.card-profile-horizontal .info .bottom-right-cluster{
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
+  display: block;
+}
+
+.card-profile-horizontal .info .response-rate {
+
+}
+
+.card-profile-horizontal .info .last-active {
+
+}
 
 /* ######################################################################## */
 /* ######################################################################## */
@@ -1118,16 +1221,16 @@ font-size: 13px;
   width: 98%;
   display: flex;
   box-shadow: 1px 1px 1px #595959 !important;
+  margin-bottom: 1.5%;
 }
 
 .search-results-container .menu-buttons{
   position: absolute;
-  bottom: 4px;
+  bottom: 0;
   left: 50%;
   transform: translate(-50%, 0);
   width: 70%;
   height: 30%;
-  color: black;
 }
 
 .search-results-container .menu .menu-buttons input[type="radio"] {
@@ -1135,20 +1238,27 @@ font-size: 13px;
 }
 
 .search-results-container .menu .menu-buttons label {
-  margin-left: 15%;
-  color: ;
+  color: #7D7D7D;
+  margin-bottom: 0;
+  width: 33%;
+  text-align: center;
+  display: block;
+  float: left;
 }
 
 #buttonExp:checked ~ #buttonExpLbl {
-  color: red;
+  color: #311700;
+  border-bottom: 4px solid #1D7400;
 }
 
 #buttonEvt:checked ~ #buttonEvtLbl {
-  color: blue;
+  color: #311700;
+  border-bottom: 4px solid #CF000F;
 }
 
 #buttonUsr:checked ~ #buttonUsrLbl {
-  color: yellow;
+  color: #311700;
+  border-bottom: 4px solid #FFD000;
 }
 
 .search-results-container .render-area{

@@ -45,7 +45,7 @@ export default class CardProfile extends ParseComponent {
     return(
       <div className="card-event-horizontal">
         <div className="card-event-horizontal-photo-div">
-          <img className="card-event-horizontal-photo" src={this.props.event.photo._url} alt="Photo" height="100%" width="100%" />
+          <img className="card-event-horizontal-photo" src={this.props.event.photo._url} alt="Photo"/>
         </div>
         <div className="card-event-horizontal-stripe">
         </div>
