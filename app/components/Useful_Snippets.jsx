@@ -5,51 +5,111 @@
 // ##############################################################################
 // ############ ADD RELATION TO USER SNIPPETS ###################################
 // ##############################################################################
-  addRelationsHack(){
+ 
+    /*
+    billybob: "9VqlHe17O9"   
+    rob: "NTkttqe6Tj"   
+    matt: "loQIXSgioX"
+    
+    tennis : "NBlbnIH3k7"
+    texas holdem: "fZl3zXD6EZ"
+    skydiving:  "Nm6EqxkHcf"
+    knitting:  "TXSh2zMCqN"
+    programming: "233CN9V59p"
+    english: "143AolRawL"
+    scuba diving:  "eSS76UjkMB"
+    cooking: "aU9MufuGzP"
+    rock climbing: "wk4GNsvipM"
+    kayaking:  "ekI1SPki52"
+    yoga: "bi31zYfFFT"
+    barbecue: "imjf2tIP5v"
+    */
 
-    // Adding a Barbecue relation to User
-    var user;
-    var relation;
-    var bbqExperience;
 
-    var experience = Parse.Object.extend("Experience");
-    var queryExperience = new Parse.Query(experience);
+    // Add to Exp sharing:
+    addExpSharing(userId, experienceId){
+      var user;
+      var relation;
+      var bbqExperience;
+      var queryUser = new Parse.Query(Parse.User);
+      var experience = Parse.Object.extend("Experience");
+      var queryExperience = new Parse.Query(experience);
 
+      queryUser.get(userId, {
+        success: function(object) {
+          console.log("Success:");
+          user = object;
+          console.log(object);
+          queryExperience.get(experienceId {
+            success: function(object) {
+              console.log("Success:");
+              bbqExperience = object;
+              console.log(bbqExperience);
+              relation = user.relation("exp_sharing");
+              relation.add(bbqExperience);
+              user.save(null, {
+                success: function(object) {
+                  console.log("Exp_sharing save success for: ", userId, experienceId);
+                },
+                error: function(object, error){ 
+                  console.log("Parse save failed with error:");
+                  console.log(error);
+                }
+              });
+            },
+            error: function(object, error) {
+              console.log("Parse GET failed: " + error.message);
+            }
+          });
+        },
+        error: function(object, error) {
+          console.log("Parse GET failed: " + error.message);
+        }
+      });
+    }
 
-    var queryUser = new Parse.Query(Parse.User);
-    queryUser.get("NTkttqe6Tj", {
-      success: function(object) {
-        console.log("Success:");
-        user = object;
-        console.log(object);
-        queryExperience.get("imjf2tIP5v", {
-          success: function(object) {
-            console.log("Success:");
-            bbqExperience = object;
-            console.log(bbqExperience);
-            relation = user.relation("exp_sharing");
-            relation.add(bbqExperience);
-            user.save(null, {
-              success: function(object) {
-                console.log("Parse save success");
-              },
-              error: function(object, error){ 
-                console.log("Parse save failed with error:");
-                console.log(error);
-              }
-            });
-          },
-          error: function(object, error) {
-            console.log("Parse GET failed: " + error.message);
-          }
-        });
-      },
-      error: function(object, error) {
-        console.log("Parse GET failed: " + error.message);
-      }
-    });
+    // add to Exp_Learning
+    addExpSharing(userId, experienceId){
+      var user;
+      var relation;
+      var bbqExperience;
+      var queryUser = new Parse.Query(Parse.User);
+      var experience = Parse.Object.extend("Experience");
+      var queryExperience = new Parse.Query(experience);
 
-  }
+      queryUser.get(userId, {
+        success: function(object) {
+          console.log("Success:");
+          user = object;
+          console.log(object);
+          queryExperience.get(experienceId {
+            success: function(object) {
+              console.log("Success:");
+              bbqExperience = object;
+              console.log(bbqExperience);
+              relation = user.relation("exp_learning");
+              relation.add(bbqExperience);
+              user.save(null, {
+                success: function(object) {
+                  console.log("Exp_sharing save success for: ", userId, experienceId);
+                },
+                error: function(object, error){ 
+                  console.log("Parse save failed with error:");
+                  console.log(error);
+                }
+              });
+            },
+            error: function(object, error) {
+              console.log("Parse GET failed: " + error.message);
+            }
+          });
+        },
+        error: function(object, error) {
+          console.log("Parse GET failed: " + error.message);
+        }
+      });
+    }
+
 // ############ ADD RELATION TO USER SNIPPETS ###################################
 // ##############################################################################
 
