@@ -19,7 +19,7 @@ Note: The underlying container should be an ES6 Parse-React component to ensure 
 
 import React from 'react';
 
-export default class CardProfile extends React.Component {
+export default class CardProfileHorizontal extends React.Component {
 
   render() {
 

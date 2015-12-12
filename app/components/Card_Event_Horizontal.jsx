@@ -23,7 +23,7 @@ import ParseReact from 'parse-react';
 var ParseComponent = ParseReact.Component(React);
 import UserBubble from './UserBubble';
 
-export default class CardProfile extends ParseComponent {
+export default class CardEventHorizontal extends ParseComponent {
   
   //Props - is passed a full event Parse JSON object
 

@@ -367,6 +367,62 @@ p, h1 {
 
 
 /* ######################################################################## */
+/* Card_Event_Horizontal.jsx */
+/* ######################################################################## */
+.card-experience-horizontal-div h1{
+  text-align: left;
+  font-size:40px;
+  font-family: Roboto-Regular;
+}
+
+.card-experience-horizontal {
+  display: inline-block;
+  position: relative;
+  height: 180px;
+  width: 98%;
+  margin: 2% 0% 2% 0%;
+  box-shadow: 1px 1px 1px #595959;
+  color: #7D7D7D;
+  font-family: Roboto-Regular;
+}
+
+.card-experience-horizontal-photo-div{
+  height: 100%;
+  width: 30%;
+  display: inline-block;
+  background: white;
+  border-radius: 2px 0px 0px 2px;
+  overflow: hidden;
+}
+
+.card-experience-horizontal-photo{
+  height: 100%;
+  width: 100%;
+}
+
+.card-experience-horizontal-stripe {
+  height: 100%;
+  width: 0.5%;
+  display: inline-block;
+  background-color: #CF000F;
+}
+
+.card-experience-horizontal-info{
+  height: 100%;
+  width: 69.5%;
+  display: inline-block;
+  background: white;
+  border-radius: 0px 2px 2px 0px;
+  overflow: auto;
+  position: relative;
+}
+
+
+/* ######################################################################## */
+/* ######################################################################## */
+
+
+/* ######################################################################## */
 /* Card_profile_Horizontal.jsx */
 /* ######################################################################## */
 

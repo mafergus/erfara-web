@@ -5,12 +5,14 @@ import Card_Profile from './Card_Profile';
 import Card_Event from './Card_Event';
 import Card_Profile_Horizontal from './Card_Profile_Horizontal';
 import Card_Event_Horizontal from './Card_Event_Horizontal';
+import Card_Experience_Horizontal from './Card_Experience_Horizontal';
 
 export default class SearchBarResultsBox extends React.Component {
 
 //expected props:
-// array of users
+//  array of users
 //  array of events
+//  array of experiences
 
 constructor(){
   super();
@@ -53,7 +55,7 @@ componentDidMount(){
 
   renderCards(){
     switch(this.state.currentTab){
-      case "buttonExp": return <p>Todo: ExpCards</p>; break;
+      case "buttonExp": return this.renderExperienceCards(); break;
       case "buttonEvt": return this.renderEventCards(); break;
       case "buttonUsr": return this.renderProfileCards(); break;
       default: return this.renderEventCards(); break;
@@ -78,6 +80,17 @@ componentDidMount(){
       return(
           this.props.events.map((event) => {
             return <Card_Event_Horizontal key={event.id} event={event} />;
+          })
+      );
+    }
+  }
+
+  renderExperienceCards(){
+    console.log("render experience events:", this.props.experiences);
+    if(this.props.experiences){
+      return(
+          this.props.experiences.map((experience) => {
+            return <Card_Experience_Horizontal key={experience.id} experience={experience} />;
           })
       );
     }

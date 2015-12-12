@@ -23,7 +23,7 @@ import ParseReact from 'parse-react';
 var ParseComponent = ParseReact.Component(React);
 import EventComment from './EventComment';
 
-export default class CardProfile extends ParseComponent {
+export default class CardEvent extends ParseComponent {
   
   constructor() {
     super();
