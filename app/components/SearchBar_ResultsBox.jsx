@@ -19,36 +19,44 @@ constructor(){
   }
 }
 
+componentDidMount(){
+  document.getElementById("buttonEvt").checked = true;
+}
+
   render() {
     return(
       <div className="search-results-container">
-          <div className="search-results-menu">
-            <div className="search-results-menu-buttons">
-              <button onClick={this.setTab.bind(this, 1)} className="buttonExp"><span>Experiences</span></button>
-              <button onClick={this.setTab.bind(this, 2)} className="buttonEvt"><span>Events</span></button>
-              <button onClick={this.setTab.bind(this, 3)} className="buttonUsr"><span>Users</span></button>
+          <div className="menu">
+            <div className="menu-buttons">
+              <form>
+                <input type="radio" value="buttonExp" name="menubuttons" id="buttonExp" />
+                <label htmlFor="buttonExp" id="buttonExpLbl" onClick={this.setTab.bind(this, "buttonExp")}>Experiences</label>
+                <input type="radio" value="buttonEvt" name="menubuttons" id="buttonEvt" />
+                <label htmlFor="buttonEvt" id="buttonEvtLbl" onClick={this.setTab.bind(this, "buttonEvt")}>Events</label>
+                <input type="radio" value="buttonUsr" name="menubuttons" id="buttonUsr" />
+                <label htmlFor="buttonUsr" id="buttonUsrLbl" onClick={this.setTab.bind(this, "buttonUsr")}>Users</label> 
+              </form>
               </div>
           </div>
-          <div className="search-results-render-area">
+          <div className="render-area">
             {this.renderCards()}
           </div>
       </div>
     );
   }
 
-  setTab(option){
-    console.log(option)
+  setTab(id){
     this.setState({
-      currentTab: option
+      currentTab: id
     })
   }
 
   renderCards(){
     switch(this.state.currentTab){
-      case 1: return <p>Todo: EventCards</p>; break;
-      case 2: return this.renderActivityCards(); break;
-      case 3: return this.renderProfileCards(); break;
-      default: return this.renderActivityCards(); break;
+      case "buttonExp": return <p>Todo: ExpCards</p>; break;
+      case "buttonEvt": return this.renderEventCards(); break;
+      case "buttonUsr": return this.renderProfileCards(); break;
+      default: return this.renderEventCards(); break;
     }
   }
 
@@ -64,7 +72,7 @@ constructor(){
 
   }
 
-  renderActivityCards(){
+  renderEventCards(){
     console.log("render area events:", this.props.events);
     if(this.props.events){
       return(

@@ -55,7 +55,9 @@ export default class Searchbar extends ParseComponent {
     return(
       <div className="searchbar-container">
         <div className="searchbar-input-div">
-          <input className="searchbar-input" ref="searchBarInput" type="text" onChange={this.updateSearchQuery.bind(this)} />
+          <div className="searchbar-input-div-header">Search Filters</div>
+          <input className="searchbar-input" ref="searchBarInput" type="text" 
+                onChange={this.updateSearchQuery.bind(this)} placeholder="Type to Search"/>
           {/* 
           <button onClick={this.logErrors.bind(this)}>State/Errors?</button>
           <button onClick={this.showData.bind(this)}>Current this.data?</button>
