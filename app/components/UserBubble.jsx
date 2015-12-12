@@ -7,6 +7,7 @@ export default class userBubble extends React.Component {
   render () {
 
     if(!this.props.owner || !this.props.owner.photo || !this.props.owner.photo._url){
+      console.log("Bubble owner object invalid: ", this.props.owner);
       return (
         <div className="user-bubble-div"></div>
       );

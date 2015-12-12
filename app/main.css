@@ -386,30 +386,30 @@ p, h1 {
   font-family: Roboto-Regular;
 }
 
-.card-experience-horizontal-photo-div{
+.card-experience-horizontal .photo-div{
   height: 100%;
-  width: 30%;
+  width: 74.5%;
   display: inline-block;
   background: white;
   border-radius: 2px 0px 0px 2px;
   overflow: hidden;
 }
 
-.card-experience-horizontal-photo{
+.card-experience-horizontal .photo-div .photo{
   height: 100%;
   width: 100%;
 }
 
-.card-experience-horizontal-stripe {
+.card-experience-horizontal .stripe {
   height: 100%;
   width: 0.5%;
   display: inline-block;
   background-color: #CF000F;
 }
 
-.card-experience-horizontal-info{
+.card-experience-horizontal .info{
   height: 100%;
-  width: 69.5%;
+  width: 25%;
   display: inline-block;
   background: white;
   border-radius: 0px 2px 2px 0px;
