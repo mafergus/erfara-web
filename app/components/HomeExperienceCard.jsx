@@ -14,9 +14,8 @@ export default class HomeExperienceCard extends React.Component {
   observe(nextProps, nextState) {}
 
   render() {
-    console.log("Photo url " + this.props.photo);
     return(
-      <div className="experience-card">
+      <div className="experience-card" onClick={this.props.onUserClick}>
           <img src={this.props.photo} id="bg"></img>
           <div id="overlay"></div>
           <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}><h1>{this.props.name}</h1></div>

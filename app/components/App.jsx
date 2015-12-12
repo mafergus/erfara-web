@@ -29,7 +29,7 @@ export default class App extends React.Component {
             <Link to="home">Home</Link>
             <Link to="discover">Discover</Link>
             <Link to="messages">Messages</Link>
-            <Link to="profile">Profile</Link>
+            <Link to="experiences/imjf2tIP5v">Profile</Link>
           </div>
           <Menu />
         </div>
