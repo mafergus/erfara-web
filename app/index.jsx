@@ -22,7 +22,7 @@ document.body.appendChild(mountNode);
 ReactDOM.render((
   <Router history={history}>
     <Route path="/" component={App} >
-      <IndexRoute component={SearchBar} />
+      <IndexRoute component={Home} />
       <Route path="home" component={Home} />
       <Route path="discover" component={SearchBar} />
       <Route path="messages" component={Messages} />
