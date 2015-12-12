@@ -34,14 +34,20 @@ export default class Searchbar extends ParseComponent {
     // search state variable - searchExperienceObject
     var searchText = nextState.searchStateVariableText;
     var searchObject = nextState.searchExperienceObject;
+    var searchRegex = new RegExp(searchText, "i");
 
     if (searchText.length > 2 && searchObject){
       //   event query with experience_id of searchObject
-      var eventObjectIdQuery = new Parse.Query('Event').equalTo("experience_id", searchObject).ascending("updatedAt");
+      var eventObjectIdQuery = new Parse.Query('Event').equalTo("experience", searchObject.id).ascending("updatedAt");
+      //   experience query with title containing searchText
+      var experienceTitleQuery = new Parse.Query('Experience').matches("name", searchRegex);
+      var experienceDescriptionQuery = new Parse.Query('Experience').matches('description', searchRegex);
+      var experienceCompoundQuery = Parse.Query.or(experienceTitleQuery, experienceDescriptionQuery);
       //   user query with exp_shared containing searchExperienceObject
       var userExpSharedQuery = new Parse.Query(Parse.User).containedIn("exp_sharing", [searchObject]).ascending("updatedAt");
       //console.log("SearchBar.observe() queries processed with :", nextState);
       return { eventResults: eventObjectIdQuery,
+               experienceResults: experienceCompoundQuery,
                userResults: userExpSharedQuery    }
     } else {
       //console.log("SearchBar.observe() - no queries processed, current state: ", nextState);
@@ -55,13 +61,17 @@ export default class Searchbar extends ParseComponent {
     return(
       <div className="searchbar-container">
         <div className="searchbar-input-div">
-          <input className="searchbar-input" ref="searchBarInput" type="text" onChange={this.updateSearchQuery.bind(this)} />
+          <div className="searchbar-input-div-header">Search Filters</div>
+          <input className="searchbar-input" ref="searchBarInput" type="text" 
+                onChange={this.updateSearchQuery.bind(this)} placeholder="Type to Search"/>
+          {/* 
           <button onClick={this.logErrors.bind(this)}>State/Errors?</button>
           <button onClick={this.showData.bind(this)}>Current this.data?</button>
           <button onClick={this.pendingQs.bind(this)} >pendingQueries? </button>
-        </div>
+          {*/}
+       </div>
         <div className="searchbar-results-div">
-          <SearchBarResultsBox users={this.data.userResults} events={this.data.eventResults} />
+          <SearchBarResultsBox users={this.data.userResults} events={this.data.eventResults} experiences={this.data.experienceResults} />
         </div>
       </div>
     )

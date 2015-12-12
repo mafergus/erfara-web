@@ -21,21 +21,21 @@ import React from 'react';
 import Parse from 'parse';
 import ParseReact from 'parse-react';
 var ParseComponent = ParseReact.Component(React);
-import EventComment from './EventComment';
+import UserBubble from './UserBubble';
 
-export default class CardEvent extends ParseComponent {
+export default class CardEventHorizontal extends ParseComponent {
   
+  //Props - is passed a full event Parse JSON object
+
   constructor() {
     super();
   }
 
-  observe(props, state){
-    var parseEvent = Parse.Object.extend('Event');
-    var currentEventSkeletonObjectId = new parseEvent({id: this.props.event.objectId});
+  observe(nextProps, nextState){
 
     return {
-      comments: (new Parse.Query('EventComment')).equalTo("event_id", currentEventSkeletonObjectId)
       // event owner
+      owner: (new Parse.Query(Parse.User)).equalTo("objectId", this.props.event.owner.objectId).limit(1)
       // event participants
     }
   }
@@ -43,29 +43,45 @@ export default class CardEvent extends ParseComponent {
   render() {
 
     return(
-      <div className="card-event">
-        <div className="card-event-photo-div">
-          <img className="card-event-photo" src={this.props.event.photo._url} alt="Photo" height="100%" width="100%" />
+      <div className="card-event-horizontal">
+        <div className="card-event-horizontal-photo-div">
+          <img className="card-event-horizontal-photo" src={this.props.event.photo._url} alt="Photo"/>
         </div>
-        <div className="card-event-stripe">
+        <div className="card-event-horizontal-stripe">
         </div>
-        <div className="card-event-info">
-        <h1> {this.props.event.title} </h1>
-          <div className="card-event-info-text">
-            {this.props.event.description}
+        <div className="card-event-horizontal-info">
+          <div className="card-event-horizontal-info-title">
+            <h1> {this.props.event.title} </h1>
           </div>
-          <div className="card-event-comment-div">
-            <h1> Comments </h1>
-            <button onClick={this.addComment.bind(this)}> Add Comment.. </button>
-            <div>
-              {this.renderComments()}
-            </div>
+          <div className="card-event-horizontal-info-time">
+            {this.getTime()}
+          </div>
+          <div className="card-event-horizontal-info-userbubble">
+              <UserBubble owner={this.data.owner[0]} text="yes" />
+          </div>
+          <div className="card-event-horizontal-info-location">
+            todo:GeoLocations
+          </div>
+          <div className="card-event-horizontal-info-availability">
+            todo:Availability
           </div>
         </div>
-
       </div>
     );
   }
+
+  getTime(){
+  var options = { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }
+    var dateString = this.props.event.time;
+    var localDateTime = dateString.toLocaleString("en-GB", options);
+    return localDateTime;
+  }
+
+};
+
+
+
+/*
 
   // method here to render those comments in eventComment components
   renderComments(){
@@ -98,5 +114,4 @@ export default class CardEvent extends ParseComponent {
       }
     } 
   }
-
-};
+*/
