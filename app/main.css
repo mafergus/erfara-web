@@ -247,6 +247,7 @@ p, h1 {
   height: 100%;
   width: 100%;
   border-radius: 5px 5px 0px 0px;
+  object-fit: cover;
 }
 
 .card-event-stripe {
@@ -312,6 +313,7 @@ p, h1 {
 .card-event-horizontal-photo{
   height: 100%;
   width: 100%;
+  object-fit: cover;
 }
 
 .card-event-horizontal-stripe {
@@ -398,13 +400,14 @@ p, h1 {
 .card-experience-horizontal .photo-div .photo{
   height: 100%;
   width: 100%;
+  object-fit: cover;
 }
 
 .card-experience-horizontal .stripe {
   height: 100%;
   width: 0.5%;
   display: inline-block;
-  background-color: #CF000F;
+  background-color: #1D7400;
 }
 
 .card-experience-horizontal .info{
@@ -417,6 +420,20 @@ p, h1 {
   position: relative;
 }
 
+.card-experience-horizontal .info .title{
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: block;
+}
+
+.card-experience-horizontal .info .topExpert{
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
 
 /* ######################################################################## */
 /* ######################################################################## */
@@ -467,7 +484,7 @@ p, h1 {
   height: 100%;
   width: 0.5%;
   display: inline-block;
-  background-color: #CF000F;
+  background-color: #FFD000;
 }
 
 .card-profile-horizontal .info{
@@ -1226,6 +1243,7 @@ font-size: 13px;
   width: 100%;
   position: relative;
   background-color: #f1efea;
+  min-width: 1280px;
 }
 
 .searchbar-input-div{
