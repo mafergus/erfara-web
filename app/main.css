@@ -259,6 +259,9 @@ p, h1 {
   margin-right: 24px;
 }
 
+
+
+
 /* ######################################################################## */
 /* Experience Page */
 /* ######################################################################## */
@@ -270,11 +273,16 @@ p, h1 {
 }
 
 /* ######################################################################## */
+/* ######################################################################## */
+
+
+/* ######################################################################## */
 /* Header */
 /* ######################################################################## */
 
 .erfara-header {
   position: fixed;
+  display: block;
   top: 0px;
   z-index: 1;
   width: 100%;
@@ -376,6 +384,80 @@ p, h1 {
 [type=radio]:checked ~ label ~ .content {
   z-index: 1;
 }
+/* ######################################################################## */
+/* ######################################################################## */
+
+
+/* ######################################################################## */
+/* Profile Page */
+/* ######################################################################## */
+
+.profile-container{
+  background-color: red;
+  height: 100%;
+  width: 100%;
+}
+.profile-column{
+  background-color: black;
+  height: 100%;
+  width: 80%;
+  margin: 0 10% 0 10%;
+  padding: 20px 0 20px 0;
+}
+.profile-column-card {
+  border-radius: 4px;
+}
+.profile-column .row{
+  background-color: yellow;
+  width: 90%;
+  height: 200px;
+  margin: 20px 5% 20px 5%; 
+  clear: both;
+}
+.profile-column .bio{
+  background-color: green;
+  width: 100%;
+  height: 100%;
+}
+.profile-column .references{
+  background-color: green;
+  width: 65%;
+  height: 100%;
+  float: left;
+  margin-right: 2%;
+}
+.profile-column .following{
+  background-color: green;
+  width: 33%;
+  height: 100%;
+  float: left;
+}
+.profile-column .learning{
+  background-color: green;
+  width: 100%;
+  height: 100%;
+}
+.profile-column .sharing{
+  background-color: green;
+  width: 100%;
+  height: 100%;
+}
+.profile-column .upcoming{
+  background-color: green;
+  width: 33%;
+  height: 100%;
+  float: left;
+  margin-right: 2%;
+}
+.profile-column .feed{
+  background-color: green;
+  width: 65%;
+  height: 100%;
+  float: left;
+}
+
+/* ######################################################################## */
+/* ######################################################################## */
 
 /* ######################################################################## */
 /* UserBubble.jsx */
