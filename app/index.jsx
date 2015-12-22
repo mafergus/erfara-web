@@ -29,7 +29,7 @@ const history = useBasename(createHistory)({basename: '/'});
 ReactDOM.render((
   <Router history={history}>
     <Route path="/" component={App} >
-      <IndexRoute component={Home} />
+      <IndexRoute component={Experience} />
       <Route path="home" component={Home} />
       <Route path="discover" component={SearchBar} />
       <Route path="messages" component={Experience} />
