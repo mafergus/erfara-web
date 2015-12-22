@@ -20,11 +20,11 @@ var mountNode = document.createElement('div');
 mountNode.setAttribute("id", "mountNode");
 document.body.appendChild(mountNode);
 
-// var history = createHistory({
-//   queryKey: false
-// });
+ var history = createHistory({
+   queryKey: false
+ });
 
-const history = useBasename(createHistory)({basename: '/'});
+// const history = useBasename(createHistory)({basename: '/'});
 
 ReactDOM.render((
   <Router history={history}>

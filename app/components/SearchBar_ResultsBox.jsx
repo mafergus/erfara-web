@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 
 import Card_Profile from './Card_Profile';
 import Card_Event from './Card_Event';
-import Card_Profile_Horizontal from './Card_Profile_Horizontal';
 import Card_Event_Horizontal from './Card_Event_Horizontal';
 import Card_Experience_Horizontal from './Card_Experience_Horizontal';
+import Card_Skillshare_Horizontal from './Card_Skillshare_Horizontal';
 
 export default class SearchBarResultsBox extends React.Component {
 
 //expected props:
-//  array of users
+//  array of skillshares
 //  array of events
 //  array of experiences
 
@@ -35,8 +35,8 @@ componentDidMount(){
                 <label htmlFor="buttonExp" id="buttonExpLbl" onClick={this.setTab.bind(this, "buttonExp")}>Experiences</label>
                 <input type="radio" value="buttonEvt" name="menubuttons" id="buttonEvt" />
                 <label htmlFor="buttonEvt" id="buttonEvtLbl" onClick={this.setTab.bind(this, "buttonEvt")}>Events</label>
-                <input type="radio" value="buttonUsr" name="menubuttons" id="buttonUsr" />
-                <label htmlFor="buttonUsr" id="buttonUsrLbl" onClick={this.setTab.bind(this, "buttonUsr")}>Users</label> 
+                <input type="radio" value="buttonSkillShare" name="menubuttons" id="buttonSkillShare" />
+                <label htmlFor="buttonSkillShare" id="buttonSkillShareLbl" onClick={this.setTab.bind(this, "buttonSkillShare")}>SkillShares</label> 
               </form>
               </div>
           </div>
@@ -55,27 +55,25 @@ componentDidMount(){
 
   renderCards(){
     switch(this.state.currentTab){
-      case "buttonExp": return this.renderExperienceCards(); break;
-      case "buttonEvt": return this.renderEventCards(); break;
-      case "buttonUsr": return this.renderProfileCards(); break;
-      default: return this.renderEventCards(); break;
+      case "buttonExp":        return this.renderExperienceCards(); break;
+      case "buttonEvt":        return this.renderEventCards(); break;
+      case "buttonSkillShare": return this.renderSkillShareCards(); break;
+      default:                 return this.renderEventCards(); break;
     }
   }
 
-  renderProfileCards(){
-    console.log("render area users:", this.props.users);
-    if(this.props.users){
+  renderSkillShareCards(){
+    if(this.props.skillshares){
       return(
-          this.props.users.map((user) => {
-            return <Card_Profile_Horizontal  key={user.id} user={user} />;
-          })
+        this.props.skillshares.map((skillshare) => {
+          return <Card_Skillshare_Horizontal key={skillshare.id} skillshare={skillshare} />;
+        })
       );
     }
 
   }
 
   renderEventCards(){
-    console.log("render area events:", this.props.events);
     if(this.props.events){
       return(
           this.props.events.map((event) => {
@@ -86,7 +84,6 @@ componentDidMount(){
   }
 
   renderExperienceCards(){
-    console.log("render experience events:", this.props.experiences);
     if(this.props.experiences){
       return(
           this.props.experiences.map((experience) => {

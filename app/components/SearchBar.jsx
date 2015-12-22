@@ -29,6 +29,10 @@ export default class Searchbar extends ParseComponent {
     }
   }
 
+  componentDidMount(){
+    console.log(this.queryErrors());
+  }
+
   observe(nextProps, nextState) {
     // search state variable - text
     // search state variable - searchExperienceObject
@@ -38,17 +42,19 @@ export default class Searchbar extends ParseComponent {
 
     if (searchText.length > 2 && searchObject){
       //   event query with experience_id of searchObject
-      var eventObjectIdQuery = new Parse.Query('Event').equalTo("experience", searchObject.id).ascending("updatedAt");
+      var eventObjectIdQuery = new Parse.Query('Event').equalTo("experience", searchObject).ascending("updatedAt");
       //   experience query with title containing searchText
       var experienceTitleQuery = new Parse.Query('Experience').matches("name", searchRegex);
       var experienceDescriptionQuery = new Parse.Query('Experience').matches('description', searchRegex);
       var experienceCompoundQuery = Parse.Query.or(experienceTitleQuery, experienceDescriptionQuery);
-      //   user query with exp_shared containing searchExperienceObject
-      var userExpSharedQuery = new Parse.Query(Parse.User).containedIn("exp_sharing", [searchObject]).ascending("updatedAt");
+      
+      //   NEEDS TO ADD CHANGE TO A SKILLSHARE QUERY...!!!!!!!!
+      var skillShareQuery = new Parse.Query('SkillShare').equalTo("experience_id", searchObject);
+
       //console.log("SearchBar.observe() queries processed with :", nextState);
       return { eventResults: eventObjectIdQuery,
                experienceResults: experienceCompoundQuery,
-               userResults: userExpSharedQuery    }
+               skillShareResults: skillShareQuery }
     } else {
       //console.log("SearchBar.observe() - no queries processed, current state: ", nextState);
       return {
@@ -64,14 +70,9 @@ export default class Searchbar extends ParseComponent {
           <div className="searchbar-input-div-header">Search Filters</div>
           <input className="searchbar-input" ref="searchBarInput" type="text" 
                 onChange={this.updateSearchQuery.bind(this)} placeholder="Type to Search"/>
-          {/* 
-          <button onClick={this.logErrors.bind(this)}>State/Errors?</button>
-          <button onClick={this.showData.bind(this)}>Current this.data?</button>
-          <button onClick={this.pendingQs.bind(this)} >pendingQueries? </button>
-          {*/}
        </div>
         <div className="searchbar-results-div">
-          <SearchBarResultsBox users={this.data.userResults} events={this.data.eventResults} experiences={this.data.experienceResults} />
+          <SearchBarResultsBox skillshares={this.data.skillShareResults} events={this.data.eventResults} experiences={this.data.experienceResults} />
         </div>
       </div>
     )
@@ -108,15 +109,9 @@ export default class Searchbar extends ParseComponent {
   }
 
   clearDataStates() {
-    this.data.eventResults = undefined;
-    this.data.userResults  = undefined;
-  }
-
-  renderCards() {
-    // for this.data.query.map(object => {  
-    // if it's an event card, render an event card
-    // if it's a profile card, render a profile card
-    // })
+    this.data.eventResults       = undefined;
+    this.data.experienceResults  = undefined;
+    this.data.skillShareResults  = undefined;
   }
 
 //########### Temporary debugging remove once component finished ########

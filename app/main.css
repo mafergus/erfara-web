@@ -259,6 +259,9 @@ p, h1 {
   margin-right: 24px;
 }
 
+
+
+
 /* ######################################################################## */
 /* Experience Page */
 /* ######################################################################## */
@@ -283,11 +286,16 @@ p, h1 {
 }
 
 /* ######################################################################## */
+/* ######################################################################## */
+
+
+/* ######################################################################## */
 /* Header */
 /* ######################################################################## */
 
 .erfara-header {
   position: fixed;
+  display: block;
   top: 0px;
   z-index: 1;
   width: 100%;
@@ -389,6 +397,80 @@ p, h1 {
 [type=radio]:checked ~ label ~ .content {
   z-index: 1;
 }
+/* ######################################################################## */
+/* ######################################################################## */
+
+
+/* ######################################################################## */
+/* Profile Page */
+/* ######################################################################## */
+
+.profile-container{
+  background-color: red;
+  height: 100%;
+  width: 100%;
+}
+.profile-column{
+  background-color: black;
+  height: 100%;
+  width: 80%;
+  margin: 0 10% 0 10%;
+  padding: 20px 0 20px 0;
+}
+.profile-column-card {
+  border-radius: 4px;
+}
+.profile-column .row{
+  background-color: yellow;
+  width: 90%;
+  height: 200px;
+  margin: 20px 5% 20px 5%; 
+  clear: both;
+}
+.profile-column .bio{
+  background-color: green;
+  width: 100%;
+  height: 100%;
+}
+.profile-column .references{
+  background-color: green;
+  width: 65%;
+  height: 100%;
+  float: left;
+  margin-right: 2%;
+}
+.profile-column .following{
+  background-color: green;
+  width: 33%;
+  height: 100%;
+  float: left;
+}
+.profile-column .learning{
+  background-color: green;
+  width: 100%;
+  height: 100%;
+}
+.profile-column .sharing{
+  background-color: green;
+  width: 100%;
+  height: 100%;
+}
+.profile-column .upcoming{
+  background-color: green;
+  width: 33%;
+  height: 100%;
+  float: left;
+  margin-right: 2%;
+}
+.profile-column .feed{
+  background-color: green;
+  width: 65%;
+  height: 100%;
+  float: left;
+}
+
+/* ######################################################################## */
+/* ######################################################################## */
 
 /* ######################################################################## */
 /* UserBubble.jsx */
@@ -487,6 +569,98 @@ p, h1 {
 /* ######################################################################## */
 /* ######################################################################## */
 
+/* ######################################################################## */
+/* Card_Skillshare_Horizontal.jsx */
+/* ######################################################################## */
+
+.card-skillshare-horizontal {
+  display: inline-block;
+  position: relative;
+  height: 180px;
+  width: 98%;
+  margin: 2% 0% 2% 0%;
+  box-shadow: 1px 1px 1px #595959;
+  color: #7D7D7D;
+  font-family: Roboto-Regular;
+}
+
+.card-skillshare-horizontal .photo-div{
+  height: 100%;
+  width: 30%;
+  display: inline-block;
+  background: white;
+  border-radius: 2px 0px 0px 2px;
+  overflow: hidden;
+}
+
+.card-skillshare-horizontal .photo img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-skillshare-horizontal .stripe {
+  height: 100%;
+  width: 0.5%;
+  display: inline-block;
+  background-color: #FFD000;
+}
+
+.card-skillshare-horizontal .info{
+  height: 100%;
+  width: 69.5%;
+  display: inline-block;
+  background: white;
+  border-radius: 0px 2px 2px 0px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-skillshare-horizontal .info .top-left-cluster{
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  width: 100%;
+  display: inline-block;
+}
+
+.card-skillshare-horizontal .info .title {
+  display: inline-block;
+  text-align: left;
+  font-size:40px;
+  font-family: Roboto-Regular;
+  color: black;
+}
+
+.card-skillshare-horizontal .info .userbubble {
+  display: inline-block;
+}
+
+.card-skillshare-horizontal .info .description {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  width: 98%;
+  height: 30%;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+}
+
+.card-skillshare-horizontal .info .rating {
+  position: absolute;
+  bottom: 2%;
+  left: 2%;
+}
+
+.card-skillshare-horizontal .info .location {
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
+}
+
+/* ######################################################################## */
+/* ######################################################################## */
+
 
 /* ######################################################################## */
 /* Card_Event_Horizontal.jsx */
@@ -508,7 +682,7 @@ p, h1 {
   font-family: Roboto-Regular;
 }
 
-.card-event-horizontal-photo-div{
+.card-event-horizontal .photo-div{
   height: 100%;
   width: 30%;
   display: inline-block;
@@ -517,20 +691,20 @@ p, h1 {
   overflow: hidden;
 }
 
-.card-event-horizontal-photo{
+.card-event-horizontal .photo{
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
 
-.card-event-horizontal-stripe {
+.card-event-horizontal .stripe {
   height: 100%;
   width: 0.5%;
   display: inline-block;
   background-color: #CF000F;
 }
 
-.card-event-horizontal-info{
+.card-event-horizontal .info{
   height: 100%;
   width: 69.5%;
   display: inline-block;
@@ -540,31 +714,31 @@ p, h1 {
   position: relative;
 }
 
-.card-event-horizontal-info-title{
+.card-event-horizontal .info .title{
   position: absolute;
   top: 5%;
   left: 2%;
 }
 
-.card-event-horizontal-info-time{
+.card-event-horizontal .info .time{
   position: absolute;
   top: 5%;
   right: 2%;
 }
 
-.card-event-horizontal-info-userbubble{
+.card-event-horizontal .info .userbubble{
   position: absolute;
   top: 28%;
   left: 0%;
 }
 
-.card-event-horizontal-info-location{
+.card-event-horizontal .info .location{
   position: absolute;
   bottom: 5%;
   left: 2%;
 }
 
-.card-event-horizontal-info-availability{
+.card-event-horizontal .info .availability{
   position: absolute;
   bottom: 5%;
   right: 2%; 
@@ -1463,6 +1637,7 @@ font-size: 13px;
   background-color: #ffffff;
   box-shadow: 1px 1px 1px #595959;
   border-radius: 2px;
+  min-height: 400px;
 }
 
 .searchbar-input-div-header {
@@ -1503,6 +1678,7 @@ font-size: 13px;
   display: flex;
   box-shadow: 1px 1px 1px #595959 !important;
   margin-bottom: 1.5%;
+  min-height: 100px;
 }
 
 .search-results-container .menu-buttons{
@@ -1537,7 +1713,7 @@ font-size: 13px;
   border-bottom: 4px solid #CF000F;
 }
 
-#buttonUsr:checked ~ #buttonUsrLbl {
+#buttonSkillShare:checked ~ #buttonSkillShareLbl {
   color: #311700;
   border-bottom: 4px solid #FFD000;
 }

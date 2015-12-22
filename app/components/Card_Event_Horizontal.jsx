@@ -44,25 +44,25 @@ export default class CardEventHorizontal extends ParseComponent {
 
     return(
       <div className="card-event-horizontal">
-        <div className="card-event-horizontal-photo-div">
-          <img className="card-event-horizontal-photo" src={this.props.event.photo._url} alt="Photo"/>
+        <div className="photo-div">
+          <img className="photo" src={this.props.event.photo._url} alt="Photo"/>
         </div>
-        <div className="card-event-horizontal-stripe">
+        <div className="stripe">
         </div>
-        <div className="card-event-horizontal-info">
-          <div className="card-event-horizontal-info-title">
+        <div className="info">
+          <div className="title">
             <h1> {this.props.event.title} </h1>
           </div>
-          <div className="card-event-horizontal-info-time">
+          <div className="time">
             {this.getTime()}
           </div>
-          <div className="card-event-horizontal-info-userbubble">
+          <div className="userbubble">
               <UserBubble owner={this.data.owner[0]} text="yes" />
           </div>
-          <div className="card-event-horizontal-info-location">
+          <div className="location">
             todo:GeoLocations
           </div>
-          <div className="card-event-horizontal-info-availability">
+          <div className="availability">
             todo:Availability
           </div>
         </div>
