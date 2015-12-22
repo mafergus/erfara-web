@@ -12,6 +12,17 @@ export default class Profile extends ParseComponent {
   }
 
   observe(nextProps, nextState) {
+    //  queries to get:
+    //    current user
+    //    todo: references
+    //    following/followers
+    //    learning exp objects
+    //    skillshare objects
+    //    events hosted
+    //    events participating in
+    return {
+      currentUser
+    }
   }
 
   render() {
