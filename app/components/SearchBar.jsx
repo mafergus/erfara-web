@@ -66,17 +66,40 @@ export default class Searchbar extends ParseComponent {
   render() {
     return(
       <div className="searchbar-container">
-        <div className="searchbar-input-div">
-          <div className="searchbar-input-div-header">Search Filters</div>
-          <input className="searchbar-input" ref="searchBarInput" type="text" 
-                onChange={this.updateSearchQuery.bind(this)} placeholder="Type to Search"/>
-       </div>
-        <div className="searchbar-results-div">
-          <SearchBarResultsBox skillshares={this.data.skillShareResults} events={this.data.eventResults} experiences={this.data.experienceResults} />
+        <div className="serchbar-wrapper">
+          <div className="serchbar-input">
+            <div className="searchbar-input-div">
+              <div className="searchbar-input-div-header">
+                <h1>Search Filters</h1>
+                <div className="search-go-btn">Go</div>
+              </div>
+              <div className="searchbar-input-container">
+                <div className="searchbar-input-wrapper">
+                  <input className="searchbar-input" ref="searchBarInput" type="text" 
+                      onChange={this.updateSearchQuery.bind(this)} placeholder="Search"/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="serchbar-results">
+           <div className="searchbar-results-div">
+              <SearchBarResultsBox skillshares={this.data.skillShareResults} events={this.data.eventResults} experiences={this.data.experienceResults} />
+            </div>
+          </div>
         </div>
       </div>
     )
   }
+
+      //   <div className="searchbar-container">
+
+      //   <div className="searchbar-wrapper">
+
+      //   </div>
+      //   <div className="searchbar-results-div">
+      //     <SearchBarResultsBox skillshares={this.data.skillShareResults} events={this.data.eventResults} experiences={this.data.experienceResults} />
+      //   </div>
+      // </div>
 
   updateSearchQuery() {
     var searchQuery = ReactDOM.findDOMNode(this.refs.searchBarInput).value;

@@ -38,7 +38,7 @@ componentDidMount(){
                 <input type="radio" value="buttonSkillShare" name="menubuttons" id="buttonSkillShare" />
                 <label htmlFor="buttonSkillShare" id="buttonSkillShareLbl" onClick={this.setTab.bind(this, "buttonSkillShare")}>SkillShares</label> 
               </form>
-              </div>
+            </div>
           </div>
           <div className="render-area">
             {this.renderCards()}

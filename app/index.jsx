@@ -8,7 +8,7 @@ import { createHistory, useBasename } from 'history';
 import { Link, Route, IndexRoute} from 'react-router';
 import Router from 'react-router';
 import Home from './components/Home';
-import SearchBar from './components/SearchBar';
+import Discover from './components/Discover';
 import Messages from './components/Messages';
 import Profile from './components/Profile';
 import Experience from './components/Experience';
@@ -29,9 +29,9 @@ document.body.appendChild(mountNode);
 ReactDOM.render((
   <Router history={history}>
     <Route path="/" component={App} >
-      <IndexRoute component={Experience} />
+      <IndexRoute component={Home} />
       <Route path="home" component={Home} />
-      <Route path="discover" component={SearchBar} />
+      <Route path="discover" component={Discover} />
       <Route path="messages" component={Experience} />
       <Route path="profile" component={Profile} />
       <Route path="experiences/:experienceId" component={Experience} />

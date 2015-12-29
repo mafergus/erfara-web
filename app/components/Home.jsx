@@ -50,7 +50,7 @@ export default class Home extends ParseComponent {
       <div className="home">
 
         <div id="jumbo-div">
-          <img src={ require("../img/kayaking.jpg") }></img>
+          <img className="main-img"></img>
           <div id="overlay"></div>
           <div id="text">
             <div id="text-bg"></div>

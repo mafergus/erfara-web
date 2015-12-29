@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Parse from 'parse';
 import ParseReact from 'parse-react';
 import HomeExperienceCard from './HomeExperienceCard';
+import SearchBar from './SearchBar';
 var ParseComponent = ParseReact.Component(React);
 
 export default class Experience extends ParseComponent {
@@ -14,7 +15,6 @@ export default class Experience extends ParseComponent {
   }
 
   componentDidUpdate() {
-    this.getDOMNode().scrollTop = 0;
     window.scrollTo(0,0);
   }
 
@@ -38,22 +38,30 @@ export default class Experience extends ParseComponent {
       title = this.data.experience[0].name;
     }
 
+    var imgStyle = {
+      backgroundImage: 'url(' + photoUrl + ')',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundPosition: '50% 50%',
+        backgroundSize: 'cover',
+        backgroundBlendMode: 'darken',
+        backgroundColor: 'rgba(29, 116, 0, .5)',
+        objectFit: 'cover',
+    };
+
     return(
       <div className="experience">
 
-        <div id="jumbo-div">
-          <img src={ photoUrl }></img>
-          <div id="overlay"></div>
-          <div id="title-container"><h1>YOGA</h1></div>
+        <div id="experience-jumbo-div">
+          <img style={ imgStyle }></img>
+          <div id="title-container"><h1>{ title }</h1></div>
+          <div className="user-pics"></div>
         </div>
 
-        <div id="filter-bar">
-        </div>
-
-        <div id="cards-div">
-          <div id="cards-container">
-          </div>
-        </div>
+        <SearchBar style={{ position: 'absolute', top: '0px', left: '0px' }} />
       </div>
     );
   }
