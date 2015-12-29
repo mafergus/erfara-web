@@ -12,42 +12,73 @@ export default class Profile extends ParseComponent {
   }
 
   observe(nextProps, nextState) {
+    //  queries to get:
+    //    current user
+    //    todo: references
+    //    following/followers
+    //    learning exp objects
+    //    skillshare objects
+    //    events hosted
+    //    events participating in
+    return {
+      
+    }
   }
 
   render() {
-    return(
-      <div className="profile-container">
-        <button onClick={this.login.bind(this)}>Temporary Login Btn</button>
-        <button onClick={this.logout.bind(this)}>Temp Logout Btn</button>
-        <span> Current user = {Parse.User.current() ?  Parse.User.current().getUsername() : "no session"} </span>
-        <div className="profile-column">
-          <div className="row">
-            <div className="bio profile-column-card">
-            </div>
-          </div>
-          <div className="row">
-            <div className="references profile-column-card">
-            </div>
-            <div className="following profile-column-card">
-            </div>
-          </div>
-          <div className="row">
-            <div className="learning profile-column-card">
-            </div>
-          </div>
-          <div className="row">
-            <div className="sharing profile-column-card">
-            </div>
-          </div>
-          <div className="row">
-            <div className="upcoming profile-column-card">
-            </div>
-            <div className="feed">
-            </div>
-          </div>
-        </div>
-      </div>
-    )
+    if(Parse.User.current()){
+      return(
+              <div className="profile-container">
+                <button onClick={this.login.bind(this)}>Temporary Login Btn</button>
+                <button onClick={this.logout.bind(this)}>Temp Logout Btn</button>
+                <span> Current user = {Parse.User.current() ?  Parse.User.current().getUsername() : "no session"} </span>
+                <div className="profile-column">
+                  <div className="row">
+                    <div className="bio profile-column-card">
+                      <div className="photo">
+                      </div>
+                      <div className="stripe">
+                      </div>
+                      <div className="info">
+                        <div className="header">
+                        </div>
+                        <div className="about">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="references profile-column-card">
+                    </div>
+                    <div className="following profile-column-card">
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="learning profile-column-card">
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="sharing profile-column-card">
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="upcoming profile-column-card">
+                    </div>
+                    <div className="feed">
+                    </div>
+                  </div>
+                </div>
+              </div>
+      );
+    } else {
+      return(
+              <div className="profile-container">
+                <button onClick={this.login.bind(this)}>Temporary Login Btn</button>
+                <button onClick={this.logout.bind(this)}>Temp Logout Btn</button>
+                <span> Current user = {Parse.User.current() ?  Parse.User.current().getUsername() : "no session"} </span>
+              </div>
+      );
+    }
   }
 
  login(){
