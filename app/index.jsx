@@ -12,6 +12,7 @@ import Discover from './components/Discover';
 import Messages from './components/Messages';
 import Profile from './components/Profile';
 import Experience from './components/Experience';
+import Event from './components/Event';
 
 Parse.initialize("2ORhMZvPcIVIQXCKRevAcDKKB3qTKdISH1s7kunP", "EVbY8lGJqEfzDkSceJ8qZDRbeSrpfGMy2hbRkZOH");
 
@@ -32,7 +33,7 @@ ReactDOM.render((
       <IndexRoute component={Home} />
       <Route path="home" component={Home} />
       <Route path="discover" component={Discover} />
-      <Route path="messages" component={Experience} />
+      <Route path="messages" component={Event} />
       <Route path="profile" component={Profile} />
       <Route path="experiences/:experienceId" component={Experience} />
       <Route path="*" component={NotFound} />

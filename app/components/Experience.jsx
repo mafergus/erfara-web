@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Parse from 'parse';
 import ParseReact from 'parse-react';
 import HomeExperienceCard from './HomeExperienceCard';
+import ExperienceSearchBar from './ExperienceSearchBar';
 import SearchBar from './SearchBar';
 var ParseComponent = ParseReact.Component(React);
 
@@ -20,8 +21,8 @@ export default class Experience extends ParseComponent {
 
   observe(nextProps, nextState) {
     return {
-      events: (new Parse.Query("Event").equalTo("experience", this.props.params.experienceId )),
-      experience: (new Parse.Query("Experience").equalTo("objectId", this.props.params.experienceId))
+      events: (new Parse.Query("Event").equalTo("experience", nextProps.params.experienceId )),
+      experience: (new Parse.Query("Experience").equalTo("objectId", nextProps.params.experienceId))
     };
   }
 
@@ -29,8 +30,10 @@ export default class Experience extends ParseComponent {
 
     let { experienceId } = this.props.params;
     console.log("DATA " + JSON.stringify(this.data) + " data? " + this.data.toString() );
-    console.log("Experience " + this.data.experienced + " exp[0] " + this.data.experience[0] + JSON.stringify(this.data.experience));
+    console.log("Experience " + this.data.experience + " exp[0] " + this.data.experience[0] + JSON.stringify(this.data.experience));
 
+    var isExperience = (this.data.experience.length > 0) ? true : false;
+    console.log("IS EXPERIENCE??? " + isExperience);
     var photoUrl = "";
     var title = "";
     if (this.data.experience && this.data.experience.length > 0) {
@@ -61,7 +64,7 @@ export default class Experience extends ParseComponent {
           <div className="user-pics"></div>
         </div>
 
-        <SearchBar style={{ position: 'absolute', top: '0px', left: '0px' }} />
+        <ExperienceSearchBar style={{ position: 'absolute', top: '0px', left: '0px' }} isExperience={isExperience} experience={this.data.experience[0]} />
       </div>
     );
   }

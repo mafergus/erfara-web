@@ -3,14 +3,10 @@ import '../main.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Authentication from './Authentication';
-import { Link } from 'react-router';
 import Menu from './Menu';
+import Header from './Header';
 
 export default class App extends React.Component {
-
-  alertMe(id) {
-    alert(id);
-  }
 
   render() {
 
@@ -20,19 +16,7 @@ export default class App extends React.Component {
           <Authentication />
         </div>
 
-        <div className="erfara-header">
-          <div className="icon-container">
-            <img id="erfara-icon" src={ require("../img/erfara_icon.png") }></img>
-            <p onClick={this.alertMe.bind(this, "thisesting")}>Erfara</p>
-          </div>
-          <div className="header-links-container">
-            <Link to="home">Home</Link>
-            <Link to="discover">Discover</Link>
-            <Link to="messages">Messages</Link>
-            <Link to="profile">Profile</Link>
-          </div>
-          <Menu />
-        </div>
+        <Header />
 
         <div style={{position: 'absolute', top: '0px', width: '100%', height: '100%'}}>
           <div className="Content" style={{position: 'absolute', top: '0px', width: '100%'}}>

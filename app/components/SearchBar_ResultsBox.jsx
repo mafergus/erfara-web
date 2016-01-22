@@ -26,18 +26,32 @@ componentDidMount(){
 }
 
   render() {
+    var stuf = {
+      
+    }
+    var experienceButton;
+    if (!this.props.isExperience) {
+      experienceButton = (
+        <div>
+        <input type="radio" value="buttonExp" name="menubuttons" id="buttonExp" />
+        <label htmlFor="buttonExp" id="buttonExpLbl" onClick={this.setTab.bind(this, "buttonExp")}>Experiences</label>
+        </div>
+        );
+    } else {
+      experienceButton = <div></div>
+    }
+    console.log("SearchBarResultsBox isExperience " + this.props.isExperience);
     return(
       <div className="search-results-container">
           <div className="menu">
             <div className="menu-buttons">
-              <form>
-                <input type="radio" value="buttonExp" name="menubuttons" id="buttonExp" />
-                <label htmlFor="buttonExp" id="buttonExpLbl" onClick={this.setTab.bind(this, "buttonExp")}>Experiences</label>
+              <div className={(this.props.isExperience) ? "menu-buttons-container-three-buttons" : "menu-buttons-container-two-buttons"}>
+                { experienceButton }
                 <input type="radio" value="buttonEvt" name="menubuttons" id="buttonEvt" />
                 <label htmlFor="buttonEvt" id="buttonEvtLbl" onClick={this.setTab.bind(this, "buttonEvt")}>Events</label>
                 <input type="radio" value="buttonSkillShare" name="menubuttons" id="buttonSkillShare" />
                 <label htmlFor="buttonSkillShare" id="buttonSkillShareLbl" onClick={this.setTab.bind(this, "buttonSkillShare")}>SkillShares</label> 
-              </form>
+              </div>
             </div>
           </div>
           <div className="render-area">

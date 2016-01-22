@@ -16,18 +16,17 @@ var ParseComponent = ParseReact.Component(React);
 
 import SearchBarResultsBox from './SearchBar_ResultsBox';
 
-export default class Searchbar extends ParseComponent {
+export default class ExperienceSearchbar extends ParseComponent {
 
   // getInitialState is not used in React ES6 components. Hardcode it in the constructor.
   constructor() {
     super();
-    // console.log("SearchBar#constructor " + this.props.experience);
+
     this.state = {
       searchStateVariableText: "",
-      searchExperienceObject: ((this.props === undefined || this.props.experience === undefined) ? undefined : this.props.experience),
+      searchExperienceObject: undefined,
       searchResultsTab: "events"
     }
-    var searchText;
   }
 
   componentDidMount(){
@@ -37,13 +36,14 @@ export default class Searchbar extends ParseComponent {
   observe(nextProps, nextState) {
     // search state variable - text
     // search state variable - searchExperienceObject
-    var searchText = nextState.searchStateVariableText;
-    var searchObject = nextState.searchExperienceObject;
+    console.log("isExperience " + nextProps.isExperience);
+    var searchText = (nextProps.isExperience) ? nextProps.experience.name : nextState.searchStateVariableText;
+    var searchObject = (nextProps.isExperience) ? nextProps.experience : nextState.searchExperienceObject;
     var searchRegex = new RegExp(searchText, "i");
 
-    if (searchText.length > 2 && searchObject){
+    if (searchText.length > 2 && searchObject) {
       //   event query with experience_id of searchObject
-      var eventObjectIdQuery = new Parse.Query('Event').equalTo("experience", searchObject).ascending("updatedAt");
+      var eventObjectIdQuery = new Parse.Query('Event').equalTo("experience_id", searchObject.objectId).ascending("updatedAt");
       //   experience query with title containing searchText
       var experienceTitleQuery = new Parse.Query('Experience').matches("name", searchRegex);
       var experienceDescriptionQuery = new Parse.Query('Experience').matches('description', searchRegex);

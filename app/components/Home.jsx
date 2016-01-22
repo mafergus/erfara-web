@@ -50,12 +50,22 @@ export default class Home extends ParseComponent {
       <div className="home">
 
         <div id="jumbo-div">
-          <img className="main-img"></img>
+          <img id="bg-img"></img>
           <div id="overlay"></div>
           <div id="text">
-            <div id="text-bg"></div>
-            <h1>Kayaking</h1>
-            <h2>...one of over 1,452 and counting experiences on Erfara</h2>
+            <h1 style={{marginBottom: "17px"}}>Ocean Beach Music Sunday</h1>
+            <h2>Sunday, December 16, 2015</h2>
+            <div id="subtext">
+              <h2>6:00-8:00pm</h2>
+              <div id="location"></div>
+              <h2>Ocean Beach</h2>
+            </div>
+            <div id="img-container">
+              <img id="jumboUserImage" src="http://www.meganfox.com/wp-content/uploads/2014/01/3.jpg"></img>
+              <img id="jumboUserImage" src="http://bit.ly/1Q8skwh"></img>
+              <img id="jumboUserImage" src="http://www.meganfox.com/wp-content/uploads/2014/01/3.jpg"></img>
+              <img id="jumboUserImage" src="http://bit.ly/1Q8skwh"></img>
+            </div>
           </div>
         </div>
 

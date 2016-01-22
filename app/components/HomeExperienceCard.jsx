@@ -20,9 +20,9 @@ export default class HomeExperienceCard extends React.Component {
           <div id="overlay"></div>
           <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}><h1>{this.props.name}</h1></div>
           <div id="img-container">
-            <img className="userImage" src="http://bit.ly/1TGdlHL"></img>
+            <img className="userImage" src="http://www.meganfox.com/wp-content/uploads/2014/01/3.jpg"></img>
             <img className="userImage" src="http://bit.ly/1Q8skwh"></img>
-            <img className="userImage" src="http://bit.ly/1TGdlHL"></img>
+            <img className="userImage" src="http://www.meganfox.com/wp-content/uploads/2014/01/3.jpg"></img>
             <img className="userImage" src="http://bit.ly/1Q8skwh"></img>
           </div>
           <div id="icons-container">

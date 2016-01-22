@@ -81,44 +81,43 @@ p, h1 {
 #jumbo-div {
   position: relative;
   width: 100%;
-  height: 354px;
+  height: 450px;
 }
 
-
-.home #jumbo-div #text {
-  position: relative;
-  margin-left: 150px;
-  width: 320px;
-  height: 100px;
-}
-
-.home #jumbo-div #text-bg {
+#jumbo-div #text {
   position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #311700;
-  opacity: 0.4;
-  border-radius: 10px;
-  width: 320px;
-  height: 100px;
+  width: 100%;
+  height: auto;
+  margin-left: 65px;
+  margin-top: 100px;
 }
 
-.home #jumbo-div h1 {
-  position: absolute;
+#jumbo-div #subtext {
+  text-align: left;
+}
+
+#jumbo-div #text h2 {
+  display: inline-block;
   font-family: Roboto-Light;
-  top: 0;
-  left: 0;
-  font-size: 50px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.74);
+  margin: 0;
+}
+
+#jumbo-div h1 {
+  font-family: Roboto-Thin;
+  font-size: 30px;
   color: white;
 }
 
-.home #jumbo-div h2 {
-  position: absolute;
-  font-family: Roboto-Regular;
-  left: 0;
-  bottom: 0;
-  font-size: 12px;
-  color: white;
+#jumbo-div #location {
+  position: relative;
+  display: inline-block;
+  margin-right: 6px;
+  height: 25px;
+  width: 25px;
+  vertical-align: baseline;
+  background: url("./img/location_gray.png") no-repeat center;
 }
 
 #jumbo-div #overlay {
@@ -131,7 +130,7 @@ p, h1 {
   background-color: #311700;
 }
 
-#jumbo-div img {
+#jumbo-div #bg-img {
   position: absolute;
   top: 0;
   left: 0;
@@ -141,8 +140,27 @@ p, h1 {
   background-position: 50% 50%;
   background-size: cover;
   background-blend-mode: multiply;
-  background-color: red;
+  background-color: #F39C11;
   object-fit: cover;
+}
+
+#jumbo-div #img-container {
+  position: absolute;
+  left: 0;
+  top: 250px;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: left;
+}
+
+#jumboUserImage {
+  position: relative;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+  border: 1px solid rgba(100, 100, 100, 0.3);
 }
 
 .home #filter-bar {
@@ -326,6 +344,147 @@ p, h1 {
 }
 
 /* ######################################################################## */
+/* Card Shadows */
+/* ######################################################################## */
+
+.card-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.2s ease-in-out;
+}
+
+.card-1:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.card-2 {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.card-3 {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.card-4 {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.card-5 {
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+
+/* ######################################################################## */
+/* Event Page */
+/* ######################################################################## */
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+}
+
+.event #content {
+  width: 67%;
+}
+
+.user-description-card {
+  padding: 15px 0 8px 0;
+  background-color: white;
+  width: 100%;
+  border-radius: 2px;
+}
+
+#jumbo-div {
+  position: relative;
+  width: 100%;
+  height: 354px;
+}
+
+.event #jumbo-div #bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("./img/BBQ.jpg");
+  background-position: 50% 50%;
+  background-size: cover;
+  background-blend-mode: multiply;
+  background-color: red;
+  object-fit: cover;
+}
+
+.event #jumboUserImage {
+  position: relative;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-right: 9px;
+  border: 1px solid rgba(100, 100, 100, 0.3);
+}
+
+#jumbo-div #text {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  margin-left: 240px;
+  margin-top: 85px;
+}
+
+.event #user-info {
+  width: 12.5%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.event #user-info p {
+  font-color: #311700;
+  font-size: 14px;
+  font-family: Roboto-Medium;
+  text-align: center;
+}
+
+.event #user-img {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+}
+
+.event .user-description-card p {
+  font-size: 14px;
+  font-family: Roboto-Regular;
+}
+
+.event .description-expanded {
+  height: 100%;
+  margin: 0px;
+  width: 84%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.event .description-contracted {
+  height: 50px;
+  margin: 0px;
+  width: 84%;
+  height: 80px;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#jumbo-div #img-container {
+  position: absolute;
+  left: 0;
+  top: 200px;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: left;
+}
+
+/* ######################################################################## */
 /* ######################################################################## */
 
 
@@ -340,7 +499,7 @@ p, h1 {
   z-index: 1;
   width: 100%;
   height: 60px;
-  background-color: transparent;
+  background-color: rgba(49, 23, 0, 0.2);
   border-bottom: 1px solid rgba(49, 23, 0, .05);
 }
 
@@ -358,14 +517,14 @@ p, h1 {
   display: inline-block;
   font-family: Roboto-Bold;
   color: #F39C11;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 #erfara-icon {
   display: inline-block;
   margin-right: 6px;
-  height: 35px;
-  width: 35px;
+  height: 25px;
+  width: 25px;
 }
 
 .header-links-container {
@@ -1856,7 +2015,9 @@ font-size: 13px;
 }
 
 .search-results-container .menu-buttons {
-  width: 70%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
   height: 30%;
   align-self: flex-end;
 }
@@ -1869,10 +2030,18 @@ font-size: 13px;
   color: #7D7D7D;
   padding-bottom: 20px;
   margin-bottom: 20px;
-  width: 33%;
+  width: 120px;
   text-align: center;
   display: block;
   float: left;
+}
+
+.search-results-container .menu .menu-buttons .menu-buttons-container-two-buttons {
+  width: 240px;
+}
+
+.search-results-container .menu .menu-buttons .menu-buttons-container-three-buttons {
+  width: 360px;
 }
 
 #buttonExp:checked ~ #buttonExpLbl {
