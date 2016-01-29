@@ -14,7 +14,7 @@ import Parse from 'parse';
 import ParseReact from 'parse-react';
 var ParseComponent = ParseReact.Component(React);
 
-import SearchBarResultsBox from './SearchBar_ResultsBox';
+import SearchBarResultsBox from './SearchBarResultsBox';
 
 export default class ExperienceSearchbar extends ParseComponent {
 

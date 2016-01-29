@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Parse from 'parse';
 import ParseReact from 'parse-react';
 import HomeExperienceCard from './HomeExperienceCard';
-import CardProfile from './Card_Profile';
+import CardProfile from './CardProfile';
 import EventDescriptionCard from './EventDescriptionCard';
 var Router = require('react-router');
 var { Route, DefaultRoute, RouteHandler, Link } = Router;
