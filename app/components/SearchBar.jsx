@@ -114,12 +114,14 @@ export default class Searchbar extends ParseComponent {
         experienceQuery.matches("name", searchText, "i");
         experienceQuery.find({
           success: function(results){
-            console.log("Searching for Experiences, got: " + JSON.stringify(results[0]) + " name: " + results[0].get("name") );
-            // console.log("Got an experience named: " + experience[0].name + " for search " + searchText);
             // If result array is empty, clear out existing data
-            if(results.length < 1 && _this.data.eventResults 
-                                     && _this.data.userResults) _this.clearDataStates();
-            _this.setState({searchExperienceObject: results[0]});
+            if(results.length < 1 && _this.data.eventResults && _this.data.userResults) {
+              _this.clearDataStates();
+            }
+            if (results.length > 0) {
+              console.log("Searching for Experiences, got: " + JSON.stringify(results[0]) + " name: " + results[0].get("name") );
+              _this.setState({searchExperienceObject: results[0]});
+            }
           }, 
           error: function(error) { console.log("SearchBar.updateSearchQuery.experienceQuery failed with: " + error.message); }
         });

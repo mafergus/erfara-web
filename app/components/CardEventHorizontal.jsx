@@ -40,10 +40,16 @@ export default class CardEventHorizontal extends ParseComponent {
     }
   }
 
+  onCardClick() {
+    console.log("Event id " + this.props.event.objectId);
+
+    this.context.history.pushState(null, '/events/' + this.props.event.objectId);
+  }
+
   render() {
 
     return(
-      <div className="card-event-horizontal">
+      <div className="card-event-horizontal card-1" onClick={this.onCardClick.bind(this)}>
         <div className="photo-div">
           <img className="photo" src={this.props.event.photo._url} alt="Photo"/>
         </div>
@@ -77,6 +83,10 @@ export default class CardEventHorizontal extends ParseComponent {
     return localDateTime;
   }
 
+};
+
+CardEventHorizontal.contextTypes = {
+  history: React.PropTypes.object.isRequired,
 };
 
 

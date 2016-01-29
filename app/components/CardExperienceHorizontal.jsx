@@ -4,7 +4,7 @@ import ParseReact from 'parse-react';
 var ParseComponent = ParseReact.Component(React);
 import UserBubble from './UserBubble';
 
-export default class CardEventHorizontal extends ParseComponent {
+export default class CardExperienceHorizontal extends ParseComponent {
   
   //Props - is passed a full experience JSON object
 
@@ -43,13 +43,18 @@ export default class CardEventHorizontal extends ParseComponent {
       return {
       }
     }
+  }
 
+  onCardClick() {
+    console.log("Card click experience id " + this.props.experience.objectId);
+
+    this.context.history.pushState(null, '/experiences/' + this.props.experience.objectId);
   }
 
   render() {
-
+    var self = this;
     return(
-      <div className="card-experience-horizontal">
+      <div className="card-experience-horizontal card-1" onClick={this.onCardClick.bind(self)}>
         <div className="photo-div">
           <img className="photo" src={this.props.experience.photo._url} alt="Photo"/>
         </div>
@@ -95,5 +100,8 @@ export default class CardEventHorizontal extends ParseComponent {
       );  
     }
   }
+};
 
+CardExperienceHorizontal.contextTypes = {
+  history: React.PropTypes.object.isRequired,
 };

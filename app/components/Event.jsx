@@ -13,9 +13,27 @@ export default class Event extends ParseComponent {
   mixins: [ParseReact.Mixin] // Enable query subscriptions
 
   observe(nextProps, nextState) {
+    return {
+      event: (new Parse.Query("Event").equalTo("objectId", nextProps.params.eventId )),
+    };
   }
 
   render() {
+
+    var title = "";
+    var creatorName = "";
+    var creatorPhoto = "";
+    var description = "";
+
+    if (this.data.event && this.data.event.length > 0) {
+      console.log("Got Event! " + JSON.stringify(this.data.event[0]) );
+      var theEvent = this.data.event[0];
+      title = theEvent.title;
+      description = theEvent.description;
+      creatorName = theEvent.owner.first_name;
+      console.log("Photo url " + theEvent.owner.photo.url());
+      creatorPhoto = theEvent.owner.photo.url();
+    }
 
     return(
       <div className="event">
@@ -24,7 +42,7 @@ export default class Event extends ParseComponent {
           <img className="background-img" id="bg-img"></img>
           <div id="overlay"></div>
           <div id="text">
-            <h1 style={{marginBottom: "17px"}}>Some Badass Event</h1>
+            <h1 style={{marginBottom: "17px"}}>{title}</h1>
             <h2>Sunday, December 16, 2015</h2>
             <div id="subtext">
               <h2>6:00-8:00pm</h2>
@@ -43,7 +61,7 @@ export default class Event extends ParseComponent {
         <div className="centered-container">
           <div id="content" style={{marginTop: "10px"}}>
             
-            <EventDescriptionCard />
+            <EventDescriptionCard description={description} creatorName={creatorName} creatorPhotoUrl={creatorPhoto}/>
             
             <div id="subcontent" style={{width: "100%", marginTop: "10px"}}>
               <div id="left-content" style={{backgroundColor: "red", width: "80%", height: "500px", display: "inline-block"}}>
