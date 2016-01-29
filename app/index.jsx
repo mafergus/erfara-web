@@ -36,6 +36,7 @@ ReactDOM.render((
       <Route path="messages" component={Event} />
       <Route path="profile" component={Profile} />
       <Route path="experiences/:experienceId" component={Experience} />
+      <Route path="events/:eventId" component={Event} />
       <Route path="*" component={NotFound} />
     </Route>
   </Router>
