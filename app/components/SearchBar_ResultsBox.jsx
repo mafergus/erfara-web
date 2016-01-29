@@ -40,12 +40,12 @@ componentDidMount(){
     } else {
       experienceButton = <div></div>
     }
-    console.log("SearchBarResultsBox isExperience " + this.props.isExperience);
+
     return(
       <div className="search-results-container">
           <div className="menu">
             <div className="menu-buttons">
-              <div className={(this.props.isExperience) ? "menu-buttons-container-three-buttons" : "menu-buttons-container-two-buttons"}>
+              <div className={(this.props.isExperience) ? "menu-buttons-container-two-buttons" : "menu-buttons-container-three-buttons"}>
                 { experienceButton }
                 <input type="radio" value="buttonEvt" name="menubuttons" id="buttonEvt" />
                 <label htmlFor="buttonEvt" id="buttonEvtLbl" onClick={this.setTab.bind(this, "buttonEvt")}>Events</label>

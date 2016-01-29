@@ -43,7 +43,7 @@ export default class Searchbar extends ParseComponent {
 
     if (searchText.length > 2 && searchObject){
       //   event query with experience_id of searchObject
-      var eventObjectIdQuery = new Parse.Query('Event').equalTo("experience", searchObject).ascending("updatedAt");
+      var eventObjectIdQuery = new Parse.Query('Event').equalTo("experience", searchObject.get("objectId")).ascending("updatedAt");
       //   experience query with title containing searchText
       var experienceTitleQuery = new Parse.Query('Experience').matches("name", searchRegex);
       var experienceDescriptionQuery = new Parse.Query('Experience').matches('description', searchRegex);
@@ -65,7 +65,6 @@ export default class Searchbar extends ParseComponent {
   }
 
   render() {
-    console.log("SearchBar isExperience " + this.props.isExperience);
     
     return(
       <div className="searchbar-container">
@@ -107,18 +106,20 @@ export default class Searchbar extends ParseComponent {
     var _this = this;
     var experienceQuery = new Parse.Query('Experience');
 
-    if(searchLength <3){
+    if(searchLength < 3){
       this.clearDataStates();
     } else if (searchLength >= 3){
         //console.log("searchlength >=3 triggered");
         // figure out which type of experience objectID based on text and setstate
         experienceQuery.matches("name", searchText, "i");
         experienceQuery.find({
-          success: function(experience){
+          success: function(results){
+            console.log("Searching for Experiences, got: " + JSON.stringify(results[0]) + " name: " + results[0].get("name") );
+            // console.log("Got an experience named: " + experience[0].name + " for search " + searchText);
             // If result array is empty, clear out existing data
-            if(experience.length < 1 && _this.data.eventResults 
+            if(results.length < 1 && _this.data.eventResults 
                                      && _this.data.userResults) _this.clearDataStates();
-            _this.setState({searchExperienceObject: experience[0]});
+            _this.setState({searchExperienceObject: results[0]});
           }, 
           error: function(error) { console.log("SearchBar.updateSearchQuery.experienceQuery failed with: " + error.message); }
         });
