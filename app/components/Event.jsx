@@ -5,6 +5,7 @@ import ParseReact from 'parse-react';
 import HomeExperienceCard from './HomeExperienceCard';
 import CardProfile from './CardProfile';
 import EventDescriptionCard from './EventDescriptionCard';
+import EventDiscussionCard from './EventDiscussionCard';
 var Router = require('react-router');
 var { Route, DefaultRoute, RouteHandler, Link } = Router;
 var ParseComponent = ParseReact.Component(React);
@@ -14,7 +15,7 @@ export default class Event extends ParseComponent {
 
   observe(nextProps, nextState) {
     return {
-      event: (new Parse.Query("Event").equalTo("objectId", nextProps.params.eventId )),
+      event: (new Parse.Query("Event").equalTo("objectId", nextProps.params.eventId)),
     };
   }
 
@@ -24,6 +25,7 @@ export default class Event extends ParseComponent {
     var creatorName = "";
     var creatorPhoto = "";
     var description = "";
+    var id = "";
 
     if (this.data.event && this.data.event.length > 0) {
       console.log("Got Event! " + JSON.stringify(this.data.event[0]) );
@@ -33,6 +35,7 @@ export default class Event extends ParseComponent {
       creatorName = theEvent.owner.first_name;
       console.log("Photo url " + theEvent.owner.photo.url());
       creatorPhoto = theEvent.owner.photo.url();
+      id = theEvent.objectId;
     }
 
     return(
@@ -64,7 +67,8 @@ export default class Event extends ParseComponent {
             <EventDescriptionCard description={description} creatorName={creatorName} creatorPhotoUrl={creatorPhoto}/>
             
             <div id="subcontent" style={{width: "100%", marginTop: "10px"}}>
-              <div id="left-content" style={{backgroundColor: "red", width: "80%", height: "500px", display: "inline-block"}}>
+              <div id="left-content" style={{width: "80%", height: "500px", display: "inline-block"}}>
+                <EventDiscussionCard eventId={id} />
               </div>
               <div id="right-content" style={{backgroundColor: "yellow", width: "20%", height: "500px", display: "inline-block"}}>
               </div>
