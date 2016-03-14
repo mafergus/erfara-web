@@ -1,8 +1,10 @@
+require('../stylesheets/header.scss');
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 import Menu from './Menu';
 import SignUp from './SignUp';
+var Row = require('react-bootstrap').Row;
 
 export default class Header extends React.Component {
 
@@ -35,6 +37,7 @@ export default class Header extends React.Component {
   render() {
 
     return(
+      <Row width={12}>
         <div className="erfara-header" style={{borderBottom: "1px solid #DDDDDD"}}>
           <div className="icon-container">
             <img id="erfara-icon" src={ require("../img/erfara_icon.png") } style={{ height: "36px", width: "36px"}}></img>
@@ -46,6 +49,7 @@ export default class Header extends React.Component {
           </div>
           <SignUp modalIsOpen={this.signupOpen} onClosed={this.onSignUpClosed}/>
         </div>
+      </Row>
     );
   }
 
