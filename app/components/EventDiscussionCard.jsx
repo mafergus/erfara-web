@@ -27,13 +27,15 @@ export default class EventDiscussionCard extends ParseComponent {
     var eventComments = [];
     if (this.data.comments && this.data.comments.length > 0) {
       this.data.comments.forEach(function (comment, i) {
-        eventComments.push(<EventComment comment={comment} />);
+        eventComments.push(<li><EventComment comment={comment} /></li>);
       });
     }
     return(
       <div className="event">
         <div className="event-discussion-card card-1">
+          <ul style={{height: "400px", overflow: "hidden", overflowY: "scroll", padding: "0px", margin: "0px"}}>
           {eventComments}
+          </ul>
         </div>
       </div>
     );

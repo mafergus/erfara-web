@@ -1,31 +1,31 @@
 @font-face {
     font-family: 'Roboto-Regular'; /*a name to be used later*/
-    src: url('./assets/Roboto-Regular.ttf');
+    src: url('../assets/Roboto-Regular.ttf');
 }
 
 @font-face {
     font-family: 'Roboto-Medium'; /*a name to be used later*/
-    src: url('./assets/Roboto-Medium.ttf'); /*URL to font*/
+    src: url('../assets/Roboto-Medium.ttf'); /*URL to font*/
 }
 
 @font-face {
     font-family: 'Roboto-Thin'; /*a name to be used later*/
-    src: url('./assets/Roboto-Thin.ttf'); /*URL to font*/
+    src: url('../assets/Roboto-Thin.ttf'); /*URL to font*/
 }
 
 @font-face {
     font-family: 'RobotoCondensed-LightItalic'; /*a name to be used later*/
-    src: url('./assets/RobotoCondensed-LightItalic.ttf'); /*URL to font*/
+    src: url('../assets/RobotoCondensed-LightItalic.ttf'); /*URL to font*/
 }
 
 @font-face {
     font-family: 'Roboto-Light'; /*a name to be used later*/
-    src: url('./assets/Roboto-Light.ttf'); /*URL to font*/
+    src: url('../assets/Roboto-Light.ttf'); /*URL to font*/
 }
 
 @font-face {
     font-family: 'Roboto-Bold'; /*a name to be used later*/
-    src: url('./assets/Roboto-Bold.ttf'); /*URL to font*/
+    src: url('../assets/Roboto-Bold.ttf'); /*URL to font*/
 }
 
 html {
@@ -36,6 +36,7 @@ html {
 body {
   background-color: #f1efea;
   font-family: Roboto-Regular;
+  font-weight: normal;
   color: white;
   margin: 0;
 }
@@ -85,28 +86,23 @@ p, h1 {
 }
 
 #jumbo-div #text {
-  position: absolute;
-  width: 100%;
-  height: auto;
-  margin-left: 65px;
-  margin-top: 100px;
 }
 
 #jumbo-div #subtext {
   text-align: left;
 }
 
-#jumbo-div #text h2 {
+#jumbo-div .text-h2 {
   display: inline-block;
   font-family: Roboto-Light;
-  font-size: 12px;
+  font-size: 16px;
   color: rgba(255, 255, 255, 0.74);
   margin: 0;
 }
 
-#jumbo-div h1 {
+#jumbo-div .text-h1 {
   font-family: Roboto-Thin;
-  font-size: 30px;
+  font-size: 36px;
   color: white;
 }
 
@@ -117,7 +113,7 @@ p, h1 {
   height: 25px;
   width: 25px;
   vertical-align: baseline;
-  background: url("./img/location_gray.png") no-repeat center;
+  background: url("../img/location_gray.png") no-repeat center;
 }
 
 #jumbo-div #overlay {
@@ -136,7 +132,7 @@ p, h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("./img/kayaking.jpg");
+  background: url("../img/kayaking.jpg");
   background-position: 50% 50%;
   background-size: cover;
   background-blend-mode: multiply;
@@ -177,16 +173,18 @@ p, h1 {
   justify-content: center;
 }
 
-.home #cards-container {
-  width: 990px;
+#cards-container {
+  width: auto;
   height: 100%;
   margin-top: 10px;
 }
 
-.home .cards-container-row {
-  display: inline-block;
+.cards-container-row {
+  display: flex;
   width: 100%;
-  height: 330px;
+  height: 380px;
+  margin-bottom: 35px;
+  align-items: center;
 }
 
 .experience-card {
@@ -283,8 +281,6 @@ p, h1 {
 }
 
 
-
-
 /* ######################################################################## */
 /* Experience Page */
 /* ######################################################################## */
@@ -339,7 +335,7 @@ p, h1 {
   height: 35px;
   z-index: 10;
   margin-top: 35px;
-  background: url('./img/pics.png');
+  background: url('../img/pics.png');
   background-size: 100%;
 }
 
@@ -372,6 +368,54 @@ p, h1 {
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
+.ReactModal__Overlay {
+  -webkit-perspective: 600;
+  perspective: 600;
+  opacity: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+  transition: opacity 550ms ease-out;
+}
+
+.ReactModal__Content {
+  -webkit-transform: scale(0.5) rotateX(-30deg);
+}
+
+.ReactModal__Content--after-open {
+  -webkit-transform: scale(1) rotateX(0deg);
+  transition: all 550ms ease-in;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.ReactModal__Content--before-close {
+  -webkit-transform: scale(0.5) rotateX(30deg);
+  transition: all 550ms ease-in;
+}
+
+.ReactModal__Content.modal-dialog {
+  border: none;
+  background-color: transparent;
+}
+
+.fb-button {
+
+}
+
+.close-button-x {
+  cursor: pointer; 
+  cursor: hand;
+  color: #DDDDDD; 
+  float: right;
+}
+
 
 /* ######################################################################## */
 /* Event Page */
@@ -386,6 +430,7 @@ p, h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .event #content {
@@ -411,11 +456,11 @@ p, h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("./img/BBQ.jpg");
+  background: url("../img/BBQ.jpg");
   background-position: 50% 50%;
   background-size: cover;
   background-blend-mode: multiply;
-  background-color: red;
+  background-color: #b20000;
   object-fit: cover;
 }
 
@@ -570,7 +615,8 @@ p, h1 {
   z-index: 1;
   width: 100%;
   height: 60px;
-  background-color: rgba(49, 23, 0, 0.2);
+  /*background-color: rgba(49, 23, 0, 0.2);*/
+  background-color: white;
   border-bottom: 1px solid rgba(49, 23, 0, .05);
 }
 
@@ -600,7 +646,7 @@ p, h1 {
 
 .header-links-container {
   height: 100%;
-  margin-right: 50px;
+  margin-right: 30px;
   display: flex;
   align-items: center;
   float: right;
@@ -614,7 +660,7 @@ p, h1 {
   color: #F39C11;
   font-size: 14px;
   font-family: Roboto-Bold;
-  margin-left: 40px;
+  margin-left: 25px;
 }
 
 .header-links-container p:hover, a:hover {
@@ -1539,6 +1585,7 @@ font-size:40px;
     /* Input Background: */
   background: #FFFFFF;
   border: 1px solid rgba(124,124,124,0.45);
+  border-radius: 8px;
   /* Input value: */
   font-family: Roboto-Thin;
   font-size: 11.66px;
@@ -1633,7 +1680,7 @@ font-size:40px;
 }
 
 #facebook-icon {
-  background: url("./img/fbIcon.png") no-repeat center;
+  background: url("../img/fbIcon.png") no-repeat center;
   background-size: 100% 100%;
   height: 20px;
   width: 20px;
@@ -1939,6 +1986,7 @@ font-size: 13px;
 
 .search-go-btn {
   width: 50px;
+  height: 36px;
   -webkit-border-radius: 6;
   -moz-border-radius: 6;
   border-radius: 6px;
@@ -1948,7 +1996,6 @@ font-size: 13px;
   background: #148DE2;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
-  display: inline-block;
 }
 
 .search-go-btn:hover {

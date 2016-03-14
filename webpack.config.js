@@ -21,6 +21,16 @@ var common = {
   module: {
     loaders: [
       {
+        test: /\.scss$/,
+        include: PATHS.app,
+        loaders: [
+            'style',
+            'css',
+            'autoprefixer?browsers=last 3 versions',
+            'sass?outputStyle=expanded'
+        ]
+      },
+      {
         test: /\.css$/,
         loaders: ['style', 'css'],
         include: PATHS.app

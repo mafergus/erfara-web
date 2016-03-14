@@ -1,4 +1,6 @@
-import './main.css';
+import './stylesheets/main.css';
+require('./stylesheets/main.scss');
+require('react-bootstrap')
 
 import App from './components/App';
 import React from 'react';
@@ -8,6 +10,7 @@ import { createHistory, useBasename } from 'history';
 import { Link, Route, IndexRoute} from 'react-router';
 import Router from 'react-router';
 import Home from './components/Home';
+import SignUp from './components/SignUp'
 import Discover from './components/Discover';
 import Messages from './components/Messages';
 import Profile from './components/Profile';
@@ -32,6 +35,7 @@ ReactDOM.render((
     <Route path="/" component={App} >
       <IndexRoute component={Home} />
       <Route path="home" component={Home} />
+      <Route path="signup" component={SignUp} />
       <Route path="discover" component={Discover} />
       <Route path="messages" component={Event} />
       <Route path="profile" component={Profile} />

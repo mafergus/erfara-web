@@ -15,7 +15,7 @@ export default class Authentication extends React.Component {
   // This is called once the facebook SDK is loaded
     window.fbAsyncInit = function() {                       
       Parse.FacebookUtils.init({                            
-        appId      : '406833206191137',
+        appId      : '1686372394915080',
         cookie     : true,                                  
         xfbml      : true,                                  
         version    : 'v2.5'                                 

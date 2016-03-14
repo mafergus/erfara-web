@@ -42,7 +42,7 @@ export default class Event extends ParseComponent {
       <div className="event">
 
         <div id="jumbo-div">
-          <img className="background-img" id="bg-img"></img>
+          <img className="background-img" id="bg-img"></img>  
           <div id="overlay"></div>
           <div id="text">
             <h1 style={{marginBottom: "17px"}}>{title}</h1>
