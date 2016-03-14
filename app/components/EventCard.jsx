@@ -41,7 +41,7 @@ export default class EventCard extends ParseComponent {
     console.log("Event " + JSON.stringify(event) + " id " + event.objectId);
 
     return(
-      <Col width={6} lg={6} md={6} style={{marginBottom: "50px", display: "inline-block", textAlign: "left"}}>
+      <Col lg={12} md={12} sm={12} xs={12} style={{marginBottom: "50px", display: "inline-block", textAlign: "left"}}>
         <div className="event-card card-1" onClick={this.onEventClick.bind(this, id)}>
           <img id="event-image" style={{height: "240px", width: "100%"}} src={url}></img>
           <img id="host-image" src={hostImage}></img>

@@ -1,3 +1,4 @@
+require('../stylesheets/event.scss');
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Parse from 'parse';
@@ -33,7 +34,8 @@ export default class Event extends ParseComponent {
       title = theEvent.title;
       description = theEvent.description;
       creatorName = theEvent.owner.first_name;
-      console.log("Photo url " + theEvent.owner.photo.url());
+      var photo = theEvent.photo.url();
+      console.log("Photo url " + photo);
       creatorPhoto = theEvent.owner.photo.url();
       id = theEvent.objectId;
     }
@@ -42,7 +44,7 @@ export default class Event extends ParseComponent {
       <div className="event">
 
         <div id="jumbo-div">
-          <img className="background-img" id="bg-img"></img>  
+          <img className="background-img" id="bg-img" style={{ background: {photo} }}></img>  
           <div id="overlay"></div>
           <div id="text">
             <h1 style={{marginBottom: "17px"}}>{title}</h1>
@@ -52,12 +54,12 @@ export default class Event extends ParseComponent {
               <div id="location"></div>
               <h2>Ocean Beach</h2>
             </div>
-            <div id="img-container">
+            {/*<div id="img-container">
               <img id="jumboUserImage" src="http://www.meganfox.com/wp-content/uploads/2014/01/3.jpg"></img>
               <img id="jumboUserImage" src="http://bit.ly/1Q8skwh"></img>
               <img id="jumboUserImage" src="http://www.meganfox.com/wp-content/uploads/2014/01/3.jpg"></img>
               <img id="jumboUserImage" src="http://bit.ly/1Q8skwh"></img>
-            </div>
+            </div> */}
           </div>
         </div>
 
