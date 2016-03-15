@@ -1,31 +1,37 @@
 @font-face {
     font-family: 'Roboto-Regular'; /*a name to be used later*/
     src: url('../assets/Roboto-Regular.ttf');
+    -webkit-font-smoothing: antialiased;
 }
 
 @font-face {
     font-family: 'Roboto-Medium'; /*a name to be used later*/
     src: url('../assets/Roboto-Medium.ttf'); /*URL to font*/
+        -webkit-font-smoothing: antialiased;
 }
 
 @font-face {
     font-family: 'Roboto-Thin'; /*a name to be used later*/
     src: url('../assets/Roboto-Thin.ttf'); /*URL to font*/
+        -webkit-font-smoothing: antialiased;
 }
 
 @font-face {
     font-family: 'RobotoCondensed-LightItalic'; /*a name to be used later*/
     src: url('../assets/RobotoCondensed-LightItalic.ttf'); /*URL to font*/
+        -webkit-font-smoothing: antialiased;
 }
 
 @font-face {
     font-family: 'Roboto-Light'; /*a name to be used later*/
     src: url('../assets/Roboto-Light.ttf'); /*URL to font*/
+        -webkit-font-smoothing: antialiased;
 }
 
 @font-face {
     font-family: 'Roboto-Bold'; /*a name to be used later*/
     src: url('../assets/Roboto-Bold.ttf'); /*URL to font*/
+        -webkit-font-smoothing: antialiased;
 }
 
 html {
@@ -39,6 +45,8 @@ body {
   font-weight: normal;
   color: white;
   margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 p, h1 {
@@ -316,6 +324,7 @@ p, h1 {
   z-index: 0;
   margin-top: 55px;
   font-size: 68px;
+  -webkit-font-smoothing: antialiased;
   color: white;
 }
 
