@@ -1,6 +1,5 @@
 import './stylesheets/main.css';
 require('./stylesheets/main.scss');
-require('react-bootstrap')
 
 import App from './components/App';
 import React from 'react';

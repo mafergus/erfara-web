@@ -77,7 +77,7 @@ export default class Home extends ParseComponent {
           </div>
         </div> */}
 
-        <div className="centered-container" style={{display: "inline-block", marginLeft: "5%", marginRight: "5%"}}>
+        <div className="centered-container" style={{display: "inline-block", marginLeft: "0%", marginRight: "0%"}}>
           <Grid lg={10} md={10} fluid>
             {rows}
           </Grid>
