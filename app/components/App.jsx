@@ -16,7 +16,6 @@ export default class App extends React.Component {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
 
-        <Header />
 
         <div style={{position: 'absolute', top: '60px', width: '100%', height: '100%'}}>
           <div className="Content" style={{position: 'absolute', top: '0px', width: '100%'}}>
