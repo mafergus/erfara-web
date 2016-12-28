@@ -28,7 +28,9 @@ export default class SignUp extends ParseComponent {
 
   constructor() {
     super();
-    this.setState({ modalIsOpen: false });
+    this.state = { 
+      modalIsOpen: false 
+    };
     this.render = this.render.bind(this);
     this.loginFb = this.loginFb.bind(this);
   }
@@ -76,6 +78,7 @@ export default class SignUp extends ParseComponent {
     return (
       <div>
         <Modal
+          contentLabel={"This is a label"}
           isOpen={this.props.modalIsOpen}
           onRequestClose={this.closeModal}
           closeTimeoutMs={500}
