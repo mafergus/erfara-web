@@ -5,9 +5,7 @@ import App from './components/App';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Parse from 'parse';
-import { createHistory, useBasename } from 'history';
-import { Link, Route, IndexRoute} from 'react-router';
-import Router from 'react-router';
+import { Link, Router, Route, IndexRoute, browserHistory } from 'react-router';
 import Home from './components/Home';
 import SignUp from './components/SignUp'
 import Discover from './components/Discover';
@@ -23,14 +21,8 @@ var mountNode = document.createElement('div');
 mountNode.setAttribute("id", "mountNode");
 document.body.appendChild(mountNode);
 
- var history = createHistory({
-   queryKey: false
- });
-
-// const history = useBasename(createHistory)({basename: '/'});
-
 ReactDOM.render((
-  <Router history={history}>
+  <Router history={browserHistory}>
     <Route path="/" component={App} >
       <IndexRoute component={Home} />
       <Route path="home" component={Home} />
