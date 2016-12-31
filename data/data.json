@@ -1,0 +1,36 @@
+{
+  "events": [
+    {
+      "title": "Yoga in Dolores Park",
+      "description": "Come and have some fun!",
+      "id": "abc123",
+      "photo": "http://files.parsetfss.com/a5e80e30-a275-49f2-989e-e218e12017db/tfss-97c46b8f-6398-4a23-8306-1283e579a52a-Yoga%20Beach.jpg"
+    },
+    {
+      "title": "Hike in Muir Woods",
+      "description": "Come join us for a hike in Muir woods",
+      "id": "xyz789",
+      "photo": "http://files.parsetfss.com/a5e80e30-a275-49f2-989e-e218e12017db/tfss-02ed6157-7aa6-4ffa-b530-16f711fb8f59-muir-woods.jpg"
+    }
+  ],
+  "meetings" : [
+    {
+      "name": "First meeting",
+      "agenda": "Just a meeting",
+      "guests": [
+        {"name": "Mark M"},
+        {"name": "Arnie S"},
+        {"name": "Bruce W"}
+      ]
+    },
+    {
+      "name": "Second meeting",
+      "agenda": "Another meeting",
+      "guests": [
+        {"name": "Jenny L"},
+        {"name": "Jenny A"},
+        {"name": "Christie A"}
+      ]
+    }
+  ]
+}
