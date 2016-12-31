@@ -3,8 +3,6 @@ import cn from "classnames";
 
 export default function MeetingCard({title, details, guests, className, style}) {
 
-  console.log("Guests: ", guests);
-
   return (<div className={cn("meeting-card", className)} style={style}>
     <h3>{title}</h3>
     <p>Agenda: {details}</p>

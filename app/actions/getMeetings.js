@@ -6,6 +6,7 @@ export function getMeetings() {
     dispatch(getMeetingsRequestedAction());
     return database.ref('/meetings').once('value', snap => {
       const meetings = snap.val();
+      console.log("MEETINGS: ", meetings);
       dispatch(getMeetingsFulfilledAction(meetings))
     })
     .catch((error) => {

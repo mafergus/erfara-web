@@ -2,7 +2,7 @@ import './stylesheets/main.css';
 require('./stylesheets/main.scss');
 
 import AppContainer from './containers/AppContainer';
-import App2 from './components/App2';
+import App from './components/App';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import store from './store/store';
@@ -14,33 +14,10 @@ var mountNode = document.createElement('div');
 mountNode.setAttribute("id", "mountNode");
 document.body.appendChild(mountNode);
 
-// ReactDOM.render((
-//   <Router history={browserHistory}>
-//     <Route path="/" component={AppContainer} >
-//     </Route>
-//   </Router>
-// ), document.getElementById("mountNode"));
-
-// const NotFound = React.createClass({
-//   render() {
-//     return <h2>Not found</h2>
-//   }
-// })
-
 const main = (
   <Provider store={store}>
-    <App2 />
+    <App />
   </Provider>
 );
 
 ReactDOM.render(main, document.getElementById("mountNode"));
-
-      // <IndexRoute component={Home} />
-      // <Route path="home" component={Home} />
-      // <Route path="signup" component={SignUp} />
-      // <Route path="discover" component={Discover} />
-      // <Route path="messages" component={Event} />
-      // <Route path="profile" component={Profile} />
-      // <Route path="experiences/:experienceId" component={Experience} />
-      // <Route path="events/:eventId" component={Event} />
-      // <Route path="*" component={NotFound} />

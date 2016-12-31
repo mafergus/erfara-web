@@ -33,11 +33,10 @@ export class MeetingsList extends React.Component {
   render() {
     const { meetings, className, style } = this.props;
     let cards = [];
-    if (meetings && meetings.meetings) {
-      const keyList = Object.keys(meetings.meetings);
+    if (meetings) {
+      const keyList = Object.keys(meetings);
       for (var i=0; i<keyList.length; i++) {
-        console.log("Key: ", keyList[i], " Value: ", meetings.meetings[keyList[i]]);
-        const meeting = meetings.meetings[keyList[i]];
+        const meeting = meetings[keyList[i]];
         cards.push(<MeetingCard 
           key={i}
           className="meeting-card col-lg-3"
