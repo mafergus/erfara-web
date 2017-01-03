@@ -88,6 +88,21 @@ p, h1 {
   background-image: url("../images/components.svg"); 
 }
 
+.heroImage {
+  background-image: url("../images/kayaking.jpg");
+  background-size: cover;
+  background-position: 50% 40%;
+  /*background-blend-mode: multiply;*/
+  /*background-color: #F39C11;*/
+  object-fit: cover;
+}
+
+.erfaraIcon {
+  width: 50px;
+  height: 50px;
+  content: url("../images/erfara_icon.png");
+}
+
 #auth-div {
   width: 100%;
   height: 100%;

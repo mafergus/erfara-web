@@ -8,7 +8,6 @@ import {
 // Here we define all our material-ui ReactComponents.
 import Master from './components/Master';
 import Home from './components/Home';
-import App from './components/App';
 
 /**
  * Routes: https://github.com/reactjs/react-router/blob/master/docs/API.md#route
@@ -25,7 +24,7 @@ const AppRoutes = (
     <Route path="home" component={Home} />
     <Redirect from="get-started" to="/get-started/required-knowledge" />
     <Route path="get-started">
-      <Route path="required-knowledge" component={App} />
+      <Route path="required-knowledge" component={Home} />
     </Route>
     <Redirect from="customization" to="/customization/themes" />
     <Route path="customization">

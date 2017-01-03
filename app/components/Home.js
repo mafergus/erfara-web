@@ -80,7 +80,7 @@ class HomePage extends Component {
     }
 
     return (
-      <FullWidthSection style={styles.root}>
+      <FullWidthSection style={styles.root} className="heroImage">
         <img style={styles.svgLogo} className="mainImage" />
         <div style={styles.tagline}>
           <h1 style={styles.h1}>Material-UI</h1>

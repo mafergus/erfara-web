@@ -1,8 +1,6 @@
 import './stylesheets/main.css';
 require('./stylesheets/main.scss');
 import AppRoutes from './AppRoutes';
-import AppContainer from './containers/AppContainer';
-import App from './components/App';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import store from './store/store';

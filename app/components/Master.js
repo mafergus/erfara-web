@@ -1,13 +1,16 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import Title from 'react-title-component';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import spacing from 'material-ui/styles/spacing';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import {darkWhite, lightWhite, grey900} from 'material-ui/styles/colors';
+import { darkWhite, white, lightWhite, grey900, orange500, orange700 } from 'material-ui/styles/colors';
 import AppNavDrawer from './AppNavDrawer';
 import FullWidthSection from './FullWidthSection';
-import withWidth, {MEDIUM, LARGE} from 'material-ui/utils/withWidth';
+import withWidth, { MEDIUM, LARGE } from 'material-ui/utils/withWidth';
+import ErfaraIcon from './ErfaraIcon';
+import HeaderLinks from './HeaderLinks';
+import SignUpModal from './SignUpModal';
 
 class Master extends Component {
   static propTypes = {
@@ -36,7 +39,12 @@ class Master extends Component {
 
   componentWillMount() {
     this.setState({
-      muiTheme: getMuiTheme(),
+      muiTheme: getMuiTheme({
+        palette: {
+            primary1Color: orange500,
+            primary2Color: orange700,
+        },
+      }),
     });
   }
 
@@ -53,7 +61,11 @@ class Master extends Component {
         position: 'fixed',
         // Needed to overlap the examples
         zIndex: this.state.muiTheme.zIndex.appBar + 1,
+        backgroundColor: white,
         top: 0,
+      },
+      titleStyle: {
+        color: orange500,
       },
       root: {
         paddingTop: spacing.desktopKeylineIncrement,
@@ -169,17 +181,16 @@ class Master extends Component {
       <div>
         <Title render="Material-UI" />
         <AppBar
-          onLeftIconButtonTouchTap={this.handleTouchTapLeftIconButton}
-          title={title}
-          zDepth={0}
+          // onLeftIconButtonTouchTap={this.handleTouchTapLeftIconButton}
+          title="Erfara"
+          titleStyle={styles.titleStyle}
+          iconElementLeft={
+            <ErfaraIcon color={orange500} style={{marginLeft: "1em", marginRight: "0.3em", height: "2em", width: "2em", marginTop: "8px"}}/>
+          }
           iconElementRight={
-            <IconButton
-              iconClassName="muidocs-icon-custom-github"
-              href="https://github.com/callemall/material-ui"
-            />
+            <HeaderLinks style={{marginTop: "6px"}} />
           }
           style={styles.appBar}
-          showMenuIconButton={showMenuIconButton}
         />
         {title !== '' ?
           <div style={prepareStyles(styles.root)}>
@@ -191,6 +202,7 @@ class Master extends Component {
           </div> :
           children
         }
+        <SignUpModal />
         <AppNavDrawer
           style={styles.navDrawer}
           location={location}
