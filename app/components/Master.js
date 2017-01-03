@@ -9,8 +9,8 @@ import AppNavDrawer from './AppNavDrawer';
 import FullWidthSection from './FullWidthSection';
 import withWidth, { MEDIUM, LARGE } from 'material-ui/utils/withWidth';
 import ErfaraIcon from './ErfaraIcon';
-import HeaderLinks from './HeaderLinks';
 import SignUpModal from './SignUpModal';
+import LogInModal from './LogInModal';
 
 class Master extends Component {
   static propTypes = {
@@ -188,7 +188,10 @@ class Master extends Component {
             <ErfaraIcon color={orange500} style={{marginLeft: "1em", marginRight: "0.3em", height: "2em", width: "2em", marginTop: "8px"}}/>
           }
           iconElementRight={
-            <HeaderLinks style={{marginTop: "6px"}} />
+            <div style={{marginTop: "6px"}}>
+              <SignUpModal />
+              <LogInModal />
+            </div>
           }
           style={styles.appBar}
         />
@@ -202,7 +205,6 @@ class Master extends Component {
           </div> :
           children
         }
-        <SignUpModal />
         <AppNavDrawer
           style={styles.navDrawer}
           location={location}

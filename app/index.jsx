@@ -7,6 +7,9 @@ import store from './store/store';
 import { Link, Router, Route, IndexRoute, browserHistory, useRouterHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { createHashHistory } from 'history';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+injectTapEventPlugin();
 
 // Create the mount point and attach it to the DOM
 var mountNode = document.createElement('div');

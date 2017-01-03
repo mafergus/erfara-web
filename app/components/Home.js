@@ -6,7 +6,7 @@ import withWidth, {LARGE} from 'material-ui/utils/withWidth';
 import spacing from 'material-ui/styles/spacing';
 import typography from 'material-ui/styles/typography';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-import {cyan500, grey200, darkWhite} from 'material-ui/styles/colors';
+import {cyan500, grey200, darkWhite, orange500} from 'material-ui/styles/colors';
 
 class HomePage extends Component {
 
@@ -23,6 +23,7 @@ class HomePage extends Component {
       root: {
         backgroundColor: cyan500,
         overflow: 'hidden',
+        minHeight: '500px',
       },
       svgLogo: {
         marginLeft: window.innerWidth * 0.5 - 130,
@@ -40,18 +41,16 @@ class HomePage extends Component {
       githubStyle: {
         margin: '16px 32px 0px 8px',
       },
-      demoStyle: {
-        margin: '16px 32px 0px 32px',
-      },
       h1: {
+        fontSize: '1.5em',
         color: darkWhite,
         fontWeight: typography.fontWeightLight,
       },
       h2: {
-        fontSize: 20,
+        fontSize: '1em',
         lineHeight: '28px',
-        paddingTop: 19,
-        marginBottom: 13,
+        marginTop: '1.5em',
+        marginBottom: '5em',
         letterSpacing: 0,
       },
       nowrap: {
@@ -61,10 +60,10 @@ class HomePage extends Component {
         marginTop: 32,
       },
       h1WhenLarge: {
-        fontSize: 56,
+        fontSize: '2em',
       },
       h2WhenLarge: {
-        fontSize: 24,
+        fontSize: '1.5em',
         lineHeight: '32px',
         paddingTop: 16,
         marginBottom: 12,
@@ -81,60 +80,19 @@ class HomePage extends Component {
 
     return (
       <FullWidthSection style={styles.root} className="heroImage">
-        <img style={styles.svgLogo} className="mainImage" />
         <div style={styles.tagline}>
-          <h1 style={styles.h1}>Material-UI</h1>
+          <h1 style={styles.h1}>Learn. Teach. Experience.</h1>
           <h2 style={styles.h2}>
-            A Set of React Components <span style={styles.nowrap}>
-            that Implement</span> <span style={styles.nowrap}>
-            Google&apos;s Material Design</span>
+            Erfara is the world's first community built around sharing skills. You share something you're good at, and in return people share with you
           </h2>
           <RaisedButton
             className="demo-button"
-            label="Demo"
+            style={{marginTop: '100px'}}
+            label="Join"
             onTouchTap={this.handleTouchTapDemo}
-            style={styles.demoStyle}
-            labelStyle={styles.label}
+            buttonStyle={{width: '5em'}}
           />
         </div>
-      </FullWidthSection>
-    );
-  }
-
-  homePurpose() {
-    const styles = {
-      root: {
-        backgroundColor: grey200,
-      },
-      content: {
-        maxWidth: 700,
-        padding: 0,
-        margin: '0 auto',
-        fontWeight: typography.fontWeightLight,
-        fontSize: 20,
-        lineHeight: '28px',
-        paddingTop: 19,
-        marginBottom: 13,
-        letterSpacing: 0,
-        color: typography.textDarkBlack,
-      },
-    };
-
-    return (
-      <FullWidthSection
-        style={styles.root}
-        useContent={true}
-        contentStyle={styles.content}
-        contentType="p"
-        className="home-purpose"
-      >
-        Material-UI came about from our love of&nbsp;
-        <a href="http://facebook.github.io/react/">React</a> and&nbsp;
-        <a href="https://www.google.com/design/spec/material-design/introduction.html">
-         Google's Material Design
-        </a>. We're currently using it on a project at&nbsp;
-        <a href="https://www.call-em-all.com/Careers">Call-Em-All</a> and plan on adding to it
-        and making it better in the coming months.
       </FullWidthSection>
     );
   }
@@ -199,6 +157,7 @@ class HomePage extends Component {
   }
 
   handleTouchTapDemo = () => {
+    alert("PLEASEEE");
     this.context.router.push('/components');
   };
 
@@ -210,7 +169,6 @@ class HomePage extends Component {
     return (
       <div style={style}>
         {this.homePageHero()}
-        {this.homePurpose()}
         {this.homeFeatures()}
         {this.homeContribute()}
       </div>

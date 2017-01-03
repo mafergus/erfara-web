@@ -2,55 +2,50 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import autoBind from 'react-autobind';
 
 /**
  * A modal dialog can only be closed by selecting one of the actions.
  */
-export default class SignUpModal extends React.Component {
+export default class LogInModal extends React.Component {
+  state = {
+    open: false,
+  };
 
-  constructor() {
-    super();
-    autoBind(this);
-
-    this.state = {
-      open: false,
-    };
-  }
-
-  handleOpen() {
-    console.log("HANDLE OPEN");
+  handleOpen = () => {
     this.setState({open: true});
-  }
+  };
 
-  handleClose() {
+  handleClose = () => {
     this.setState({open: false});
-  }
+  };
 
   render() {
     const actions = [
       <FlatButton
         label="Cancel"
         primary={true}
-        onTouchTap={this.handleClose}/>,
+        onTouchTap={this.handleClose}
+      />,
       <FlatButton
         label="Submit"
         primary={true}
         disabled={true}
-        onTouchTap={this.handleClose}/>,
+        onTouchTap={this.handleClose}
+      />,
     ];
 
     return (
       <span>
         <FlatButton 
-          label="Sign Up" 
+          label="Log In"
           primary={true}
           onTouchTap={this.handleOpen} />
         <Dialog
-          title="Sign Up"
+          title="Log In"
           actions={actions}
           modal={true}
-          open={this.state.open}>
+          open={this.state.open}
+        >
           Only actions can close this dialog.
         </Dialog>
       </span>
