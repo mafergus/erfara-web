@@ -18,7 +18,7 @@ class HomePage extends Component {
     router: PropTypes.object,
   };
 
-  homePageHero() {
+  renderHero  () {
     const styles = {
       root: {
         backgroundColor: cyan500,
@@ -97,7 +97,7 @@ class HomePage extends Component {
     );
   }
 
-  homeFeatures() {
+  renderFeatures() {
     const styles = {maxWidth: 906};
 
     return (
@@ -123,39 +123,6 @@ class HomePage extends Component {
     );
   }
 
-  homeContribute() {
-    const styles = {
-      root: {
-        backgroundColor: grey200,
-        textAlign: 'center',
-      },
-      h3: {
-        margin: 0,
-        padding: 0,
-        fontWeight: typography.fontWeightLight,
-        fontSize: 22,
-      },
-      button: {
-        marginTop: 32,
-      },
-    };
-
-    return (
-      <FullWidthSection useContent={true} style={styles.root}>
-        <h3 style={styles.h3}>
-          Want to help make this <span style={styles.nowrap}>project awesome? </span>
-          <span style={styles.nowrap}>Check out our repo.</span>
-        </h3>
-        <RaisedButton
-          label="GitHub"
-          primary={true}
-          href="https://github.com/callemall/material-ui"
-          style={styles.button}
-        />
-      </FullWidthSection>
-    );
-  }
-
   handleTouchTapDemo = () => {
     alert("PLEASEEE");
     this.context.router.push('/components');
@@ -168,9 +135,8 @@ class HomePage extends Component {
 
     return (
       <div style={style}>
-        {this.homePageHero()}
-        {this.homeFeatures()}
-        {this.homeContribute()}
+        {this.renderHero()}
+        {this.renderFeatures()}
       </div>
     );
   }

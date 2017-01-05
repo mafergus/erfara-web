@@ -140,6 +140,26 @@ class Master extends Component {
     });
   };
 
+  renderFooter() {
+    const {
+      prepareStyles,
+    } = this.state.muiTheme;
+    const styles = this.getStyles();
+    return <FullWidthSection style={styles.footer}>
+      <p style={prepareStyles(styles.p)}>
+        Brought to you by the fine folks at PhoenixApp
+      </p>
+      <IconButton
+        iconStyle={styles.iconButton}
+        iconClassName="muidocs-icon-custom-github"
+        href="https://github.com/callemall/material-ui"
+      />
+      <p style={prepareStyles(styles.browserstack)}>
+        Thank you for joining our community! Give us your feedback!
+      </p>
+    </FullWidthSection>;
+  }
+
   render() {
     const {
       location,
@@ -213,33 +233,7 @@ class Master extends Component {
           onChangeList={this.handleChangeList}
           open={navDrawerOpen}
         />
-        <FullWidthSection style={styles.footer}>
-          <p style={prepareStyles(styles.p)}>
-            {'Hand crafted with love by the engineers at '}
-            <a style={styles.a} href="http://www.call-em-all.com/Careers">
-              Call-Em-All
-            </a>
-            {' and our awesome '}
-            <a
-              style={prepareStyles(styles.a)}
-              href="https://github.com/callemall/material-ui/graphs/contributors"
-            >
-              contributors
-            </a>.
-          </p>
-          <IconButton
-            iconStyle={styles.iconButton}
-            iconClassName="muidocs-icon-custom-github"
-            href="https://github.com/callemall/material-ui"
-          />
-          <p style={prepareStyles(styles.browserstack)}>
-            {'Thank you to '}
-            <a href="https://www.browserstack.com" style={prepareStyles(styles.browserstackLogo)} target="_blank">
-              <img src="http://www.browserstack.com/images/layout/logo.png" height="25" width="auto" />
-            </a>
-            {' for providing real browser testing infrastructure.'}
-          </p>
-        </FullWidthSection>
+        {this.renderFooter()}
       </div>
     );
   }

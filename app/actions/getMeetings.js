@@ -1,10 +1,10 @@
 import ActionTypes from '../constants/actionTypes';
-import database from './database';
+import firebase from './firebase';
 
 export function getMeetings() {
     return dispatch => {
     dispatch(getMeetingsRequestedAction());
-    return database.ref('/meetings').once('value', snap => {
+    return firebase.database.ref('/meetings').once('value', snap => {
       const meetings = snap.val();
       console.log("MEETINGS: ", meetings);
       dispatch(getMeetingsFulfilledAction(meetings))
