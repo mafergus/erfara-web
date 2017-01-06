@@ -1,9 +1,4 @@
 @font-face {
-    font-family: 'LobsterTwo-Regular', cursive; /*a name to be used later*/
-    src: url('../assets/LobsterTwo-Regular.ttf');
-}
-
-@font-face {
     font-family: 'Roboto-Regular'; /*a name to be used later*/
     src: url('../assets/Roboto-Regular.ttf');
 }
