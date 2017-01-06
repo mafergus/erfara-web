@@ -66,6 +66,8 @@ class Master extends Component {
       },
       titleStyle: {
         color: orange500,
+        fontSize: "1.2em",
+        fontFamily: "LobsterTwo-Regular",
       },
       root: {
         paddingTop: spacing.desktopKeylineIncrement,
