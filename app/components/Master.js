@@ -65,6 +65,7 @@ class Master extends Component {
         top: 0,
       },
       titleStyle: {
+        fontFamily: "LobsterTwo-Regular",
         color: orange500,
       },
       root: {
@@ -205,7 +206,7 @@ class Master extends Component {
           title="Erfara"
           titleStyle={styles.titleStyle}
           iconElementLeft={
-            <ErfaraIcon color={orange500} style={{marginLeft: "1em", marginRight: "0.3em", height: "2em", width: "2em", marginTop: "8px"}}/>
+            <ErfaraIcon color={orange500} style={{marginLeft: "1em", marginRight: "0.1em", height: "1.85em", width: "1.85em", marginTop: "10px"}}/>
           }
           iconElementRight={
             <div style={{marginTop: "6px"}}>
