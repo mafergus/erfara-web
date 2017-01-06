@@ -9,8 +9,8 @@ import AppNavDrawer from './AppNavDrawer';
 import FullWidthSection from './FullWidthSection';
 import withWidth, { MEDIUM, LARGE } from 'material-ui/utils/withWidth';
 import ErfaraIcon from './ErfaraIcon';
-import SignUpModal from './SignUpModal';
-import LogInModal from './LogInModal';
+import SignUpModal from './auth/SignUpModal';
+import LogInModal from './auth/LogInModal';
 
 class Master extends Component {
   static propTypes = {
