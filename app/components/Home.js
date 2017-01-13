@@ -1,7 +1,9 @@
 import React, {Component, PropTypes} from 'react';
+import autoBind from "react-autobind";
 import HomeFeature from './HomeFeature';
 import FullWidthSection from './FullWidthSection';
 import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from "material-ui/FlatButton";
 import withWidth, {LARGE} from 'material-ui/utils/withWidth';
 import spacing from 'material-ui/styles/spacing';
 import typography from 'material-ui/styles/typography';
@@ -19,6 +21,15 @@ class HomePage extends Component {
   static contextTypes = {
     router: PropTypes.object,
   };
+
+  constructor() {
+    super();
+    autoBind(this);
+
+    this.state = {
+      showEvents: true,
+    }
+  }
 
   renderHero  () {
     const styles = {
@@ -139,11 +150,17 @@ class HomePage extends Component {
       paddingTop: spacing.desktopKeylineIncrement,
     };
 
+    const list = this.state.showEvents ? <EventsList /> : this.renderFeatures();
+
     return (
       <div style={style}>
         {this.renderHero()}
-        {this.renderFeatures()}
-        <EventsList />
+        <div style={{ float: "right", marginTop: "1em", marginRight: "1em" }}>
+          <FlatButton label="Events" style={{ marginRight: "1em" }} onTouchTap={ () => this.setState({ showEvents: true }) } />
+          <FlatButton label="Categories" onTouchTap={ () => this.setState({ showEvents: false }) }/>
+        </div>
+        <span style={{ float: "clear" }} />
+        {list}
       </div>
     );
   }

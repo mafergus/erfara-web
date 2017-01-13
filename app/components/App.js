@@ -208,9 +208,9 @@ class App extends Component {
             <ErfaraIcon color={orange500} style={{marginLeft: "1em", marginRight: "0.1em", height: "1.85em", width: "1.85em", marginTop: "10px"}}/>
           }
           iconElementRight={
-            <div style={{marginTop: "6px"}}>
+            <div style={{ marginTop: "6px" }}>
               <AuthModal title="Log In" />
-              <AuthModal title="Sign Up"/>
+              <AuthModal title="Sign Up" />
             </div>
           }
           style={styles.appBar}

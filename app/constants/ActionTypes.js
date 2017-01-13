@@ -12,6 +12,7 @@ const ActionTypes = {
   AddMeetingRequested: "ADD_MEETING_REQUESTED",
   AddMeetingRejected: "ADD_MEETING_REJECTED",
   AddMeetingFulfilled: "ADD_MEETING_FULFILLED",
+  GetUserSuccess: "GET_USER_SUCCESS",
 };
 
 export default ActionTypes;

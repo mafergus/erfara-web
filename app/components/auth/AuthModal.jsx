@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import firebase from '../../actions/database';
 import Dialog from 'material-ui/Dialog';
 import Divider from 'material-ui/Divider';
@@ -6,6 +7,18 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import { grey100, lightBlack } from 'material-ui/styles/colors';
 import autoBind from 'react-autobind';
+import { addUser } from "../../actions/userActions";
+import store from "../../store/store";
+
+// function mapStateToProps(state) {
+
+// }
+
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     addUser: () => dispatch(addUser);
+//   };
+// }
 
 /**
  * A modal dialog can only be closed by selecting one of the actions.
@@ -28,29 +41,30 @@ export default class AuthModal extends React.Component {
   onError(error, type) {
     const errorCode = error.code;
     const errorMessage = error.message;
-    var email = error.email;
-    var credential = error.credential;
+    const email = error.email;
+    const credential = error.credential;
     console.log(type, " errorCode: ", errorCode, " errorMessage: ", errorMessage);
+  }
+
+  onSuccess(result) {
+    const token = result.credential.accessToken;
+    const user = result.user;
+    store.dispatch(addUser(user));
+    console.log("facebook user: ", user);
   }
 
   handleSignUpFacebook() {
     const provider = new firebase.auth.FacebookAuthProvider();
-    firebase.auth().signInWithPopup(provider).then(function(result) {
-    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-    const token = result.credential.accessToken;
-    const user = result.user;
-    console.log("facebook user: ", user);
-    }).catch(this.onError.bind(null, "Facebook"));
+    firebase.auth().signInWithPopup(provider)
+      .then(this.onSuccess)
+      .catch(this.onError.bind(null, "Facebook"));
   }
 
   handleSignUpGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider).then(function(result) {
-    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-    const token = result.credential.accessToken;
-    const user = result.user;
-    console.log("google user: ", user);
-    }).catch(this.onError.bind(null, "Google"));
+    firebase.auth().signInWithPopup(provider)
+      .then(this.onSuccess)
+      .catch(this.onError.bind(null, "Google"));
   }
 
   handleOpen() {
