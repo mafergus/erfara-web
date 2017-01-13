@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import firebase from '../../actions/database';
 import Dialog from 'material-ui/Dialog';
 import Divider from 'material-ui/Divider';
 import FlatButton from 'material-ui/FlatButton';
@@ -13,8 +14,6 @@ export default class AuthModal extends React.Component {
 
   static propTypes = {
     title: PropTypes.string.isRequired,
-    onGoogleClick: PropTypes.func.isRequired,
-    onFacebookClick: PropTypes.func.isRequired,
   };
 
   constructor() {
@@ -26,6 +25,34 @@ export default class AuthModal extends React.Component {
     };
   }
 
+  onError(error, type) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    var email = error.email;
+    var credential = error.credential;
+    console.log(type, " errorCode: ", errorCode, " errorMessage: ", errorMessage);
+  }
+
+  handleSignUpFacebook() {
+    const provider = new firebase.auth.FacebookAuthProvider();
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+    const token = result.credential.accessToken;
+    const user = result.user;
+    console.log("facebook user: ", user);
+    }).catch(this.onError.bind(null, "Facebook"));
+  }
+
+  handleSignUpGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+    const token = result.credential.accessToken;
+    const user = result.user;
+    console.log("google user: ", user);
+    }).catch(this.onError.bind(null, "Google"));
+  }
+
   handleOpen() {
     this.setState({open: true});
   }
@@ -35,7 +62,7 @@ export default class AuthModal extends React.Component {
   }
 
   render() {
-    const { title, onGoogleClick, onFacebookClick } = this.props;
+    const { title } = this.props;
 
     return (
       <span>
@@ -53,11 +80,11 @@ export default class AuthModal extends React.Component {
           <button
             style={{margin: "3em 8em 3em 0em", verticalAlign: "middle"}}
             className="googleSignUpButton"
-            onClick={onGoogleClick}></button>
+            onClick={this.handleSignUpGoogle}></button>
           <button
             style={{verticalAlign: "middle"}}
             className="facebookSignUpButton"
-            onClick={onFacebookClick}></button>
+            onClick={this.handleSignUpFacebook}></button>
         </Dialog>
       </span>
     );

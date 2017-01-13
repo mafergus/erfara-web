@@ -9,10 +9,9 @@ import AppNavDrawer from './AppNavDrawer';
 import FullWidthSection from './FullWidthSection';
 import withWidth, { MEDIUM, LARGE } from 'material-ui/utils/withWidth';
 import ErfaraIcon from './ErfaraIcon';
-import SignUpModal from './auth/SignUpModal';
-import LogInModal from './auth/LogInModal';
+import AuthModal from './auth/AuthModal';
 
-class Master extends Component {
+class App extends Component {
   static propTypes = {
     children: PropTypes.node,
     location: PropTypes.object,
@@ -210,8 +209,8 @@ class Master extends Component {
           }
           iconElementRight={
             <div style={{marginTop: "6px"}}>
-              <SignUpModal />
-              <LogInModal />
+              <AuthModal title="Log In" />
+              <AuthModal title="Sign Up"/>
             </div>
           }
           style={styles.appBar}
@@ -240,4 +239,4 @@ class Master extends Component {
   }
 }
 
-export default withWidth()(Master);
+export default withWidth()(App);

@@ -6,6 +6,7 @@ var port = process.env.PORT || 3000;
 // server.use(express.static(__dirname("") + "/build"));
 
 server.get("/", function(req,res) {
+  console.log(__dirname);
  res.sendFile(path.join(__dirname + "/build/index.html"));
 });
 

@@ -7,6 +7,8 @@ import spacing from 'material-ui/styles/spacing';
 import typography from 'material-ui/styles/typography';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import {cyan500, grey200, darkWhite, orange500} from 'material-ui/styles/colors';
+import { getMeetings } from "../actions/getMeetings";
+import EventsList from "./EventsList";
 
 class HomePage extends Component {
 
@@ -88,9 +90,10 @@ class HomePage extends Component {
           <RaisedButton
             className="demo-button"
             style={{marginTop: '100px'}}
+            primary={true}
             label="Join"
             onTouchTap={this.handleTouchTapDemo}
-            buttonStyle={{width: '5em'}}
+            buttonStyle={{width: '10em'}}
           />
         </div>
       </FullWidthSection>
@@ -104,18 +107,18 @@ class HomePage extends Component {
       <FullWidthSection useContent={true} contentStyle={styles}>
         <HomeFeature
           heading="Get Started"
-          route="/get-started"
+          route="/event"
           imageClass="getStartedImage"
           firstChild={true}
         />
         <HomeFeature
           heading="Customization"
-          route="/customization"
+          route="/event"
           imageClass="customizationImage"
         />
         <HomeFeature
           heading="Components"
-          route="/components"
+          route="/event"
           imageClass="componentsImage"
           lastChild={true}
         />
@@ -128,6 +131,9 @@ class HomePage extends Component {
     this.context.router.push('/components');
   };
 
+  componentWillMount() {
+  }
+
   render() {
     const style = {
       paddingTop: spacing.desktopKeylineIncrement,
@@ -137,6 +143,7 @@ class HomePage extends Component {
       <div style={style}>
         {this.renderHero()}
         {this.renderFeatures()}
+        <EventsList />
       </div>
     );
   }
