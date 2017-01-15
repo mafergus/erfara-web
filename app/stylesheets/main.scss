@@ -24,6 +24,12 @@
   color: red;
 }
 
+.actionBarUser {
+  &:hover {
+    background-color: #CCCCCC;
+  }
+}
+
 .googleSignUpButton {
   border: 0;
   border-radius: 5%;

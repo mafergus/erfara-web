@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import ActionTypes from "../../constants/ActionTypes";
 import firebase from '../../actions/database';
 import Dialog from 'material-ui/Dialog';
 import Divider from 'material-ui/Divider';
@@ -7,18 +8,8 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import { grey100, lightBlack } from 'material-ui/styles/colors';
 import autoBind from 'react-autobind';
-import { addUser } from "../../actions/userActions";
+import { addAuthedUser } from "../../actions/userActions";
 import store from "../../store/store";
-
-// function mapStateToProps(state) {
-
-// }
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     addUser: () => dispatch(addUser);
-//   };
-// }
 
 /**
  * A modal dialog can only be closed by selecting one of the actions.
@@ -49,11 +40,12 @@ export default class AuthModal extends React.Component {
   onSuccess(result) {
     const token = result.credential.accessToken;
     const user = result.user;
-    store.dispatch(addUser(user));
-    console.log("facebook user: ", user);
+    console.log("USER ", result.user);
+    store.dispatch({ type: "ADD_AUTHED_USER_SUCCESS", user });
   }
 
   handleSignUpFacebook() {
+    this.handleClose();
     const provider = new firebase.auth.FacebookAuthProvider();
     firebase.auth().signInWithPopup(provider)
       .then(this.onSuccess)
@@ -61,6 +53,7 @@ export default class AuthModal extends React.Component {
   }
 
   handleSignUpGoogle() {
+    this.handleClose();
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider)
       .then(this.onSuccess)

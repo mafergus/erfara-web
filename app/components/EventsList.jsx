@@ -15,6 +15,7 @@ const styles = {
     justifyContent: 'space-around',
   },
   gridList: {
+    marginTop: "1em",
     width: 500,
     height: 450,
     overflowY: 'auto',
@@ -59,7 +60,6 @@ export class EventsList extends React.Component {
         cellHeight={180}
         style={styles.gridList}
       >
-        <Subheader>December</Subheader>
         {events && events.map((event) => (
           <GridTile
             key={event.photo}

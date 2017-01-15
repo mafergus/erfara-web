@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import Title from 'react-title-component';
-import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import spacing from 'material-ui/styles/spacing';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -8,8 +7,7 @@ import { darkWhite, white, lightWhite, grey900, orange500, orange700 } from 'mat
 import AppNavDrawer from './AppNavDrawer';
 import FullWidthSection from './FullWidthSection';
 import withWidth, { MEDIUM, LARGE } from 'material-ui/utils/withWidth';
-import ErfaraIcon from './ErfaraIcon';
-import AuthModal from './auth/AuthModal';
+import AppBarContainer from "../containers/AppBarContainer";
 
 class App extends Component {
   static propTypes = {
@@ -56,17 +54,6 @@ class App extends Component {
 
   getStyles() {
     const styles = {
-      appBar: {
-        position: 'fixed',
-        // Needed to overlap the examples
-        zIndex: this.state.muiTheme.zIndex.appBar + 1,
-        backgroundColor: white,
-        top: 0,
-      },
-      titleStyle: {
-        fontFamily: "LobsterTwo-Regular",
-        color: orange500,
-      },
       root: {
         paddingTop: spacing.desktopKeylineIncrement,
         minHeight: 400,
@@ -191,7 +178,7 @@ class App extends Component {
       showMenuIconButton = false;
 
       styles.navDrawer = {
-        zIndex: styles.appBar.zIndex - 1,
+        zIndex: this.state.muiTheme.zIndex.appBar,
       };
       styles.root.paddingLeft = 256;
       styles.footer.paddingLeft = 256;
@@ -200,21 +187,7 @@ class App extends Component {
     return (
       <div>
         <Title render="Material-UI" />
-        <AppBar
-          // onLeftIconButtonTouchTap={this.handleTouchTapLeftIconButton}
-          title="Erfara"
-          titleStyle={styles.titleStyle}
-          iconElementLeft={
-            <ErfaraIcon color={orange500} style={{marginLeft: "1em", marginRight: "0.1em", height: "1.85em", width: "1.85em", marginTop: "10px"}}/>
-          }
-          iconElementRight={
-            <div style={{ marginTop: "6px" }}>
-              <AuthModal title="Log In" />
-              <AuthModal title="Sign Up" />
-            </div>
-          }
-          style={styles.appBar}
-        />
+        <AppBarContainer />
         {title !== '' ?
           <div style={prepareStyles(styles.root)}>
             <div style={prepareStyles(styles.content)}>

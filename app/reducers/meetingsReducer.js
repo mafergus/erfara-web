@@ -1,4 +1,4 @@
-import ActionTypes from '../constants/actionTypes';
+import ActionTypes from '../constants/ActionTypes';
 
 export function meetingsReducer(state = {}, action) {
   switch (action.type) {

@@ -1,4 +1,4 @@
-import ActionTypes from '../constants/actionTypes';
+import ActionTypes from '../constants/ActionTypes';
 import firebase from './database';
 
 export function getMeetings() {

@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import autoBind from "react-autobind";
 import HomeFeature from './HomeFeature';
 import FullWidthSection from './FullWidthSection';
@@ -8,7 +8,7 @@ import withWidth, {LARGE} from 'material-ui/utils/withWidth';
 import spacing from 'material-ui/styles/spacing';
 import typography from 'material-ui/styles/typography';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-import {cyan500, grey200, darkWhite, orange500} from 'material-ui/styles/colors';
+import { cyan500, grey200, darkWhite, orange500, darkBlack } from 'material-ui/styles/colors';
 import { getMeetings } from "../actions/getMeetings";
 import EventsList from "./EventsList";
 
@@ -160,6 +160,7 @@ class HomePage extends Component {
           <FlatButton label="Categories" onTouchTap={ () => this.setState({ showEvents: false }) }/>
         </div>
         <span style={{ float: "clear" }} />
+        <a style={{ width: "100%", textAlign: "center", fontSize: "1.3em", color: darkBlack, fontWeight: "bold", lineHeight: "3em" }}>Check out some events near you:</a>
         {list}
       </div>
     );
