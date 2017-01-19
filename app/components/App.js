@@ -3,7 +3,7 @@ import Title from 'react-title-component';
 import IconButton from 'material-ui/IconButton';
 import spacing from 'material-ui/styles/spacing';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import { darkWhite, white, lightWhite, grey900, orange500, orange700 } from 'material-ui/styles/colors';
+import { darkWhite, white, lightWhite, grey900, orange500,   orange700 } from 'material-ui/styles/colors';
 import AppNavDrawer from './AppNavDrawer';
 import FullWidthSection from './FullWidthSection';
 import withWidth, { MEDIUM, LARGE } from 'material-ui/utils/withWidth';

@@ -7,7 +7,7 @@ import {
 
 import App from './components/App';
 import Home from './components/Home';
-import EventPage from "./components/EventPage";
+import EventPage from "./components/EventPage/EventPage";
 
 /**
  * Routes: https://github.com/reactjs/react-router/blob/master/docs/API.md#route

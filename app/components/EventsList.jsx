@@ -16,7 +16,7 @@ const styles = {
   },
   gridList: {
     marginTop: "1em",
-    width: 500,
+    width: "70%",
     height: 450,
     overflowY: 'auto',
   },
@@ -57,7 +57,9 @@ export class EventsList extends React.Component {
 
     return <div style={styles.root}>
       <GridList
-        cellHeight={180}
+        cols={4}
+        padding={35}
+        cellHeight="auto"
         style={styles.gridList}
       >
         {events && events.map((event) => (

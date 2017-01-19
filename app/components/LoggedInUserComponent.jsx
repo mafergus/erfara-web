@@ -7,6 +7,7 @@ import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import firebase from '../actions/database';
 import store from "../store/store";
+import { lightBlack } from 'material-ui/styles/colors';
 
 export default class LoggedInUserComponent extends React.Component {
 
@@ -63,7 +64,7 @@ export default class LoggedInUserComponent extends React.Component {
     return <div className="actionBarUser" style={{ height: "100%", marginTop: "-8px", borderRadius: "3%" }}>
       <div onTouchTap={this.onClick} style={{ height: "100%", display: "flex", alignItems: "center", marginRight: "1em" }}>
         <img src={image} style={{ height: "1.7em", width: "1.7em", borderRadius: "50%", margin: "0 auto" }} />
-        <a style={{ display: "inline-block", fontSize: "1em", marginLeft: "0.5em" }}>{name}</a>
+        <a style={{ color: lightBlack, display: "inline-block", fontSize: "1em", marginLeft: "0.5em" }}>{name}</a>
       </div>
       <Popover
         open={this.state.open}
