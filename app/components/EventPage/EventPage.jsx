@@ -1,16 +1,19 @@
 import React, { PropTypes } from "react";
+import Immutable from "immutable";
+import ImmutablePropTypes from "react-immutable-proptypes";
 import { connect } from "react-redux";
 import autoBind from "react-autobind";
 import FullWidthSection from '../FullWidthSection';
 import RaisedButton from 'material-ui/RaisedButton';
-import EventHero from "./EventHero";
+import Hero from "../Hero";
 import EventDescription from "./EventDescription";
 import EventDetails from "./EventDetails";
 import AttendeesList from "./AttendeesList";
+import { getEvent } from "../../actions/getEvents";
 
 function mapStateToProps(state, props) {
   return {
-    event: state[props.uuid],
+    event: state.events.get(props.params.id),
   };
 }
 
@@ -33,11 +36,20 @@ export class EventPage extends React.Component {
     autoBind(this);
   }
 
+  componentWillMount() {
+    this.props.getEvent(this.props.params.id);
+  }
+
+  componentDidMount() {
+    console.log("id: ", this.props.params.id);
+  }
+
   render() {
+    // if (!this.event) { return <div></div> };
     return <FullWidthSection>
       <div style={{ width: "40%", margin: "0 auto", position: "relative" }}>
-        <AttendeesList style={{ position: "absolute", top: "0", width: "30%", marginLeft: "-31%", backgroundColor: "white" }}/>
-        <EventHero title="Tuesday Drinks in Palo Alto"/>
+        <AttendeesList style={{ position: "absolute", top: "0", width: "200px", marginLeft: "-210px", backgroundColor: "white" }}/>
+        <Hero title={this.props.event && this.props.event.title} image={this.props.event && this.props.event.photo}/>
         <EventDetails />
         <EventDescription />
       </div>

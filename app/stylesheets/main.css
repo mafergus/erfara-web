@@ -55,6 +55,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+hr {
+  height: 1px;
+  border-width: 0;
+  color: rgba(0, 0, 0, 0.12);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
 p, h1 {
   margin: 0px;
   color: black;

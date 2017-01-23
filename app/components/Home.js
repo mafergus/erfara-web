@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
+import { connect } from "react-redux";
 import autoBind from "react-autobind";
 import HomeFeature from './HomeFeature';
 import FullWidthSection from './FullWidthSection';
@@ -9,10 +10,9 @@ import spacing from 'material-ui/styles/spacing';
 import typography from 'material-ui/styles/typography';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import { cyan500, grey200, darkWhite, orange500, lightBlack } from 'material-ui/styles/colors';
-import { getMeetings } from "../actions/getMeetings";
 import EventsList from "./EventsList";
 
-class HomePage extends Component {
+class HomePage extends React.Component {
 
   static propTypes = {
     width: PropTypes.number.isRequired,

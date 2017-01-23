@@ -6,8 +6,9 @@ import {
 } from 'react-router';
 
 import App from './components/App';
-import Home from './components/Home';
+import HomePage from './components/Home';
 import EventPage from "./components/EventPage/EventPage";
+import UserPage from "./components/UserPage/UserPage";
 
 /**
  * Routes: https://github.com/reactjs/react-router/blob/master/docs/API.md#route
@@ -20,22 +21,10 @@ import EventPage from "./components/EventPage/EventPage";
  */
 const AppRoutes = (
   <Route path="/" component={App}>
-    <IndexRoute component={Home} />
-    <Route path="event" component={EventPage} />
-    <Route path="home" component={Home} />
-    <Redirect from="get-started" to="/get-started/required-knowledge" />
-    <Route path="get-started">
-      <Route path="required-knowledge" component={Home} />
-    </Route>
-    <Redirect from="customization" to="/customization/themes" />
-    <Route path="customization">
-    </Route>
-    <Redirect from="components" to="/components/app-bar" />
-    <Route path="components">
-    </Route>
-    <Redirect from="discover-more" to="/discover-more/community" />
-    <Route path="discover-more">
-    </Route>
+    <IndexRoute component={HomePage} />
+    <Route path="event/:id" component={EventPage} />
+    <Route path="user/:id" component={UserPage} />
+    <Route path="home" component={HomePage} />
   </Route>
 );
 

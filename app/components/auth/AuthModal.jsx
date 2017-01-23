@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import ActionTypes from "../../constants/ActionTypes";
 import firebase from '../../actions/database';
 import Dialog from 'material-ui/Dialog';
 import Divider from 'material-ui/Divider';
@@ -8,7 +7,7 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import { grey100, lightBlack } from 'material-ui/styles/colors';
 import autoBind from 'react-autobind';
-import { addAuthedUser } from "../../actions/userActions";
+import { addAuthedUser, addUser } from "../../actions/userActions";
 import store from "../../store/store";
 
 /**
@@ -41,7 +40,7 @@ export default class AuthModal extends React.Component {
     const token = result.credential.accessToken;
     const user = result.user;
     console.log("USER ", result.user);
-    store.dispatch({ type: "ADD_AUTHED_USER_SUCCESS", user });
+    store.dispatch(addUser(user));
   }
 
   handleSignUpFacebook() {

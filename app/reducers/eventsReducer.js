@@ -1,17 +1,15 @@
-import ActionTypes from '../constants/ActionTypes';
+import Immutable from "immutable";
 
-export function eventsReducer(state = null, action) {
+export function eventsReducer(state = Immutable.Map(), action) {
   switch (action.type) {
-    case (ActionTypes.GetEvents): {
-      // console.log("ActionTypes.GetEvents action: ", action);
-      // let events = state || [];
-      // console.log("event: ", events);
-      // events = events.concat(action.events);
-      // const newState = Object.assign({}, state, {
-      //   events
-      // });
-      // console.log("state: ", state, " newState: ", newState);
-      return [...action.events];
+    case "GET_EVENTS_SUCCESS": {
+      Object.entries(action.events).forEach(entry => {
+        state = state.set(entry[0], entry[1]);
+      });
+      return state;
+    }
+    case "GET_EVENT_SUCCESS": {
+      return state.set(action.id, action.event);
     }
     default:
       return state;

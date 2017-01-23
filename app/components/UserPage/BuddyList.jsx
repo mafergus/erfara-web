@@ -1,13 +1,13 @@
 import React, { PropTypes } from "react";
 import autoBind from "react-autobind";
-import AttendeeListItem from "./AttendeeListItem";
+import AttendeeListItem from "../EventPage/AttendeeListItem";
 import { darkBlack, faintBlack } from "material-ui/styles/colors";
 import PeopleList from "../PeopleList";
 
-export default class AttendeesList extends React.Component {
+export default class BuddyList extends React.Component {
 
   static propTypes = {
-    attendees: PropTypes.array,
+    buddies: PropTypes.array,
     style: PropTypes.object,
   };
 
@@ -17,7 +17,7 @@ export default class AttendeesList extends React.Component {
   }
 
   render() {
-    const attendees = [1, 2, 3];
+    const attendees = [1, 2, 3, 4, 5, 6];
     const style = {
       ...this.props.style,
       padding: "0 0 0 0",
@@ -28,12 +28,12 @@ export default class AttendeesList extends React.Component {
     attendees.forEach(item => {
       items.push(<AttendeeListItem
         key={items.length}
-        name="John Doe" 
+        name="Jimmy Joe" 
         location="San Jose, CA" 
         image="https://scontent.xx.fbcdn.net/v/t1.0-1/c0.0.160.160/p160x160/11009152_10105063465546270_5215382255678934863_n.jpg?oh=cbe678dd34f8cbf8c185708831432710&oe=590A3F7C"
         />);
     });
-    return <PeopleList people={items} peopleType="Attendees" style={this.props.style} />
+    return <PeopleList people={items} peopleType="Buddies" style={this.props.style} />
   }
   
 }

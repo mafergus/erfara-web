@@ -1,5 +1,3 @@
-import ActionTypes from '../constants/ActionTypes';
-
 const DEV_USER = {
  localId: "7hJGDkRieEfhPiMnu1HGDF8w59V2",
  email: "matthew.n.ferguson@gmail.com",

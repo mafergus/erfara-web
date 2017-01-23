@@ -1,4 +1,6 @@
 import React, { PropTypes } from "react";
+import Immutable from "immutable";
+import ImmutablePropTypes from "react-immutable-proptypes";
 import autoBind from "react-autobind";
 import { connect } from 'react-redux';
 import { getEvents } from "../actions/getEvents";
@@ -7,6 +9,8 @@ import EventCard from "./EventCard";
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import { Link } from "react-router";
+import { getUsers } from "../actions/userActions";
 
 const styles = {
   root: {
@@ -31,13 +35,14 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getEvents: () => dispatch(getEvents()),
+    getUsers: () => dispatch(getUsers()),
   };
 }
 
 export class EventsList extends React.Component {
 
   static propTypes = {
-    events: PropTypes.array,
+    events: ImmutablePropTypes.map.isRequired,
   };
   
   constructor() {
@@ -47,6 +52,7 @@ export class EventsList extends React.Component {
 
   componentWillMount() {
     this.props.getEvents();
+    this.props.getUsers();
   }
 
   render() {
@@ -57,20 +63,22 @@ export class EventsList extends React.Component {
 
     return <div style={styles.root}>
       <GridList
-        cols={4}
+        cols={3}
         padding={35}
-        cellHeight="auto"
+        cellHeight={250}
         style={styles.gridList}
       >
-        {events && events.map((event) => (
+        {events && events.map((value, key) => (
+          <Link to={`/event/${key}`}>
           <GridTile
-            key={event.photo}
-            title={event.title}
-            subtitle={<span>by <b>{event.description}</b></span>}
+            key={value.photo}
+            title={value.title}
+            subtitle={<span>by <b>{value.description}</b></span>}
             actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
           >
-            <img src={event.photo} />
+            <img src={value.photo} />
           </GridTile>
+          </Link>
         ))}
       </GridList>
   </div>;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import autoBind from "react-autobind";
 import AppBar from 'material-ui/AppBar';
@@ -22,10 +22,18 @@ function mapStateToProps(state) {
 }
 
 export class AppBarContainer extends React.Component {
+
+  static contextTypes = {
+    router: PropTypes.object.isRequired
+  };
   
   constructor() {
     super();
     autoBind(this);
+  }
+
+  onTitleTouchTap() {
+    this.context.router.push('/');
   }
 
   renderIconRight() {
@@ -46,8 +54,10 @@ export class AppBarContainer extends React.Component {
 
   render() {
     return <AppBar
+      className="appBar"
       title="Erfara"
       titleStyle={{ fontFamily: "LobsterTwo-Regular", color: orange500 }}
+      onTitleTouchTap={this.onTitleTouchTap}
       iconElementLeft={
         <ErfaraIcon color={orange500} style={{marginLeft: "1em", marginRight: "0.1em", height: "1.85em", width: "1.85em", marginTop: "10px"}}/>
       }

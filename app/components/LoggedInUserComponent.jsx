@@ -26,13 +26,11 @@ export default class LoggedInUserComponent extends React.Component {
   }
 
   mouseOver() {
-    // debugger;
     console.log("mouseOver");
     this.setState({open: true});
   }
     
   mouseOut() {
-    // debugger;
     console.log("mouseOut");
     this.setState({open: false});
   }

@@ -30,6 +30,32 @@
   }
 }
 
+.attendeesList {
+
+  li {
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+  }
+
+}
+
+.appBar {
+  h1 {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.userTabs {
+  &:hover {
+    font-weight: 900;
+    cursor: pointer;
+  }
+}
+
 .eventHeroImage {
   height: 250px;
   background-image: 
