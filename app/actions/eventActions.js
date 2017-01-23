@@ -23,3 +23,24 @@ export function getEvent(id) {
     });
   }
 }
+
+export function addEvent(title, description, date, userId) {
+  return dispatch => {
+    var eventData = {
+      title,
+      description,
+      date,
+      userId,
+    };
+
+    // Get a key for a new Post.
+    var newEventKey = firebase.database().ref().child('events').push().key;
+
+    // Write the new post's data simultaneously in the posts list and the user's post list.
+    var updates = {};
+    updates["/events/" + newEventKey] = eventData;
+    updates["/users/" + userId + "/events/" +  newEventKey] = eventData;
+
+    return firebase.database().ref().update(updates);
+  }
+}

@@ -1,13 +1,17 @@
 import React, { Component, PropTypes } from 'react';
+import autoBind from "react-autobind";
 import Title from 'react-title-component';
 import IconButton from 'material-ui/IconButton';
 import spacing from 'material-ui/styles/spacing';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { darkWhite, white, lightWhite, grey900, orange500,   orange700 } from 'material-ui/styles/colors';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 import AppNavDrawer from './AppNavDrawer';
 import FullWidthSection from './FullWidthSection';
 import withWidth, { MEDIUM, LARGE } from 'material-ui/utils/withWidth';
 import AppBarContainer from "../containers/AppBarContainer";
+import CreateEventModal from "./Modals/CreateEventModal";
 
 class App extends Component {
   static propTypes = {
@@ -24,9 +28,15 @@ class App extends Component {
     muiTheme: PropTypes.object,
   };
 
-  state = {
-    navDrawerOpen: false,
-  };
+  constructor() {
+    super();
+    autoBind(this);
+
+    this.state = {
+      navDrawerOpen: false,
+      eventModalOpen: false,
+    };
+  }
 
   getChildContext() {
     return {
@@ -127,6 +137,19 @@ class App extends Component {
     });
   };
 
+  createEvent() {
+    this.setState({
+      ...this.state,
+      eventModalOpen: true,
+    });
+  }
+
+  onRequestClose() {
+    this.setState({
+      eventModalOpen: false,
+    });
+  }
+
   renderFooter() {
     const {
       prepareStyles,
@@ -207,6 +230,13 @@ class App extends Component {
           open={navDrawerOpen}
         />
         {this.renderFooter()}
+        <FloatingActionButton
+          onTouchTap={this.createEvent}
+          style={{ position: "fixed", right: "1.3em", bottom: "1.3em" }}
+        >
+          <ContentAdd />
+        </FloatingActionButton>
+        <CreateEventModal isOpen={this.state.eventModalOpen} onRequestClose={this.onRequestClose}/>
       </div>
     );
   }

@@ -9,7 +9,7 @@ import Hero from "../Hero";
 import EventDescription from "./EventDescription";
 import EventDetails from "./EventDetails";
 import AttendeesList from "./AttendeesList";
-import { getEvent } from "../../actions/getEvents";
+import { getEvent } from "../../actions/eventActions";
 
 function mapStateToProps(state, props) {
   return {
