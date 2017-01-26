@@ -192,6 +192,8 @@ class App extends Component {
       router.isActive('/components') ? 'Components' :
       router.isActive('/discover-more') ? 'Discover More' : '';
 
+    const isHome = router.isActive('');
+
     let docked = false;
     let showMenuIconButton = true;
 
@@ -229,7 +231,7 @@ class App extends Component {
           onChangeList={this.handleChangeList}
           open={navDrawerOpen}
         />
-        {this.renderFooter()}
+        {!isHome && this.renderFooter()}
         <FloatingActionButton
           onTouchTap={this.createEvent}
           style={{ position: "fixed", right: "1.3em", bottom: "1.3em" }}

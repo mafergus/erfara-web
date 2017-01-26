@@ -8,6 +8,7 @@ import {
 import App from './components/App';
 import HomePage from './components/Home';
 import EventPage from "./components/EventPage/EventPage";
+import MessagingPage from "./components/Messaging/MessagingPage";
 import UserPage from "./components/UserPage/UserPage";
 
 /**
@@ -21,7 +22,8 @@ import UserPage from "./components/UserPage/UserPage";
  */
 const AppRoutes = (
   <Route path="/" component={App}>
-    <IndexRoute component={HomePage} />
+    <IndexRoute component={MessagingPage} />
+    <Route path="messaging" component={MessagingPage} />
     <Route path="event/:id" component={EventPage} />
     <Route path="user/:id" component={UserPage} />
     <Route path="home" component={HomePage} />

@@ -30,8 +30,30 @@
   }
 }
 
-.attendeesList {
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
+.messagesList {
+  li {
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .title {
+      color: red;
+    }
+
+    .subtitle {
+      color: blue;
+    }
+  }
+}
+
+.attendeesList {
   li {
     &:hover {
       cursor: pointer;

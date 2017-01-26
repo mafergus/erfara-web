@@ -41,6 +41,7 @@ export default class AuthModal extends React.Component {
     const user = result.user;
     console.log("USER ", result.user);
     store.dispatch(addUser(user));
+    firebase.onAuthSuccess(user.uid);
   }
 
   handleSignUpFacebook() {

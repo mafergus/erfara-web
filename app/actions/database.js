@@ -7,20 +7,30 @@ const config = {
   databaseURL: 'https://erfara-2aa21.firebaseio.com/'
 };
 
+var authedUserId = null;
+
 firebase.initializeApp(config);
 
 firebase.database().ref('/events').on('value', function(snapshot) {
-  // updateStarCount(postElement, snapshot.val());
   const events = snapshot.val();
   console.log("Update events: ", snapshot.val());
   store.dispatch({ type: "GET_EVENTS_SUCCESS", events });
 });
 
 firebase.database().ref('/users').on('value', function(snapshot) {
-  // updateStarCount(postElement, snapshot.val());
   const users = snapshot.val();
   console.log("Update events: ", snapshot.val());
   store.dispatch({ type: "GET_USERS_SUCCESS", users });
 });
+
+var onAuthSuccess = (userId) => {
+  firebase.database().ref("/users/" + userId + "/messages").on('value', function(snapshot) {
+    const messages = snapshot.val();
+    console.log("Update message: ", snapshot.val());
+    store.dispatch({ type: "GET_MESSAGES_SUCCESS", messages });
+  });
+};
+
+onAuthSuccess("7hJGDkRieEfhPiMnu1HGDF8w59V2");
 
 export default firebase;
