@@ -17,7 +17,7 @@ export default class BuddyList extends React.Component {
   }
 
   render() {
-    const attendees = [1, 2, 3, 4, 5, 6];
+    const { buddies } = this.props;
     const style = {
       ...this.props.style,
       padding: "0 0 0 0",
@@ -25,12 +25,13 @@ export default class BuddyList extends React.Component {
       borderRadius: "1%",
     }
     let items = [];
-    attendees.forEach(item => {
+    if (!buddies) { return <div/>; }
+    buddies.forEach(item => {
       items.push(<AttendeeListItem
         key={items.length}
-        name="Jimmy Joe" 
+        name={item.name}
         location="San Jose, CA" 
-        image="https://scontent.xx.fbcdn.net/v/t1.0-1/c0.0.160.160/p160x160/11009152_10105063465546270_5215382255678934863_n.jpg?oh=cbe678dd34f8cbf8c185708831432710&oe=590A3F7C"
+        image={item.photoURL}
         />);
     });
     return <PeopleList people={items} peopleType="Buddies" style={this.props.style} />

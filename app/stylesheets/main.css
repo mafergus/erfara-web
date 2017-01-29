@@ -45,6 +45,14 @@ html {
   width: 100%;
 }
 
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   background-color: #f1efea;
   font-family: Roboto-Regular;
@@ -107,11 +115,9 @@ p, h1 {
       rgba(0, 0, 0, 0.3)
     ),
     url("../images/kayaking.jpg");
-  background-size: cover;
-  background-position: 50% 40%;
+  background-repeat: repeat;
   /*background-blend-mode: multiply;*/
   /*background-color: #F39C11;*/
-  object-fit: cover;
 }
 
 .erfaraFont {

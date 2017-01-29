@@ -23,14 +23,16 @@ firebase.database().ref('/users').on('value', function(snapshot) {
   store.dispatch({ type: "GET_USERS_SUCCESS", users });
 });
 
-var onAuthSuccess = (userId) => {
-  firebase.database().ref("/users/" + userId + "/messages").on('value', function(snapshot) {
-    const messages = snapshot.val();
-    console.log("Update message: ", snapshot.val());
-    store.dispatch({ type: "GET_MESSAGES_SUCCESS", messages });
+firebase.onAuthSuccess = (userId) => {
+  firebase.database().ref("/users/" + userId + "/conversations").on('value', function(snapshot) {
+    const conversations = snapshot.val();
+    console.log("Update conversations: ", snapshot.val());
+    if (conversations) {
+      store.dispatch({ type: "GET_CONVERSATIONS_SUCCESS", conversations });
+    }
   });
 };
 
-onAuthSuccess("7hJGDkRieEfhPiMnu1HGDF8w59V2");
+// onAuthSuccess("7hJGDkRieEfhPiMnu1HGDF8w59V2");
 
 export default firebase;

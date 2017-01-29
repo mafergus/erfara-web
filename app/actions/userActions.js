@@ -27,10 +27,25 @@ export function getUsers() {
 
 export function addUser(user) {
   return dispatch => {
-    return firebase.database().ref('users/' + user.uid).set({
+    const userData = {
       name: user.displayName,
+      uid: user.uid,
       email: user.email,
       photoURL: user.photoURL,
+    };
+    let updates = {};
+    updates["users/" + user.uid] = userData;
+    return firebase.database().ref().update(updates).then(snap => {
+      console.log("BOOM user", user);
+      dispatch({ type: "ADD_AUTHED_USER_SUCCESS", user: userData });
     });
+    // , snap => {
+    //   console.log("OH SHIT PROMISE WORKED for user.uid: ", user.uid, " snap: ", snap.val());
+    //   firebase.database().ref('/users' + user.uid).once('value', snap => {
+    //     const user = snap.val();
+    //     console.log("Got authed user: ", user);
+    //     dispatch({type: "ADD_AUTHED_USER_SUCCESS", user});
+    //   });
+    // });
   }
 }

@@ -36,7 +36,21 @@
   text-overflow: ellipsis;
 }
 
-.messagesList {
+.messaging-pane {
+
+  .background-image {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0.3;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    background-image: url("../images/message_window_background.jpg");
+  }
+}
+
+.conversationList {
   li {
     &:hover {
       cursor: pointer;
@@ -50,6 +64,15 @@
     .subtitle {
       color: blue;
     }
+  }
+
+  li::after {
+    position: absolute;
+    bottom: -1px;
+    width: 100%;
+    height: 0;
+    border-bottom: 1px solid #f4f5f5;
+    content: "";
   }
 }
 

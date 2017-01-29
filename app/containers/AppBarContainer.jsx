@@ -44,8 +44,8 @@ export class AppBarContainer extends React.Component {
 
     return Object.keys(user).length > 0 ?
       <LoggedInUserComponent 
-        name={user.displayName.split(" ")[0]}
-        image={user.photoUrl}/> : 
+        name={user.name.split(" ")[0]}
+        image={user.photoURL}/> : 
       <div style={{ marginTop: "6px" }}>
         <AuthModal title="Log In" />
         <AuthModal title="Sign Up" />

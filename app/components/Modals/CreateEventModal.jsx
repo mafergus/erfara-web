@@ -16,7 +16,7 @@ import { addEvent } from "../../actions/eventActions";
 
 function mapStateToProps(state) {
   return {
-    userId: state.authedUser["localId"],
+    userId: state.authedUser && state.authedUser.uid,
   };
 }
 
@@ -34,7 +34,7 @@ export class CreateEventModal extends React.Component {
   static propTypes = {
     isOpen: PropTypes.bool.isRequired,
     onRequestClose: PropTypes.func.isRequired,
-    userId: PropTypes.string.isRequired,
+    userId: PropTypes.string,
   };
 
   constructor() {
@@ -53,6 +53,7 @@ export class CreateEventModal extends React.Component {
   }
 
   addNewEvent() {
+    if (!this.props.userId) { return; }
     store.dispatch(addEvent(this.name, this.description, this.timestamp, this.props.userId));
     this.props.onRequestClose();
   }
