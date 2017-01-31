@@ -34,7 +34,10 @@ export function addUser(user) {
       photoURL: user.photoURL,
     };
     let updates = {};
-    updates["users/" + user.uid] = userData;
+    updates["users/" + user.uid + "/name"] = user.displayName;
+    updates["users/" + user.uid + "/uid"] = user.uid;
+    updates["users/" + user.uid + "/email"] = user.email;
+    updates["users/" + user.uid + "/photoURL"] = user.photoURL;
     return firebase.database().ref().update(updates).then(snap => {
       console.log("BOOM user", user);
       dispatch({ type: "ADD_AUTHED_USER_SUCCESS", user: userData });

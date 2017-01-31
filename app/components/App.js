@@ -193,6 +193,7 @@ class App extends Component {
       router.isActive('/discover-more') ? 'Discover More' : '';
 
     const isHome = router.isActive('');
+    const hideFab = router.isActive('/messages') || router.isActive('');
 
     let docked = false;
     let showMenuIconButton = true;
@@ -232,12 +233,14 @@ class App extends Component {
           open={navDrawerOpen}
         />
         {!isHome && this.renderFooter()}
-        <FloatingActionButton
-          onTouchTap={this.createEvent}
-          style={{ position: "fixed", right: "1.3em", bottom: "1.3em" }}
-        >
-          <ContentAdd />
-        </FloatingActionButton>
+        {!hideFab && 
+          <FloatingActionButton
+            onTouchTap={this.createEvent}
+            style={{ position: "fixed", right: "1.3em", bottom: "1.3em" }}
+          >
+            <ContentAdd />
+          </FloatingActionButton>
+        }
         <CreateEventModal isOpen={this.state.eventModalOpen} onRequestClose={this.onRequestClose}/>
       </div>
     );

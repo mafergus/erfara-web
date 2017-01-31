@@ -19,7 +19,7 @@ firebase.database().ref('/events').on('value', function(snapshot) {
 
 firebase.database().ref('/users').on('value', function(snapshot) {
   const users = snapshot.val();
-  console.log("Update events: ", snapshot.val());
+  console.log("Update users: ", snapshot.val());
   store.dispatch({ type: "GET_USERS_SUCCESS", users });
 });
 
@@ -33,6 +33,6 @@ firebase.onAuthSuccess = (userId) => {
   });
 };
 
-// onAuthSuccess("7hJGDkRieEfhPiMnu1HGDF8w59V2");
+firebase.onAuthSuccess("8hJGDkRieEfhPiMnu1HGDF8w59V2");
 
 export default firebase;

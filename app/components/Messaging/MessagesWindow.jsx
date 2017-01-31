@@ -34,7 +34,7 @@ export default class MessagesWindow extends React.Component {
     console.log("CONVERSATION SON: ", conversation);
     return <div style={ STYLE } className="messaging-pane">
       <img className="background-image" />
-      <MessageList messages={messages} style={{ width: "100%", position: "absolute", bottom: "150px", left: "0" }} />
+      <MessageList messages={messages} style={{ width: "80%", marginLeft: "10%", position: "absolute", bottom: "150px", left: "0", top: "0" }} />
       <MessageBar style={{ height: "150px", width: "100%", backgroundColor: orange700, position: "absolute", bottom: "0", right: "0" }} onSend={onSendMessage}/>
     </div>
   }  

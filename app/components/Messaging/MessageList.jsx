@@ -34,8 +34,7 @@ export class MessageList extends React.Component {
       ...style,
       listStyle: "none",
       padding: "0",
-      border: `1px solid ${faintBlack}`,
-      backgroundColor: "yellow",
+      overflow: "auto",
     }
     return <ul style={STYLE}>
       {messages && messages.map((item, key) => {

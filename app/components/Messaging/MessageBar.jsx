@@ -26,6 +26,12 @@ export default class MessageBar extends React.Component {
     this.setState({ message: "" });
   }
 
+  onKeyPress(event) {
+    if (event.charCode === 13) { // enter key pressed
+      this.onSendClicked();  
+    } 
+  }
+
   render() {
     const { style } = this.props;
     const STYLE = {
@@ -39,7 +45,12 @@ export default class MessageBar extends React.Component {
     return <div style={STYLE}>
       <div style={{ flexGrow: "1", height: "100%", width: "100%", backgroundColor: {orange500} }}>
         <div style={{ height: "90px", width: "80%", border: `1px solid" ${faintBlack}`, backgroundColor: "white", borderRadius: "3%" }}>
-          <TextField hintText="Message" value={this.state.message} style={{ width: "100%" }} onChange={ (event, value) => { this.setState({ message: value }) }} />
+          <TextField 
+            hintText="Message"
+            value={this.state.message}
+            style={{ width: "100%" }}
+            onKeyPress={this.onKeyPress}
+            onChange={ (event, value) => { this.setState({ message: value }) }} />
         </div>
       </div>
       <div style={{ padding: "21px",}}>

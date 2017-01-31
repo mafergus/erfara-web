@@ -1,5 +1,5 @@
 const DEV_USER = {
-  "uid": "7hJGDkRieEfhPiMnu1HGDF8w59V2",
+  "uid": "8hJGDkRieEfhPiMnu1HGDF8w59V2",
   "coverImage" : "http://www.imgnaly.com/wp-content/uploads/2015/07/City-Sky-Line-Fb-Cover.png",
   "email" : "matthew.n.ferguson@gmail.com",
   "events" : {
@@ -15,21 +15,7 @@ const DEV_USER = {
     "asdas" : "7hJGDkRieEfhPiMnu1HGDF8w89V2",
     "mlka3p12" : "9hJGDkRieEfhPiMnu1HGDF8w59V2"
   },
-  "messages" : {
-    "123123" : {
-      "from" : "9hJGDkRieEfhPiMnu1HGDF8w59V2",
-      "isRead" : false,
-      "message" : "Hey dude what's up!!",
-      "timestamp" : "2017-01-23T08:43:08.366Z"
-    },
-    "bamsndnklj123" : {
-      "from" : "8hJGDkRieEfhPiMnu1HGDF8w59V2",
-      "isRead" : false,
-      "message" : "Hey thisis a nother mesages but this one is a little bit longer",
-      "timestamp" : "2017-01-22T08:43:08.366Z"
-    }
-  },
-  "name" : "Matt Ferguson",
+  "name" : "Amy Smith",
   "photoURL" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/11009152_10105063465546270_5215382255678934863_n.jpg?oh=185a667a757d3d5f38824901c1c1d3ab&oe=5923891C",
   "wall" : {
     "123asd" : {

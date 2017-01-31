@@ -1,6 +1,26 @@
 import React, { PropTypes } from "react";
 import autoBind from "react-autobind";
-import { darkBlack } from "material-ui/styles/colors";
+import { minBlack, lightBlack, darkBlack, orange100, faintBlack } from "material-ui/styles/colors";
+
+const ITEM_STYLE = {
+  position: "relative",
+  border: `1px solid faintBlack`,
+  borderRadius: "5%",
+  padding: "10px",
+  boxShadow: "1px 1px rgba(0,0,0,0.12)"
+};
+
+const MY_ITEM_STYLE = {
+  backgroundColor: orange100,
+  float: "right",
+  ...ITEM_STYLE,
+};
+
+const THEIR_ITEM_STYLE = {
+  backgroundColor: "white",
+  float: "left",
+  ...ITEM_STYLE,
+};
 
 export default class MessageListItem extends React.Component {
 
@@ -16,20 +36,12 @@ export default class MessageListItem extends React.Component {
 
   render() {
     const { message, isMine } = this.props;
-    return <div style={{ width: "100%", height: "150px", backgroundColor: "blue" }}>
-      {isMine ? this.renderMyMessage() : this.renderTheirMessage()}
+    return <div style={{ width: "100%", height: "auto", overflow: "auto", padding: "5px" }}>
+      <div style={ isMine ? MY_ITEM_STYLE : THEIR_ITEM_STYLE }>
+        <a style={{ color: darkBlack, fontSize: "0.9em", paddingRight: "60px" }}>{this.props.message.message}</a>
+        <a style={{ color: minBlack, fontSize: "0.7em", marginLeft: "10px", position: "absolute", right: "7px", bottom: "3px" }}>9:47 PM</a>
+      </div>
     </div>;
   }
 
-  renderMyMessage() {
-    return <div style={{ backgroundColor: "gray", width: "200px", height: "70px", float: "right" }}>
-      <a style={{ color: darkBlack }}>{this.props.message.message}</a>
-    </div>;
-  }
-
-  renderTheirMessage() {
-    return <div style={{ backgroundColor: "red", width: "200px", height: "70px" }}>
-      <a style={{ color: darkBlack }}>{this.props.message.message}</a>
-    </div>;
-  }
 }
