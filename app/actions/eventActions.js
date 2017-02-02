@@ -24,13 +24,15 @@ export function getEvent(id) {
   }
 }
 
-export function addEvent(title, description, date, userId) {
+export function addEvent(title, description, photo, date, userId) {
   return dispatch => {
     var eventData = {
       title,
       description,
+      photo,
       date,
       userId,
+      attendees: [userId],
     };
 
     // Get a key for a new Post.
@@ -41,6 +43,24 @@ export function addEvent(title, description, date, userId) {
     updates["/events/" + newEventKey] = eventData;
     updates["/users/" + userId + "/events/" +  newEventKey] = eventData;
 
+    return firebase.database().ref().update(updates);
+  }
+}
+
+export function rsvp(event, eventId, userId, rsvpStatus) {
+  return dispatch => {
+    if (!event.attendees) { event.attendees = []; }
+    if (rsvpStatus && !event.attendees.includes(userId)) {
+      event.attendees.push(userId);
+    } else {
+      const index = event.attendees.indexOf(userId);
+      if (index > -1) {
+        event.attendees.splice(index, 1);
+      }
+    }
+
+    var updates = {};
+    updates["/events/" + eventId + "/attendees"] = event.attendees;
     return firebase.database().ref().update(updates);
   }
 }

@@ -3,6 +3,7 @@ import autoBind from "react-autobind";
 import { minBlack, lightBlack, darkBlack } from "material-ui/styles/colors"
 import MapsPlace from 'material-ui/svg-icons/maps/place';
 import ActionSchedule from 'material-ui/svg-icons/action/schedule';
+import { getDateString } from "../../utils/dateTimeHelpers";
 
 const STYLE = {
   color: darkBlack,
@@ -13,16 +14,22 @@ const STYLE = {
 
 export default class EventDetails extends React.Component {
 
+  static propTypes = {
+    event: PropTypes.object,
+  };
+
   constructor() {
     super();
     autoBind(this);
   }
 
   render() {
+    const { event } = this.props;
+    const dateStr = getDateString(new Date(event.date));
     return <div style={{ backgroundColor: "white", border: "10px black", padding: "1em 0 1em 1em" }}>
       <span style={{ display: "block", marginBottom: "0.5em" }}>
         <MapsPlace color={minBlack} style={{ display: "inline-block", verticalAlign: "middle", marginRight: "0.8em" }}/>
-        <a style={STYLE}>Tue Jan 17 from 7:30 PM to 10:00 PM (PST)</a>
+        <a style={STYLE}>{dateStr}</a>
       </span>
       <span style={{ display: "block" }}>
         <ActionSchedule color={minBlack} style={{ display: "inline-block", verticalAlign: "middle", marginRight: "0.8em" }}/>

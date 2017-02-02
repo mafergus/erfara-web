@@ -5,15 +5,35 @@ import { connect } from "react-redux";
 import autoBind from "react-autobind";
 import FullWidthSection from '../FullWidthSection';
 import RaisedButton from 'material-ui/RaisedButton';
-import Hero from "../Hero";
 import EventDescription from "./EventDescription";
 import EventDetails from "./EventDetails";
-import AttendeesList from "./AttendeesList";
-import { getEvent } from "../../actions/eventActions";
+import UserList from "../UserList";
+import { getEvent, rsvp } from "../../actions/eventActions";
+import EventHero from "./EventHero";
+import store from "../../store/store";
+
+const ATTENDEES_LIST = {
+  position: "absolute",
+  top: "0",
+  width: "200px",
+  marginLeft: "-210px",
+  backgroundColor: "white",
+};
 
 function mapStateToProps(state, props) {
+  const event = state.events.get(props.params.id);
+  const owner = event && state.users.get(event.userId);
+  let leUsers = [];
+  if (event && event.attendees) {
+    event.attendees.forEach(item => { leUsers.push(state.users.get(item)); });
+  }
+  const isRSVPD = leUsers.some(item => item.uid === state.authedUser.uid);
   return {
-    event: state.events.get(props.params.id),
+    authedUser: state.authedUser,
+    event: event,
+    owner: owner,
+    attendees: leUsers,
+    isRSVPD: isRSVPD,
   };
 }
 
@@ -25,15 +45,26 @@ function mapDispatchToProps(dispatch) {
 
 export class EventPage extends React.Component {
 
+  static defaultProps = {
+    isRSVPD: false,
+  };
+
   static propTypes = {
     uuid: PropTypes.string,
     event: PropTypes.object,
     getEvent: PropTypes.func.isRequired,
+    isRSVPD: PropTypes.bool,
   };
   
   constructor() {
     super();
     autoBind(this);
+  }
+
+  onRSVP() {
+    const { event, owner, authedUser } = this.props;
+    const eventId = this.props.params.id;
+    store.dispatch(rsvp(event, eventId, authedUser.uid, !this.props.isRSVPD));
   }
 
   componentWillMount() {
@@ -46,12 +77,14 @@ export class EventPage extends React.Component {
 
   render() {
     // if (!this.event) { return <div></div> };
+    const { event, owner, attendees, isRSVPD } = this.props;
+    if (!event || !owner) { return <div/>; }
     return <FullWidthSection>
       <div style={{ width: "40%", margin: "0 auto", position: "relative" }}>
-        <AttendeesList style={{ position: "absolute", top: "0", width: "200px", marginLeft: "-210px", backgroundColor: "white" }}/>
-        <Hero title={this.props.event && this.props.event.title} image={this.props.event && this.props.event.photo}/>
-        <EventDetails />
-        <EventDescription />
+        <UserList style={ATTENDEES_LIST} title="Attendees" users={attendees}/>
+        <EventHero event={event} owner={owner} onRSVPClick={this.onRSVP} isRSVPD={isRSVPD} />
+        <EventDetails event={event}/>
+        <EventDescription event={event} />
       </div>
     </FullWidthSection>;
   }

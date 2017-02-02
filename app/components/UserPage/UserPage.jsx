@@ -1,16 +1,36 @@
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import autoBind from "react-autobind";
+import RaisedButton from 'material-ui/RaisedButton';
 import { getUser } from "../../actions/userActions";
 import FullWidthSection from '../FullWidthSection';
 import EventDescription from "../EventPage/EventDescription";
-import BuddyList from "./BuddyList";
-import MainContent from "./MainContent";
+import UserList from "../UserList";
+import Hero from "../Hero";
+import UserDetails from "./UserDetails";
+
+const H3STYLE = {
+  display: "inline-block",
+  fontSize: "1.8em",
+  fontWeight: "normal",
+  margin: "0 auto",
+};
+
+const IMG_STYLE = {
+  borderRadius: "50%",
+  height: "80px",
+  width: "80px",
+  margin: "0 auto",
+  objectFit: "cover",
+  verticalAlign: "middle",
+  marginRight: "1.5em",
+};
 
 function mapStateToProps(state, props) {
+  debugger;
   return {
-    user: state.authedUser,
-    users: state.users,
+    authedUser: state.authedUser,
+    user: state.users.get(props.params.id),
   };
 }
 
@@ -24,7 +44,6 @@ export class UserPage extends React.Component {
 
   static propTypes = {
     getUser: PropTypes.func.isRequired,
-    uuid: PropTypes.string,
     user: PropTypes.object,
   };
 
@@ -34,7 +53,7 @@ export class UserPage extends React.Component {
   }
 
   getFollowers() {
-    const { user, users } = this.props;
+    const { user } = this.props;
     const followers = [];
     Object.entries(user.followers).map(item => {
       const user = users.get(item[1]);
@@ -44,12 +63,19 @@ export class UserPage extends React.Component {
   }
 
   render() {
-    const { user, users } = this.props;
-    if (!user || !users || users.length == 0) { return <div/>; }
+    const { user } = this.props;
+    if (!user) { return <div/>; }
     return <FullWidthSection>
       <div style={{ width: "40%", margin: "0 auto", position: "relative" }}>
-        <BuddyList buddies={this.getFollowers()} style={{ position: "absolute", top: "0", width: "200px", marginLeft: "-210px", backgroundColor: "white" }}/>
-        <MainContent user={this.props.user}/>
+        <UserList users={user.buddies} title="Buddies" style={{ position: "absolute", top: "0", width: "200px", marginLeft: "-210px", backgroundColor: "white" }}/>
+        <Hero image={user.coverPhoto}>
+          <div style={{ position: "absolute", bottom: "12px", left: "12px" }}>
+            <img style={IMG_STYLE} src={user.photo}/>
+            <h3 style={ H3STYLE }>{user.name}</h3>
+          </div>
+          <RaisedButton label="Add Friend" style={{ position: "absolute", right: "15px", bottom: "15px" }}/>
+        </Hero>
+        <UserDetails />
       </div>
     </FullWidthSection>;
   }

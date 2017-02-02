@@ -35,7 +35,7 @@ export class MessagingPage extends React.Component {
   }
 
   sendMessage(text) {
-    store.dispatch(addMessage(this.state.conversationId, this.props.authedUser.uid, text, "today son!"));
+    store.dispatch(addMessage(this.state.conversationId, this.props.authedUser.uid, text, new Date()));
   }
 
   componentWillMount() {

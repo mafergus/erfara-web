@@ -1,13 +1,18 @@
 import React, { PropTypes } from "react";
 import autoBind from "react-autobind";
-import AttendeeListItem from "./AttendeeListItem";
+import AttendeeListItem from "./EventPage/AttendeeListItem";
 import { darkBlack, faintBlack } from "material-ui/styles/colors";
-import PeopleList from "../PeopleList";
+import PeopleList from "./PeopleList";
 
-export default class AttendeesList extends React.Component {
+export default class UserList extends React.Component {
+
+  static defaultProps = {
+    title: "People",
+  };
 
   static propTypes = {
-    attendees: PropTypes.array,
+    title: PropTypes.string.isRequired,
+    users: PropTypes.array,
     style: PropTypes.object,
   };
 
@@ -17,7 +22,7 @@ export default class AttendeesList extends React.Component {
   }
 
   render() {
-    const attendees = [1, 2, 3];
+    const { users, title } = this.props;
     const style = {
       ...this.props.style,
       padding: "0 0 0 0",
@@ -25,15 +30,17 @@ export default class AttendeesList extends React.Component {
       borderRadius: "1%",
     }
     let items = [];
-    attendees.forEach(item => {
+    users && users.forEach(item => {
       items.push(<AttendeeListItem
         key={items.length}
-        name="John Doe" 
+        user={item}
+        userId={item.uid}
+        name={item.name}
         location="San Jose, CA" 
-        image="https://scontent.xx.fbcdn.net/v/t1.0-1/c0.0.160.160/p160x160/11009152_10105063465546270_5215382255678934863_n.jpg?oh=cbe678dd34f8cbf8c185708831432710&oe=590A3F7C"
+        image={item.photo}
         />);
     });
-    return <PeopleList people={items} peopleType="Attendees" style={this.props.style} />
+    return <PeopleList people={items} peopleType={title} style={this.props.style} />
   }
   
 }

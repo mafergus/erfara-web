@@ -51,7 +51,7 @@ export class ConversationListItem extends React.Component {
   render() {
     const { conversation, conversationId, user } = this.props;
     const message = Object.entries(this.props.conversation.messages)[0][1];
-    const photo = user && user.photoURL;
+    const photo = user && user.photo;
     if (!conversation || !user) { return <div></div>; }
     return <li style={{ display: "flex", alignItems: "center", height: "72px", position: "relative" }} onClick={ this.props.onConversationClick.bind(null, conversationId) }>
       <div style={{ height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>

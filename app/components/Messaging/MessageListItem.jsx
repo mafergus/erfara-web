@@ -1,6 +1,7 @@
 import React, { PropTypes } from "react";
 import autoBind from "react-autobind";
 import { minBlack, lightBlack, darkBlack, orange100, faintBlack } from "material-ui/styles/colors";
+import { formatDate } from "../../utils/dateTimeHelpers";
 
 const ITEM_STYLE = {
   position: "relative",
@@ -36,10 +37,11 @@ export default class MessageListItem extends React.Component {
 
   render() {
     const { message, isMine } = this.props;
+    const timeStr = formatDate(message.date, false);
     return <div style={{ width: "100%", height: "auto", overflow: "auto", padding: "5px" }}>
       <div style={ isMine ? MY_ITEM_STYLE : THEIR_ITEM_STYLE }>
         <a style={{ color: darkBlack, fontSize: "0.9em", paddingRight: "60px" }}>{this.props.message.message}</a>
-        <a style={{ color: minBlack, fontSize: "0.7em", marginLeft: "10px", position: "absolute", right: "7px", bottom: "3px" }}>9:47 PM</a>
+        <a style={{ color: minBlack, fontSize: "0.7em", marginLeft: "10px", position: "absolute", right: "7px", bottom: "3px" }}>{timeStr}</a>
       </div>
     </div>;
   }

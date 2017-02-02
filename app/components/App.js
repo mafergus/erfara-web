@@ -193,7 +193,8 @@ class App extends Component {
       router.isActive('/discover-more') ? 'Discover More' : '';
 
     const isHome = router.isActive('');
-    const hideFab = router.isActive('/messages') || router.isActive('');
+    const hideFooter = router.isActive('/messages');
+    const hideFab = router.isActive('/messages');
 
     let docked = false;
     let showMenuIconButton = true;
@@ -232,7 +233,7 @@ class App extends Component {
           onChangeList={this.handleChangeList}
           open={navDrawerOpen}
         />
-        {!isHome && this.renderFooter()}
+        {!hideFooter && this.renderFooter()}
         {!hideFab && 
           <FloatingActionButton
             onTouchTap={this.createEvent}

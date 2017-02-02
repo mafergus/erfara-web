@@ -33,7 +33,8 @@ export class MessageList extends React.Component {
     const STYLE = {
       ...style,
       listStyle: "none",
-      padding: "0",
+      paddingLeft: "30px",
+      paddingRight: "30px",
       overflow: "auto",
     }
     return <ul style={STYLE}>

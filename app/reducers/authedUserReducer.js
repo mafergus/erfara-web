@@ -16,7 +16,7 @@ const DEV_USER = {
     "mlka3p12" : "9hJGDkRieEfhPiMnu1HGDF8w59V2"
   },
   "name" : "Amy Smith",
-  "photoURL" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/11009152_10105063465546270_5215382255678934863_n.jpg?oh=185a667a757d3d5f38824901c1c1d3ab&oe=5923891C",
+  "photo" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/11009152_10105063465546270_5215382255678934863_n.jpg?oh=185a667a757d3d5f38824901c1c1d3ab&oe=5923891C",
   "wall" : {
     "123asd" : {
       "from" : "9hJGDkRieEfhPiMnu1HGDF8w59V2",

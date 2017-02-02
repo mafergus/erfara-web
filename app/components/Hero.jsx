@@ -20,7 +20,7 @@ export default class Hero extends React.Component {
     const STYLE = {
       position: "relative",
       height: "250px",
-      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('${image}')`,
+      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url('${image}')`,
       backgroundSize: "cover",
       backgroundPosition: "50% 40%",
       /*background-blend-mode: multiply;*/
@@ -28,14 +28,7 @@ export default class Hero extends React.Component {
       objectFit: "cover",
     };
     return <div style={ STYLE }>
-      <div style={{ position: "absolute", bottom: "0", left: "0", margin: "0.7em", }}>{children}</div>
-      <FloatingActionButton
-        mini={true}
-        onTouchTap={onFabClick}
-        style={{ position: "absolute", right: "0.7em", bottom: "0.7em" }}
-      >
-        <ContentAdd />
-      </FloatingActionButton>
+      {children}
     </div>;
   }
 }
