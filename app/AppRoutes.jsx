@@ -23,7 +23,7 @@ import UserPage from "./components/UserPage/UserPage";
 const AppRoutes = (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />
-    <Route path="messaging" component={MessagingPage} />
+    <Route path="messages" component={MessagingPage} />
     <Route path="event/:id" component={EventPage} />
     <Route path="users/:id" component={UserPage} />
     <Route path="home" component={HomePage} />
